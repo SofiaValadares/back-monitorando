@@ -148,6 +148,23 @@ CREATE TABLE IF NOT EXISTS question(
     FOREIGN KEY (discipline_id) REFERENCES discipline(id)
 );
 
+-- Tabela de avaliações - Permite avaliações bidirecionais entre alunos e monitores
+CREATE TABLE IF NOT EXISTS evaluation(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    evaluator_id INT NOT NULL,
+    evaluated_id INT NOT NULL,
+    appointment_id INT,
+    question_id INT,
+    rating INT NOT NULL CHECK (rating BETWEEN 1 AND 5),
+    comment TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (evaluator_id) REFERENCES user(id),
+    FOREIGN KEY (evaluated_id) REFERENCES user(id),
+    FOREIGN KEY (appointment_id) REFERENCES appointment(id),
+    FOREIGN KEY (question_id) REFERENCES question(id),
+    CHECK (appointment_id IS NOT NULL OR question_id IS NOT NULL)
+    );
+
 -- Tabela de respostas - Armazena as respostas dos monitores às perguntas dos alunos
 CREATE TABLE IF NOT EXISTS answer(
     id SERIAL PRIMARY KEY,
@@ -213,4 +230,4 @@ CREATE TABLE IF NOT EXISTS notification(
     read BOOLEAN DEFAULT false,
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (aluno_id) REFERENCES student(id)
-); 
+);
