@@ -12,4 +12,8 @@ public class StudentEntity extends UserEntity {
 
     private String course;
     private Integer semester;
+    
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "discipline_id")
+    private DisciplineEntity discipline; 
 }

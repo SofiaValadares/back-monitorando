@@ -17,6 +17,10 @@ public class QuestionEntity {
     @ManyToOne(optional = false)
     @JoinColumn(name = "student_id")
     private StudentEntity student;
+    
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "monitor_id")
+    private MonitorEntity monitor;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "discipline_id")

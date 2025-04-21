@@ -9,4 +9,8 @@ import lombok.Data;
 public class MonitorEntity extends UserEntity {
     private String time;
     private String semester;
+    
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "discipline_id")
+    private DisciplineEntity discipline; 
 }
