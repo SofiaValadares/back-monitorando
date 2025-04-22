@@ -24,9 +24,6 @@ INSERT INTO professor (id, department)
 SELECT 5, 'Design'
     WHERE NOT EXISTS (SELECT 1 FROM professor WHERE id = 5);
     
-ALTER TABLE monitor ALTER COLUMN discipline_id TYPE bigint;
-ALTER TABLE student ALTER COLUMN discipline_id TYPE bigint;
-    
 -- Adicionando uma disciplina se ela ainda não existir
 INSERT INTO discipline (id, name, code, description, semester)
 SELECT 4, 'Matemática', 123, 'Disciplina de matemática', '4'
