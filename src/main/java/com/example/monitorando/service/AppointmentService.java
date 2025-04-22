@@ -1,5 +1,6 @@
 package com.example.monitorando.service;
 
+import com.example.monitorando.DTO.AppointmentDTO;
 import com.example.monitorando.entity.AppointmentEntity;
 import com.example.monitorando.repository.AppointmentRepository;
 import com.example.monitorando.repository.StudentRepository;
@@ -11,9 +12,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class AppointmentService {
@@ -30,12 +33,11 @@ public class AppointmentService {
     @Autowired
     private DisciplineRepository disciplineRepository;
 
-    public AppointmentEntity requestAppointment(AppointmentEntity appointment) {
+    public AppointmentDTO requestAppointment(AppointmentEntity appointment) {
         Long studentId = appointment.getStudent().getId();
         Long monitorId = appointment.getMonitor().getId();
         Long disciplineId = appointment.getDiscipline().getId();
 
-        // Validação de existência
         if (!studentRepository.existsById(studentId)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Estudante com ID " + studentId + " não existe.");
         }
@@ -64,20 +66,35 @@ public class AppointmentService {
         }
 
         appointment.setStatus(AppointmentEntity.Status.pending_approval);
+        appointment.setCreatedAt(LocalDateTime.now());
+        AppointmentEntity saved = appointmentRepository.save(appointment);
 
-        // todo: notify aluno e monitor
-        return appointmentRepository.save(appointment);
+        return toDTO(saved);
     }
 
-    public Optional<AppointmentEntity> getById(Long id) {
-        return appointmentRepository.findById(id);
+    public Optional<AppointmentDTO> getById(Long id) {
+        return appointmentRepository.findById(id).map(this::toDTO);
     }
 
-    public List<AppointmentEntity> getAll() {
-        return appointmentRepository.findAll();
+    public List<AppointmentDTO> getAll() {
+        return appointmentRepository.findAll().stream().map(this::toDTO).collect(Collectors.toList());
     }
 
     public void deleteById(Long id) {
         appointmentRepository.deleteById(id);
+    }
+
+    private AppointmentDTO toDTO(AppointmentEntity entity) {
+        return new AppointmentDTO(
+                entity.getId(),
+                entity.getStudent().getId(),
+                entity.getMonitor().getId(),
+                entity.getDiscipline().getId(),
+                entity.getAppointmentDate(),
+                entity.getStartTime(),
+                entity.getEndTime(),
+                entity.getStatus().name(),
+                entity.getCreatedAt()
+        );
     }
 }

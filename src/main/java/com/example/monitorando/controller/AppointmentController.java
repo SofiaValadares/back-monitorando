@@ -1,5 +1,6 @@
 package com.example.monitorando.controller;
 
+import com.example.monitorando.DTO.AppointmentDTO;
 import com.example.monitorando.entity.AppointmentEntity;
 import com.example.monitorando.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,19 +17,19 @@ public class AppointmentController {
     private AppointmentService appointmentService;
 
     @PostMapping
-    public ResponseEntity<AppointmentEntity> create(@RequestBody AppointmentEntity appointment) {
+    public ResponseEntity<AppointmentDTO> create(@RequestBody AppointmentEntity appointment) {
         return ResponseEntity.ok(appointmentService.requestAppointment(appointment));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AppointmentEntity> getById(@PathVariable Long id) {
+    public ResponseEntity<AppointmentDTO> getById(@PathVariable Long id) {
         return appointmentService.getById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping
-    public ResponseEntity<List<AppointmentEntity>> getAll() {
+    public ResponseEntity<List<AppointmentDTO>> getAll() {
         return ResponseEntity.ok(appointmentService.getAll());
     }
 
