@@ -10,14 +10,26 @@ CREATE TABLE IF NOT EXISTS users(
     is_active BOOLEAN DEFAULT true
 );
 
+-- Tabela de disciplinas - Armazena informações sobre as disciplinas oferecidas
+CREATE TABLE IF NOT EXISTS discipline(
+                                         id SERIAL PRIMARY KEY,
+                                         name VARCHAR(100) NOT NULL,
+    code VARCHAR(20) UNIQUE NOT NULL,
+    description TEXT,
+    semester VARCHAR(20)
+    );
+
 -- Tabela de estudantes - Armazena informações específicas dos usuários que são alunos
 CREATE TABLE IF NOT EXISTS student(
     id INT PRIMARY KEY,
     registration_number VARCHAR(20) UNIQUE,
     course VARCHAR(100),
     semester INT,
-    FOREIGN KEY (id) REFERENCES users(id)
-);
+    discipline_id INT,
+    FOREIGN KEY (id) REFERENCES users(id),
+    FOREIGN KEY (discipline_id) REFERENCES discipline(id)
+    );
+
 
 -- Tabela de professores - Armazena informações específicas dos usuários que são professores
 CREATE TABLE IF NOT EXISTS professor(
@@ -31,17 +43,10 @@ CREATE TABLE IF NOT EXISTS monitor(
     id INT PRIMARY KEY,
     time VARCHAR(50),
     semester VARCHAR(20),
-    FOREIGN KEY (id) REFERENCES users(id)
-);
-
--- Tabela de disciplinas - Armazena informações sobre as disciplinas oferecidas
-CREATE TABLE IF NOT EXISTS discipline(
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    code VARCHAR(20) UNIQUE NOT NULL,
-    description TEXT,
-    semester VARCHAR(20)
-);
+    discipline_id INT,
+    FOREIGN KEY (id) REFERENCES users(id),
+    FOREIGN KEY (discipline_id) REFERENCES discipline(id)
+    );
 
 -- Tabela de turmas - Representa uma instância específica de uma disciplina em um semestre
 CREATE TABLE IF NOT EXISTS class(
