@@ -12,8 +12,8 @@ CREATE TABLE IF NOT EXISTS users(
 
 -- Tabela de disciplinas - Armazena informações sobre as disciplinas oferecidas
 CREATE TABLE IF NOT EXISTS discipline(
-                                         id SERIAL PRIMARY KEY,
-                                         name VARCHAR(100) NOT NULL,
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
     code VARCHAR(20) UNIQUE NOT NULL,
     description TEXT,
     semester VARCHAR(20)
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS professor(
 );
 
 -- Tabela de monitores - Armazena informações específicas dos usuários que são monitores
-CREATE TABLE IF NOT EXISTS monitor(
+CREATE TABLE IF NOT EXISTS monitor (
     id INT PRIMARY KEY,
     time VARCHAR(50),
     semester VARCHAR(20),
@@ -123,7 +123,13 @@ CREATE TABLE IF NOT EXISTS appointment(
     appointment_date DATE NOT NULL,
     start_time TIME NOT NULL,
     end_time TIME NOT NULL,
-    status VARCHAR(20) CHECK (status IN ('scheduled', 'completed', 'cancelled', 'no_show')) DEFAULT 'scheduled',
+    status VARCHAR(20) CHECK (status IN (
+                              'pending_approval',
+                              'approved',
+                              'rejected',
+                              'canceled',
+                              'done'
+                             )),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (student_id) REFERENCES student(id),
     FOREIGN KEY (monitor_id) REFERENCES monitor(id),

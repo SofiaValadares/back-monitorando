@@ -4,13 +4,21 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "appointment")
 @Data
 public class AppointmentEntity {
+
+    public enum Status {
+        pending_approval,
+        approved,
+        rejected,
+        canceled,
+        done
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,13 +46,9 @@ public class AppointmentEntity {
     private LocalTime endTime;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Status status = Status.scheduled;
+    @Column(nullable = false, length = 20)
+    private Status status;
 
-    @Column(name = "created_at")
-    private LocalDateTime createdAt = LocalDateTime.now();
-
-    public enum Status {
-        scheduled, completed, cancelled, no_show
-    }
+    @Column(name = "created_at", nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime createdAt;
 }

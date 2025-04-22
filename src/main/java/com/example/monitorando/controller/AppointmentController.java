@@ -17,7 +17,7 @@ public class AppointmentController {
 
     @PostMapping
     public ResponseEntity<AppointmentEntity> create(@RequestBody AppointmentEntity appointment) {
-        return ResponseEntity.ok(appointmentService.save(appointment));
+        return ResponseEntity.ok(appointmentService.requestAppointment(appointment));
     }
 
     @GetMapping("/{id}")

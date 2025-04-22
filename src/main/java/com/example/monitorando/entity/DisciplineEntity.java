@@ -3,10 +3,12 @@ package com.example.monitorando.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Table(name = "discipline")
 @Data
-public class DisciplineEntity{
+public class DisciplineEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +25,7 @@ public class DisciplineEntity{
 
     @Column(length = 20)
     private String semester;
+
+    @OneToMany(mappedBy = "discipline")
+    private List<MonitorEntity> monitors;
 }
