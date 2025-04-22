@@ -23,11 +23,24 @@ SELECT 1, 'Computação'
 INSERT INTO professor (id, department)
 SELECT 5, 'Design'
     WHERE NOT EXISTS (SELECT 1 FROM professor WHERE id = 5);
+    
+ALTER TABLE monitor ALTER COLUMN discipline_id TYPE bigint;
+ALTER TABLE student ALTER COLUMN discipline_id TYPE bigint;
+    
+-- Adicionando uma disciplina se ela ainda não existir
+INSERT INTO discipline (id, name, code, description, semester)
+SELECT 4, 'Matemática', 123, 'Disciplina de matemática', '4'
+WHERE NOT EXISTS (SELECT 1 FROM discipline WHERE name = 'Matemática');
+    
 
 -- Inserindo monitores
 INSERT INTO monitor (id, time, semester)
 SELECT 2, '20h', '2024.1'
     WHERE NOT EXISTS (SELECT 1 FROM monitor WHERE id = 2);
+    
+UPDATE monitor
+SET discipline_id = (SELECT id FROM discipline WHERE name = 'Matematica')
+WHERE id = 2;
 
 -- Inserindo estudantes
 INSERT INTO student (id, registration_number, course, semester)
@@ -36,6 +49,16 @@ SELECT 3, '20240001', 'Ciência da Computação', 4
 INSERT INTO student (id, registration_number, course, semester)
 SELECT 4, '20240002', 'Design', 3
     WHERE NOT EXISTS (SELECT 1 FROM student WHERE registration_number = '20240002');
+    
+-- Atualizar estudante 3 (registration_number = '20240001') para associar a disciplina "Matemática"
+UPDATE student
+SET discipline_id = 4
+WHERE registration_number = '20240001';
+
+-- Atualizar estudante 4 (registration_number = '20240002') para associar a disciplina "Matemática"
+UPDATE student
+SET discipline_id = 4
+WHERE registration_number = '20240002';
 
 -- Inserindo disciplinas
 INSERT INTO discipline (name, code, description, semester)
