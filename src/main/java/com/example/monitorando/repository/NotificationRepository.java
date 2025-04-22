@@ -9,6 +9,6 @@ import com.example.monitorando.entity.NotificationEntity;
 
 @Repository
 public interface NotificationRepository extends JpaRepository<NotificationEntity, Long> {
-    List<NotificationEntity> findByStudentIdOrderByCreatedAtDesc(Long studentId);
+    List<NotificationEntity> findByUserIdOrderByCreatedAtDesc(Long userId);
 }
 

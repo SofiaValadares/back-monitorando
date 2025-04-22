@@ -20,19 +20,20 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class NotificationController {
 
-    @Autowired private NotificationService notificationService;
+    @Autowired
+    private NotificationService notificationService;
 
-    // Endpoint para buscar todas as notificações de um aluno
-    @GetMapping("/student/{studentId}")
-    public ResponseEntity<List<NotificationEntity>> getNotifications(@PathVariable Long studentId) {
-        List<NotificationEntity> notifications = notificationService.getNotificationsForStudent(studentId);
+    // Buscar todas as notificações de um usuário
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<NotificationEntity>> getNotifications(@PathVariable Long userId) {
+        List<NotificationEntity> notifications = notificationService.getNotifications(userId);
         return ResponseEntity.ok(notifications);
     }
 
-    // Endpoint para marcar uma notificação como lida
+    // Marcar uma notificação como lida
     @PutMapping("/{notificationId}/read")
     public ResponseEntity<Void> markAsRead(@PathVariable Long notificationId) {
         notificationService.markAsRead(notificationId);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 }

@@ -6,10 +6,7 @@ import lombok.Data;
 @Entity
 @Table(name = "monitor")
 @Data
-public class MonitorEntity {
-
-    @Id
-    private Long id;
+public class MonitorEntity extends UserEntity {
 
     @Column(length = 50)
     private String time;
@@ -20,9 +17,4 @@ public class MonitorEntity {
     @ManyToOne(optional = false)
     @JoinColumn(name = "discipline_id", nullable = false)
     private DisciplineEntity discipline;
-
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "id")
-    private UserEntity user;
 }

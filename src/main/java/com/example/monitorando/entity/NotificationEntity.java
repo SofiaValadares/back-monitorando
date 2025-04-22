@@ -1,18 +1,11 @@
 package com.example.monitorando.entity;
 
-import java.time.LocalDateTime;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "notifications")
@@ -25,10 +18,9 @@ public class NotificationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Pode ser notificação para aluno ou outro tipo de usuário no futuro
     @ManyToOne(optional = false)
-    @JoinColumn(name = "student_id")
-    private StudentEntity student;
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 
     @Column(nullable = false)
     private String message;

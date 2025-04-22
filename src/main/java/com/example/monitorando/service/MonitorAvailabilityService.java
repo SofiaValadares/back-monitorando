@@ -50,7 +50,7 @@ public class MonitorAvailabilityService {
 
         // Notificar alunos das disciplinas do monitor
         List<StudentEntity> alunos = studentRepository.findAllByDiscipline(monitor.getDiscipline());
-        alunos.forEach(aluno -> notificationService.notifyStudent(aluno, "O monitor atualizou seus horários disponíveis!"));
+        alunos.forEach(aluno -> notificationService.notifyUser(aluno, "O monitor atualizou seus horários disponíveis!"));
     }
 
     private boolean isValidTime(String time) {

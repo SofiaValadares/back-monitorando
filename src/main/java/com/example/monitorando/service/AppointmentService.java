@@ -33,6 +33,9 @@ public class AppointmentService {
     @Autowired
     private DisciplineRepository disciplineRepository;
 
+    @Autowired
+    private NotificationService notificationService; // ✅ ADICIONADO
+
     public AppointmentDTO requestAppointment(AppointmentEntity appointment) {
         Long studentId = appointment.getStudent().getId();
         Long monitorId = appointment.getMonitor().getId();
@@ -68,6 +71,18 @@ public class AppointmentService {
         appointment.setStatus(AppointmentEntity.Status.pending_approval);
         appointment.setCreatedAt(LocalDateTime.now());
         AppointmentEntity saved = appointmentRepository.save(appointment);
+
+        // ✅ Notificações
+        notificationService.notifyUser(
+                saved.getStudent(),
+                "Seu pedido de agendamento foi enviado e está aguardando aprovação."
+        );
+
+        notificationService.notifyUser(
+                saved.getMonitor(),
+                "Você recebeu um novo pedido de atendimento para o dia " +
+                        saved.getAppointmentDate() + " das " + saved.getStartTime() + " às " + saved.getEndTime() + "."
+        );
 
         return toDTO(saved);
     }

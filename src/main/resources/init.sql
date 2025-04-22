@@ -234,11 +234,9 @@ CREATE TABLE IF NOT EXISTS task(
 CREATE TABLE IF NOT EXISTS notification(
     id SERIAL PRIMARY KEY,
     user_id INT NOT NULL,
-    aluno_id INT,
     type VARCHAR(50) NOT NULL,
     message TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     read BOOLEAN DEFAULT false,
-    FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (aluno_id) REFERENCES student(id)
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
