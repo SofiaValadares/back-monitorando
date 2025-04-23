@@ -1,4 +1,4 @@
-package com.cesarschool.monitorando.dominio.service;
+package com.cesarschool.monitorando.apresentacao.service;
 
 import com.cesarschool.monitorando.apresentacao.DTO.MonitorAvailabilityRequest;
 import com.cesarschool.monitorando.dominio.entity.MonitorAvailabilityEntity;

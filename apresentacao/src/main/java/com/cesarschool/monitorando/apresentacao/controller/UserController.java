@@ -1,7 +1,7 @@
 package com.cesarschool.monitorando.apresentacao.controller;
 
 import com.cesarschool.monitorando.dominio.entity.UserEntity;
-import com.cesarschool.monitorando.dominio.service.UserService;
+import com.cesarschool.monitorando.apresentacao.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

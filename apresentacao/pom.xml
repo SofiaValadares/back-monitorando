@@ -6,9 +6,8 @@
         <groupId>com.monitorando</groupId>
         <artifactId>monitorando-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
-    
+
     <artifactId>apresentacao</artifactId>
     <name>monitorando-apresentacao</name>
     <description>Camada de apresentação do sistema de monitoramento</description>
@@ -18,6 +17,11 @@
         <dependency>
             <groupId>com.monitorando</groupId>
             <artifactId>dominio</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.monitorando</groupId>
+            <artifactId>persistencia</artifactId>
         </dependency>
         
         <!-- Spring Boot -->

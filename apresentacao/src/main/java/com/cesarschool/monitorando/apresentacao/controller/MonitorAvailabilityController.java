@@ -1,7 +1,7 @@
 package com.cesarschool.monitorando.apresentacao.controller;
 
 import com.cesarschool.monitorando.apresentacao.DTO.MonitorAvailabilityRequest;
-import com.cesarschool.monitorando.dominio.service.MonitorAvailabilityService;
+import com.cesarschool.monitorando.apresentacao.service.MonitorAvailabilityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

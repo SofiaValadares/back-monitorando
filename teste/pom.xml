@@ -6,9 +6,8 @@
         <groupId>com.monitorando</groupId>
         <artifactId>monitorando-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
-    
+
     <artifactId>teste</artifactId>
     <name>monitorando-teste</name>
     <description>Módulo de testes do sistema de monitoramento</description>
@@ -84,3 +83,4 @@
         </plugins>
     </build>
 </project>
+

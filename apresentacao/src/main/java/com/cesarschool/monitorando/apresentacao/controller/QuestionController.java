@@ -1,7 +1,7 @@
 package com.cesarschool.monitorando.apresentacao.controller;
 
 import com.cesarschool.monitorando.apresentacao.DTO.QuestionRequestDTO;
-import com.cesarschool.monitorando.dominio.service.QuestionService;
+import com.cesarschool.monitorando.apresentacao.service.QuestionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

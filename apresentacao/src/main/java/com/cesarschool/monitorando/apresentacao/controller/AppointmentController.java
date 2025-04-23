@@ -2,7 +2,7 @@ package com.cesarschool.monitorando.apresentacao.controller;
 
 import com.cesarschool.monitorando.apresentacao.DTO.AppointmentDTO;
 import com.cesarschool.monitorando.dominio.entity.AppointmentEntity;
-import com.cesarschool.monitorando.dominio.service.AppointmentService;
+import com.cesarschool.monitorando.apresentacao.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

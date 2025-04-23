@@ -6,9 +6,9 @@
         <groupId>com.monitorando</groupId>
         <artifactId>monitorando-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
-    
+
+
     <artifactId>persistencia</artifactId>
     <name>monitorando-persistencia</name>
     <description>Camada de persistência do sistema de monitoramento</description>

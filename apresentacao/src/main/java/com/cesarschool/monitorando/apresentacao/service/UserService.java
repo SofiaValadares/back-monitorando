@@ -1,4 +1,4 @@
-package com.cesarschool.monitorando.dominio.service;
+package com.cesarschool.monitorando.apresentacao.service;
 
 import com.cesarschool.monitorando.dominio.entity.UserEntity;
 import com.cesarschool.monitorando.persistencia.repository.UserRepository;

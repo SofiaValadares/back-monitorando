@@ -1,7 +1,7 @@
 package com.cesarschool.monitorando.apresentacao.controller;
 
 import com.cesarschool.monitorando.apresentacao.DTO.EvaluationRequestDTO;
-import com.cesarschool.monitorando.dominio.service.EvaluationService;
+import com.cesarschool.monitorando.apresentacao.service.EvaluationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
