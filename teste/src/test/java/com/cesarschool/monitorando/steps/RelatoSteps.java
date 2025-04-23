@@ -1,4 +1,4 @@
-package com.monitorando.steps;
+package com.cesarschool.monitorando.steps;
 
 import com.cesarschool.monitorando.apresentacao.DTO.EvaluationRequestDTO;
 import com.cesarschool.monitorando.apresentacao.controller.EvaluationController;
