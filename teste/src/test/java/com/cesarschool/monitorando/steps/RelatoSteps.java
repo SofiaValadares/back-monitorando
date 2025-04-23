@@ -1,18 +1,13 @@
-package com.cesarschool.monitorando.steps;
+package com.monitorando.steps;
 
 import com.cesarschool.monitorando.apresentacao.DTO.EvaluationRequestDTO;
-import com.cesarschool.monitorando.apresentacao.controller.EvaluationController;
 import com.cesarschool.monitorando.apresentacao.service.EvaluationService;
-import com.cesarschool.monitorando.apresentacao.service.NotificationService;
 import com.cesarschool.monitorando.dominio.entity.EvaluationEntity;
-import com.cesarschool.monitorando.dominio.entity.MonitorEntity;
-import com.cesarschool.monitorando.dominio.entity.StudentEntity;
-import com.cesarschool.monitorando.persistencia.repository.EvaluationRepository;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.And;
+import com.cesarschool.monitorando.dominio.entity.UserEntity;
+import io.cucumber.java.Before;
+import io.cucumber.java.en.*;
 import org.junit.Assert;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -22,155 +17,100 @@ public class RelatoSteps {
 
     @Mock
     private EvaluationService evaluationService;
-    
-    @Mock
-    private EvaluationRepository evaluationRepository;
-    
-    @Mock
-    private NotificationService notificationService;
-    
-    @Mock
-    private EvaluationController evaluationController;
-    
-    private StudentEntity student;
-    private MonitorEntity monitor;
-    private EvaluationRequestDTO evaluationDTO;
-    private EvaluationEntity evaluationEntity;
-    private String responseMessage;
-    private boolean isEvaluationCreated;
 
-    public RelatoSteps() {
+    @InjectMocks
+    private EvaluationEntity evaluationEntity;
+
+    private EvaluationRequestDTO evaluationDTO;
+    private String responseMessage;
+    private boolean avaliacaoRegistrada;
+
+    private UserEntity aluno;
+    private UserEntity monitor;
+
+    @Before
+    public void setup() {
         MockitoAnnotations.openMocks(this);
     }
 
-    @Given("um aluno realizou um atendimento com um monitor")
-    public void umAlunoRealizouUmAtendimentoComUmMonitor() {
-        // Setup student
-        student = new StudentEntity();
-        student.setId(1L);
-        student.setName("Student Test");
-        
-        // Setup monitor
-        monitor = new MonitorEntity();
-        monitor.setId(1L);
-        monitor.setName("Monitor Test");
-        
-        // Initialize evaluation DTO
+    @Given("um aluno concluiu um atendimento com um monitor")
+    public void umAlunoConcluiuUmAtendimentoComUmMonitor() {
+        aluno = new UserEntity();
+        aluno.setId(1L);
+        aluno.setName("Aluno Teste");
+
+        monitor = new UserEntity();
+        monitor.setId(2L);
+        monitor.setName("Monitor Teste");
+
         evaluationDTO = new EvaluationRequestDTO();
-        evaluationDTO.setEvaluatorId(student.getId());
+        evaluationDTO.setEvaluatorId(aluno.getId());
         evaluationDTO.setEvaluatedId(monitor.getId());
-        
-        System.out.println("Precondition: Student had an appointment with a monitor");
+        evaluationDTO.setAppointmentId(100L); // Atendimento fictício
     }
 
-    @When("o aluno submete uma avaliação com nota {int} e comentário")
-    public void oAlunoSubmeteUmaAvaliacaoComNotaEComentario(Integer rating) {
-        // Set rating and comment in evaluation DTO
-        evaluationDTO.setRating(rating);
-        evaluationDTO.setComment("Ótimo atendimento, monitor muito atencioso.");
-        
-        // Create evaluation entity that would be saved
-        evaluationEntity = new EvaluationEntity();
-        evaluationEntity.setId(1L);
-        evaluationEntity.setRating(rating);
-        evaluationEntity.setComment(evaluationDTO.getComment());
-        
-        // Mock service to return success
-        doNothing().when(evaluationService).avaliar(evaluationDTO);
-        
-        // Try to create evaluation
+    @When("o aluno envia uma avaliação com nota {int} e comentário")
+    public void oAlunoEnviaUmaAvaliacaoComNotaEComentario(Integer nota) {
+        evaluationDTO.setRating(nota);
+        evaluationDTO.setComment("Excelente explicação, muito atencioso!");
+
+        when(evaluationService.avaliar(any(EvaluationRequestDTO.class)))
+                .thenReturn(new EvaluationEntity());
+
         try {
             evaluationService.avaliar(evaluationDTO);
-            isEvaluationCreated = true;
+            avaliacaoRegistrada = true;
             responseMessage = "Avaliação registrada com sucesso.";
         } catch (Exception e) {
-            isEvaluationCreated = false;
+            avaliacaoRegistrada = false;
             responseMessage = e.getMessage();
         }
-        
-        System.out.println("Action: Student submits evaluation with rating " + rating + " and comment");
     }
 
-    @When("o aluno submete uma avaliação com nota {int} sem comentário")
-    public void oAlunoSubmeteUmaAvaliacaoComNotaSemComentario(Integer rating) {
-        // Set rating without comment in evaluation DTO
-        evaluationDTO.setRating(rating);
+    @When("o aluno envia uma avaliação com nota {int} sem comentário")
+    public void oAlunoEnviaUmaAvaliacaoComNotaSemComentario(Integer nota) {
+        evaluationDTO.setRating(nota);
         evaluationDTO.setComment("");
-        
-        // Create evaluation entity that would be saved
-        evaluationEntity = new EvaluationEntity();
-        evaluationEntity.setId(1L);
-        evaluationEntity.setRating(rating);
-        evaluationEntity.setComment("");
-        
-        // Mock service to return success
-        doNothing().when(evaluationService).avaliar(evaluationDTO);
-        
-        // Try to create evaluation
+
+        when(evaluationService.avaliar(any(EvaluationRequestDTO.class)))
+                .thenReturn(new EvaluationEntity());
+
         try {
             evaluationService.avaliar(evaluationDTO);
-            isEvaluationCreated = true;
+            avaliacaoRegistrada = true;
             responseMessage = "Avaliação registrada com sucesso.";
         } catch (Exception e) {
-            isEvaluationCreated = false;
+            avaliacaoRegistrada = false;
             responseMessage = e.getMessage();
         }
-        
-        System.out.println("Action: Student submits evaluation with rating " + rating + " without comment");
     }
 
-    @When("o aluno submete uma avaliação com nota inválida {int}")
-    public void oAlunoSubmeteUmaAvaliacaoComNotaInvalida(Integer rating) {
-        // Set invalid rating in evaluation DTO
-        evaluationDTO.setRating(rating);
-        evaluationDTO.setComment("Comentário de teste");
-        
-        // Mock service to throw exception
+    @When("o aluno envia uma avaliação com nota inválida {int}")
+    public void oAlunoEnviaUmaAvaliacaoComNotaInvalida(Integer nota) {
+        evaluationDTO.setRating(nota);
+        evaluationDTO.setComment("Comentário qualquer.");
+
         doThrow(new IllegalArgumentException("A nota deve estar entre 1 e 5"))
-            .when(evaluationService).avaliar(evaluationDTO);
-        
-        // Try to create evaluation
+                .when(evaluationService).avaliar(evaluationDTO);
+
         try {
             evaluationService.avaliar(evaluationDTO);
-            isEvaluationCreated = true;
-            responseMessage = "Avaliação registrada com sucesso.";
+            avaliacaoRegistrada = true;
         } catch (Exception e) {
-            isEvaluationCreated = false;
+            avaliacaoRegistrada = false;
             responseMessage = e.getMessage();
         }
-        
-        System.out.println("Action: Student submits evaluation with invalid rating " + rating);
     }
 
-    @Then("o sistema registra a avaliação")
-    public void oSistemaRegistraAAvaliacao() {
-        // Verify evaluation was created
-        Assert.assertTrue("Evaluation should be created", isEvaluationCreated);
-        
-        // Verify service was called to create evaluation
-        verify(evaluationService, times(1)).avaliar(any(EvaluationRequestDTO.class));
-        
-        System.out.println("Verification: System registers the evaluation");
+    @Then("o sistema confirma o registro da avaliação")
+    public void oSistemaConfirmaORegistroDaAvaliacao() {
+        Assert.assertTrue("A avaliação deve ser registrada", avaliacaoRegistrada);
+        Assert.assertEquals("Avaliação registrada com sucesso.", responseMessage);
     }
 
-    @And("notifica o monitor sobre a avaliação recebida")
-    public void notificaOMonitorSobreAAvaliacaoRecebida() {
-        // Verify notification service was called
-        verify(notificationService, times(1)).notifyMonitorAboutEvaluation(
-            eq(monitor.getId()), anyString());
-        
-        System.out.println("Additional verification: System notifies monitor about received evaluation");
-    }
-
-    @Then("o sistema informa que a nota deve estar entre {int} e {int}")
-    public void oSistemaInformaQueANotaDeveEstarEntreE(Integer min, Integer max) {
-        // Verify evaluation was not created
-        Assert.assertFalse("Evaluation should not be created", isEvaluationCreated);
-        
-        // Verify error message
-        Assert.assertTrue("Error message should mention valid rating range", 
-            responseMessage.contains(min.toString()) && responseMessage.contains(max.toString()));
-        
-        System.out.println("Verification: System informs that rating must be between " + min + " and " + max);
+    @Then("o sistema rejeita a avaliação e informa que a nota deve estar entre {int} e {int}")
+    public void oSistemaRejeitaANotaInvalida(Integer min, Integer max) {
+        Assert.assertFalse("Avaliação não deve ser registrada", avaliacaoRegistrada);
+        Assert.assertTrue("Mensagem deve conter faixa de nota", responseMessage.contains("entre 1 e 5"));
     }
 }

@@ -22,7 +22,7 @@ import java.util.Optional;
 import static org.mockito.Mockito.*;
 
 public class HorarioMonitorSteps {
-/*
+
     @Mock
     private MonitorAvailabilityService availabilityService;
 
@@ -115,12 +115,12 @@ public class HorarioMonitorSteps {
         availabilityRequest.setAvailability(availabilityList);
 
         // Mock service to throw exception
-        when(availabilityService.updateMonitorAvailability(availabilityRequest)).thenThrow(
+        when(availabilityService.updateAvailability(availabilityRequest)).thenThrow(
             new IllegalArgumentException("Day of week is required for all availability slots"));
 
         // Try to update availability
         try {
-            isAvailabilityUpdated = availabilityService.updateMonitorAvailability(availabilityRequest);
+            isAvailabilityUpdated = availabilityService.updateAvailability(availabilityRequest);
             responseMessage = "Availability updated successfully";
         } catch (Exception e) {
             isAvailabilityUpdated = false;
@@ -148,12 +148,12 @@ public class HorarioMonitorSteps {
         availabilityRequest.setAvailability(availabilityList);
 
         // Mock service to throw exception
-        when(availabilityService.updateMonitorAvailability(availabilityRequest)).thenThrow(
+        when(availabilityService.updateAvailability(availabilityRequest)).thenThrow(
             new IllegalArgumentException("Start time must be before end time"));
 
         // Try to update availability
         try {
-            isAvailabilityUpdated = availabilityService.updateMonitorAvailability(availabilityRequest);
+            isAvailabilityUpdated = availabilityService.updateAvailability(availabilityRequest);
             responseMessage = "Availability updated successfully";
         } catch (Exception e) {
             isAvailabilityUpdated = false;
@@ -169,7 +169,7 @@ public class HorarioMonitorSteps {
         Assert.assertTrue("Availability should be updated", isAvailabilityUpdated);
 
         // Verify service was called to update availability
-        verify(availabilityService, times(1)).updateMonitorAvailability(any(MonitorAvailabilityRequest.class));
+        verify(availabilityService, times(1)).updateAvailability(any(MonitorAvailabilityRequest.class));
 
         System.out.println("Verification: System registers monitor's available hours");
     }
@@ -205,5 +205,5 @@ public class HorarioMonitorSteps {
             responseMessage.contains("time") || responseMessage.contains("Time"));
 
         System.out.println("Verification: System informs that start time must be before end time");
-    }*/
+    }
 }
