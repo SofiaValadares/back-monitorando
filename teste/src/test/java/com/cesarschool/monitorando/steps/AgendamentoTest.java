@@ -1,5 +1,13 @@
-package com.monitorando.steps;
+package com.cesarschool.monitorando.steps;
 
+import com.cesarschool.monitorando.apresentacao.DTO.AppointmentDTO;
+import com.cesarschool.monitorando.apresentacao.controller.AppointmentController;
+import com.cesarschool.monitorando.apresentacao.service.AppointmentService;
+import com.cesarschool.monitorando.apresentacao.service.NotificationService;
+import com.cesarschool.monitorando.dominio.entity.AppointmentEntity;
+import com.cesarschool.monitorando.dominio.entity.MonitorEntity;
+import com.cesarschool.monitorando.dominio.entity.StudentEntity;
+import com.cesarschool.monitorando.persistencia.repository.AppointmentRepository;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -8,14 +16,6 @@ import org.junit.Assert;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.monitorando.controller.AppointmentController;
-import com.monitorando.dto.AppointmentDTO;
-import com.monitorando.entity.AppointmentEntity;
-import com.monitorando.repository.AppointmentRepository;
-import com.monitorando.service.AppointmentService;
-import com.monitorando.entity.MonitorEntity;
-import com.monitorando.entity.StudentEntity;
-import com.monitorando.service.NotificationService;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -109,12 +109,12 @@ public class AgendamentoTest {
             appointmentEntity.setStatus("PENDING");
             
             // Mock service to return success
-            when(appointmentService.createAppointment(appointmentDTO)).thenReturn(appointmentEntity);
+            when(appointmentService.requestAppointment(appointmentDTO)).thenReturn(appointmentEntity);
             isAppointmentCreated = true;
             responseMessage = "Appointment scheduled successfully";
         } else {
             // Mock service to throw exception or return null
-            when(appointmentService.createAppointment(appointmentDTO)).thenThrow(
+            when(appointmentService.requestAppointment(appointmentDTO)).thenThrow(
                 new RuntimeException("Monitor is not available for appointments"));
             isAppointmentCreated = false;
             responseMessage = "Monitor is not available for appointments";
@@ -122,7 +122,7 @@ public class AgendamentoTest {
         
         // Try to create appointment
         try {
-            appointmentEntity = appointmentService.createAppointment(appointmentDTO);
+            appointmentEntity = appointmentService.requestAppointment(appointmentDTO);
         } catch (Exception e) {
             responseMessage = e.getMessage();
         }

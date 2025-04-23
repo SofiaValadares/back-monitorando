@@ -1,5 +1,13 @@
-package com.monitorando.steps;
+package com.cesarschool.monitorando.steps;
 
+import com.cesarschool.monitorando.apresentacao.DTO.QuestionRequestDTO;
+import com.cesarschool.monitorando.apresentacao.controller.QuestionController;
+import com.cesarschool.monitorando.apresentacao.service.NotificationService;
+import com.cesarschool.monitorando.apresentacao.service.QuestionService;
+import com.cesarschool.monitorando.dominio.entity.MonitorEntity;
+import com.cesarschool.monitorando.dominio.entity.QuestionEntity;
+import com.cesarschool.monitorando.dominio.entity.StudentEntity;
+import com.cesarschool.monitorando.persistencia.repository.QuestionRepository;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -7,15 +15,6 @@ import io.cucumber.java.en.And;
 import org.junit.Assert;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-import com.monitorando.controller.QuestionController;
-import com.monitorando.dto.QuestionRequestDTO;
-import com.monitorando.entity.QuestionEntity;
-import com.monitorando.repository.QuestionRepository;
-import com.monitorando.service.QuestionService;
-import com.monitorando.entity.MonitorEntity;
-import com.monitorando.entity.StudentEntity;
-import com.monitorando.service.NotificationService;
 
 import static org.mockito.Mockito.*;
 
@@ -54,7 +53,7 @@ public class DuvidaMonitorTest {
         // Initialize question DTO
         questionDTO = new QuestionRequestDTO();
         questionDTO.setStudentId(student.getId());
-        questionDTO.setMessage("Como resolver este problema de matemática?");
+        questionDTO.setContent("Como resolver este problema de matemática?");
         
         System.out.println("Precondition: Student started sending a question");
     }
@@ -79,7 +78,7 @@ public class DuvidaMonitorTest {
         questionEntity.setId(1L);
         questionEntity.setStudent(student);
         questionEntity.setMonitor(monitor);
-        questionEntity.setMessage(questionDTO.getMessage());
+        questionEntity.setContent(questionDTO.getContent());
         questionEntity.setStatus("PENDING");
         
         // Mock service to return success
@@ -122,7 +121,7 @@ public class DuvidaMonitorTest {
     @When("a mensagem não existe")
     public void aMensagemNaoExiste() {
         // Set empty message in question DTO
-        questionDTO.setMessage("");
+        questionDTO.setContent("");
         
         // Mock service to throw exception
         when(questionService.createQuestion(questionDTO)).thenThrow(

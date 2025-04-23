@@ -16,18 +16,18 @@
         <!-- Internal modules -->
         <dependency>
             <groupId>com.monitorando</groupId>
-            <artifactId>apresentacao</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.monitorando</groupId>
             <artifactId>dominio</artifactId>
         </dependency>
         <dependency>
             <groupId>com.monitorando</groupId>
             <artifactId>persistencia</artifactId>
         </dependency>
-        
+        <dependency>
+            <groupId>com.monitorando</groupId>
+            <artifactId>apresentacao</artifactId>
+        </dependency>
         <!-- Spring Boot -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

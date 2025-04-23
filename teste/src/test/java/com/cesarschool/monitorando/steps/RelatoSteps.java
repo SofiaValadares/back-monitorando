@@ -1,5 +1,13 @@
 package com.monitorando.steps;
 
+import com.cesarschool.monitorando.apresentacao.DTO.EvaluationRequestDTO;
+import com.cesarschool.monitorando.apresentacao.controller.EvaluationController;
+import com.cesarschool.monitorando.apresentacao.service.EvaluationService;
+import com.cesarschool.monitorando.apresentacao.service.NotificationService;
+import com.cesarschool.monitorando.dominio.entity.EvaluationEntity;
+import com.cesarschool.monitorando.dominio.entity.MonitorEntity;
+import com.cesarschool.monitorando.dominio.entity.StudentEntity;
+import com.cesarschool.monitorando.persistencia.repository.EvaluationRepository;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -7,15 +15,6 @@ import io.cucumber.java.en.And;
 import org.junit.Assert;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-import com.cesarschool.monitorando.controller.EvaluationController;
-import com.cesarschool.monitorando.DTO.EvaluationRequestDTO;
-import com.cesarschool.monitorando.entity.EvaluationEntity;
-import com.cesarschool.monitorando.repository.EvaluationRepository;
-import com.cesarschool.monitorando.service.EvaluationService;
-import com.cesarschool.monitorando.entity.MonitorEntity;
-import com.cesarschool.monitorando.entity.StudentEntity;
-import com.cesarschool.monitorando.service.NotificationService;
 
 import static org.mockito.Mockito.*;
 
@@ -58,8 +57,8 @@ public class RelatoSteps {
         
         // Initialize evaluation DTO
         evaluationDTO = new EvaluationRequestDTO();
-        evaluationDTO.setStudentId(student.getId());
-        evaluationDTO.setMonitorId(monitor.getId());
+        evaluationDTO.setEvaluatorId(student.getId());
+        evaluationDTO.setEvaluatedId(monitor.getId());
         
         System.out.println("Precondition: Student had an appointment with a monitor");
     }
