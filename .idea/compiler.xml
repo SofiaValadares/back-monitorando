@@ -7,14 +7,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="monitorando" />
         <module name="spring-demo" />
+        <module name="dominio" />
+      </profile>
+      <profile name="Annotation profile for monitorando" enabled="true">
+        <sourceOutputDir name="../teste/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../teste/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="demo (2)" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="monitorando" options="-parameters" />
+      <module name="demo (2)" options="-parameters" />
+      <module name="monitorando" options="" />
       <module name="spring-demo" options="-parameters" />
     </option>
   </component>

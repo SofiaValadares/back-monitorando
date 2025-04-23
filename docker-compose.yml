@@ -1,43 +1,28 @@
 version: '3.8'
 
 services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: senha123
+      POSTGRES_DB: monitorando
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
   app:
-    build: .
+    build:
+      context: ./apresentacao
+    depends_on:
+      - db
     ports:
       - "8080:8080"
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/monitorando
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=postgres
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
-    depends_on:
-      db:
-        condition: service_healthy
-    networks:
-      - monitorando-network
-
-  db:
-    image: postgres:15-alpine
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_DB=monitorando
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./src/main/resources/init.sql:/docker-entrypoint-initdb.d/init.sql
-    networks:
-      - monitorando-network
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-
-networks:
-  monitorando-network:
-    driver: bridge
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/monitorando
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: senha123
 
 volumes:
-  postgres_data: 
+  pgdata:
