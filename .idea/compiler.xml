@@ -7,6 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="apresentacao" />
+        <module name="teste" />
+        <module name="persistencia" />
         <module name="spring-demo" />
         <module name="dominio" />
       </profile>
