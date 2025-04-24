@@ -3,21 +3,16 @@ package com.cesarschool.monitorando.steps;
 import com.cesarschool.monitorando.apresentacao.DTO.MonitorAvailabilityRequest;
 import com.cesarschool.monitorando.apresentacao.controller.MonitorAvailabilityController;
 import com.cesarschool.monitorando.apresentacao.service.MonitorAvailabilityService;
-import com.cesarschool.monitorando.apresentacao.service.NotificationService;
 import com.cesarschool.monitorando.dominio.entity.MonitorEntity;
-import com.cesarschool.monitorando.persistencia.repository.MonitorRepository;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.And;
+import io.cucumber.java.en.*;
 import org.junit.Assert;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
+import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.mockito.Mockito.*;
 
@@ -26,184 +21,105 @@ public class HorarioMonitorSteps {
     @Mock
     private MonitorAvailabilityService availabilityService;
 
-    @Mock
-    private MonitorRepository monitorRepository;
-
-    @Mock
-    private NotificationService notificationService;
-
-    @Mock
+    @InjectMocks
     private MonitorAvailabilityController availabilityController;
 
     private MonitorEntity monitor;
     private MonitorAvailabilityRequest availabilityRequest;
     private List<MonitorAvailabilityRequest.AvailabilityDTO> availabilityList;
-    private String responseMessage;
-    private boolean isAvailabilityUpdated;
+    private ResponseEntity<?> response;
 
     public HorarioMonitorSteps() {
         MockitoAnnotations.openMocks(this);
+        availabilityController = new MonitorAvailabilityController();
     }
 
     @Given("um monitor está cadastrado no sistema")
     public void umMonitorEstaCadastradoNoSistema() {
-        // Setup monitor
         monitor = new MonitorEntity();
         monitor.setId(1L);
-        monitor.setName("Monitor Test");
-        monitor.setEmail("monitor@test.com");
-
-        // Mock repository to return the monitor
-        when(monitorRepository.findById(monitor.getId())).thenReturn(Optional.of(monitor));
-
-        System.out.println("Precondition: Monitor is registered in the system");
+        monitor.setName("Monitor Teste");
+        monitor.setEmail("monitor@teste.com");
+        // Aqui não precisamos simular retorno do banco pois o teste é a nível de controller
     }
 
     @When("o monitor cadastra seus horários disponíveis")
     public void oMonitorCadastraSeusHorariosDisponiveis() {
-        // Create availability list
         availabilityList = new ArrayList<>();
 
-        // Add some availability slots
-        MonitorAvailabilityRequest.AvailabilityDTO monday = new MonitorAvailabilityRequest.AvailabilityDTO();
-        monday.setDayOfWeek("MONDAY");
-        monday.setStartTime("14:00");
-        monday.setEndTime("16:00");
-        availabilityList.add(monday);
+        MonitorAvailabilityRequest.AvailabilityDTO seg = new MonitorAvailabilityRequest.AvailabilityDTO();
+        seg.setDayOfWeek("Segunda");
+        seg.setStartTime("10:00");
+        seg.setEndTime("12:00");
 
-        MonitorAvailabilityRequest.AvailabilityDTO wednesday = new MonitorAvailabilityRequest.AvailabilityDTO();
-        wednesday.setDayOfWeek("WEDNESDAY");
-        wednesday.setStartTime("10:00");
-        wednesday.setEndTime("12:00");
-        availabilityList.add(wednesday);
+        availabilityList.add(seg);
 
-        // Create availability request
         availabilityRequest = new MonitorAvailabilityRequest();
         availabilityRequest.setMonitorId(monitor.getId());
         availabilityRequest.setAvailability(availabilityList);
 
-        // Mock service to return success
-        when(availabilityService.updateAvailability(availabilityRequest)).thenReturn(true);
+        doNothing().when(availabilityService).updateAvailability(any(MonitorAvailabilityRequest.class));
 
-        // Try to update availability
-        try {
-            isAvailabilityUpdated = availabilityService.updateMonitorAvailability(availabilityRequest);
-            responseMessage = "Availability updated successfully";
-        } catch (Exception e) {
-            isAvailabilityUpdated = false;
-            responseMessage = e.getMessage();
-        }
-
-        System.out.println("Action: Monitor registers available hours");
-    }
-
-    @When("o monitor tenta cadastrar horários sem informar o dia da semana")
-    public void oMonitorTentaCadastrarHorariosSemInformarODiaDaSemana() {
-        // Create availability list with missing day of week
-        availabilityList = new ArrayList<>();
-
-        // Add availability slot with missing day
-        MonitorAvailabilityRequest.AvailabilityDTO invalidSlot = new MonitorAvailabilityRequest.AvailabilityDTO();
-        invalidSlot.setDayOfWeek(null); // Missing day
-        invalidSlot.setStartTime("14:00");
-        invalidSlot.setEndTime("16:00");
-        availabilityList.add(invalidSlot);
-
-        // Create availability request
-        availabilityRequest = new MonitorAvailabilityRequest();
-        availabilityRequest.setMonitorId(monitor.getId());
-        availabilityRequest.setAvailability(availabilityList);
-
-        // Mock service to throw exception
-        when(availabilityService.updateAvailability(availabilityRequest)).thenThrow(
-            new IllegalArgumentException("Day of week is required for all availability slots"));
-
-        // Try to update availability
-        try {
-            isAvailabilityUpdated = availabilityService.updateAvailability(availabilityRequest);
-            responseMessage = "Availability updated successfully";
-        } catch (Exception e) {
-            isAvailabilityUpdated = false;
-            responseMessage = e.getMessage();
-        }
-
-        System.out.println("Action: Monitor tries to register hours without specifying day of week");
-    }
-
-    @When("o monitor tenta cadastrar horários com horário de início após o horário de fim")
-    public void oMonitorTentaCadastrarHorariosComHorarioDeInicioAposOHorarioDeFim() {
-        // Create availability list with invalid time range
-        availabilityList = new ArrayList<>();
-
-        // Add availability slot with invalid time range
-        MonitorAvailabilityRequest.AvailabilityDTO invalidSlot = new MonitorAvailabilityRequest.AvailabilityDTO();
-        invalidSlot.setDayOfWeek("FRIDAY");
-        invalidSlot.setStartTime("16:00"); // Start time after end time
-        invalidSlot.setEndTime("14:00");
-        availabilityList.add(invalidSlot);
-
-        // Create availability request
-        availabilityRequest = new MonitorAvailabilityRequest();
-        availabilityRequest.setMonitorId(monitor.getId());
-        availabilityRequest.setAvailability(availabilityList);
-
-        // Mock service to throw exception
-        when(availabilityService.updateAvailability(availabilityRequest)).thenThrow(
-            new IllegalArgumentException("Start time must be before end time"));
-
-        // Try to update availability
-        try {
-            isAvailabilityUpdated = availabilityService.updateAvailability(availabilityRequest);
-            responseMessage = "Availability updated successfully";
-        } catch (Exception e) {
-            isAvailabilityUpdated = false;
-            responseMessage = e.getMessage();
-        }
-
-        System.out.println("Action: Monitor tries to register hours with start time after end time");
+        response = availabilityController.updateAvailability(availabilityRequest);
     }
 
     @Then("o sistema registra os horários disponíveis do monitor")
     public void oSistemaRegistraOsHorariosDisponiveisDoMonitor() {
-        // Verify availability was updated
-        Assert.assertTrue("Availability should be updated", isAvailabilityUpdated);
-
-        // Verify service was called to update availability
-        verify(availabilityService, times(1)).updateAvailability(any(MonitorAvailabilityRequest.class));
-
-        System.out.println("Verification: System registers monitor's available hours");
+        Assert.assertEquals(200, response.getStatusCodeValue());
+        Assert.assertEquals("Horários atualizados e alunos notificados.", response.getBody());
     }
 
-    @And("notifica os alunos sobre a disponibilidade do monitor")
-    public void notificaOsAlunosSobreADisponibilidadeDoMonitor() {
-        // Verify notification service was called
-        verify(notificationService, times(1)).notifyStudentsAboutMonitorAvailability(
-            eq(monitor.getId()), anyList());
+    @When("o monitor tenta cadastrar horários sem informar o dia da semana")
+    public void oMonitorTentaCadastrarHorariosSemInformarODiaDaSemana() {
+        availabilityList = new ArrayList<>();
 
-        System.out.println("Additional verification: System notifies students about monitor availability");
+        MonitorAvailabilityRequest.AvailabilityDTO invalido = new MonitorAvailabilityRequest.AvailabilityDTO();
+        invalido.setDayOfWeek(null); // inválido
+        invalido.setStartTime("09:00");
+        invalido.setEndTime("11:00");
+
+        availabilityList.add(invalido);
+
+        availabilityRequest = new MonitorAvailabilityRequest();
+        availabilityRequest.setMonitorId(monitor.getId());
+        availabilityRequest.setAvailability(availabilityList);
+
+        doThrow(new IllegalArgumentException("Dia da semana é obrigatório."))
+                .when(availabilityService).updateAvailability(any(MonitorAvailabilityRequest.class));
+
+        response = availabilityController.updateAvailability(availabilityRequest);
     }
 
     @Then("o sistema informa que o dia da semana é obrigatório")
     public void oSistemaInformaQueODiaDaSemanaEObrigatorio() {
-        // Verify availability was not updated
-        Assert.assertFalse("Availability should not be updated", isAvailabilityUpdated);
+        Assert.assertEquals(400, response.getStatusCodeValue());
+        Assert.assertTrue(response.getBody().toString().contains("Dia da semana é obrigatório"));
+    }
 
-        // Verify error message
-        Assert.assertTrue("Error message should mention day of week requirement",
-            responseMessage.contains("day") || responseMessage.contains("Day"));
+    @When("o monitor tenta cadastrar horários com horário de início após o horário de fim")
+    public void oMonitorTentaCadastrarHorariosComHorarioDeInicioAposOHorarioDeFim() {
+        availabilityList = new ArrayList<>();
 
-        System.out.println("Verification: System informs that day of week is mandatory");
+        MonitorAvailabilityRequest.AvailabilityDTO invalido = new MonitorAvailabilityRequest.AvailabilityDTO();
+        invalido.setDayOfWeek("Quarta");
+        invalido.setStartTime("14:00");
+        invalido.setEndTime("12:00");
+
+        availabilityList.add(invalido);
+
+        availabilityRequest = new MonitorAvailabilityRequest();
+        availabilityRequest.setMonitorId(monitor.getId());
+        availabilityRequest.setAvailability(availabilityList);
+
+        doThrow(new IllegalArgumentException("Horário de início deve ser antes do horário de fim."))
+                .when(availabilityService).updateAvailability(any(MonitorAvailabilityRequest.class));
+
+        response = availabilityController.updateAvailability(availabilityRequest);
     }
 
     @Then("o sistema informa que o horário de início deve ser anterior ao horário de fim")
     public void oSistemaInformaQueOHorarioDeInicioDeveSerAnteriorAoHorarioDeFim() {
-        // Verify availability was not updated
-        Assert.assertFalse("Availability should not be updated", isAvailabilityUpdated);
-
-        // Verify error message
-        Assert.assertTrue("Error message should mention time range issue",
-            responseMessage.contains("time") || responseMessage.contains("Time"));
-
-        System.out.println("Verification: System informs that start time must be before end time");
+        Assert.assertEquals(400, response.getStatusCodeValue());
+        Assert.assertTrue(response.getBody().toString().contains("Horário de início deve ser antes do horário de fim"));
     }
 }
