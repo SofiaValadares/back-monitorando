@@ -10,6 +10,6 @@ import org.junit.runner.RunWith;
     glue = "com.cesarschool.monitorando.steps",
     plugin = {"pretty", "html:target/cucumber-reports"}
 )
-public class CucumberTestRunner {
+public class CucumberTestRunnerTest {
     // This class is empty as it's just a runner
 }

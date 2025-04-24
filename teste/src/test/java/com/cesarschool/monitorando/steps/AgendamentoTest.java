@@ -136,7 +136,7 @@ public class AgendamentoTest {
                 .thenReturn(List.of(primeiro));
     }
 
-    @When("um aluno solicita o agendamento de um atendimento")
+    @When("um aluno tenta o agendamento de um atendimento")
     public void tentaSegundoAgendamentoNoMesmoHorario() {
         try {
             AppointmentEntity segundo = new AppointmentEntity();

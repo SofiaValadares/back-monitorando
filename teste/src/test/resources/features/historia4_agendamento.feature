@@ -8,5 +8,5 @@ Feature: Historia4 - Marcar atendimento com algum monitor
 
   Scenario: Tentativa de agendamento com monitor indisponível
     Given um monitor não possui horários disponíveis
-    When um aluno solicita o agendamento de um atendimento
+    When um aluno tenta o agendamento de um atendimento
     Then o sistema informa que o monitor está indisponível para agendamentos
