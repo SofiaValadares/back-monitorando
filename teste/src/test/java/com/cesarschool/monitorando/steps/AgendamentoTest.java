@@ -45,7 +45,7 @@ public class AgendamentoTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    @Given("um aluno válido deseja agendar com um monitor disponível em uma disciplina existente")
+    @Given("um monitor possui horários disponíveis")
     public void setupAgendamentoValido() {
         student = new StudentEntity();
         student.setId(1L);
@@ -71,7 +71,7 @@ public class AgendamentoTest {
         appointmentEntity.setCreatedAt(LocalDateTime.now());
     }
 
-    @When("o aluno envia a solicitação de agendamento")
+    @When("um aluno solicita o agendamento de um atendimento")
     public void enviaSolicitacaoDeAgendamento() {
         try {
             when(appointmentService.requestAppointment(any(AppointmentEntity.class)))
@@ -94,7 +94,7 @@ public class AgendamentoTest {
         }
     }
 
-    @Then("o sistema deve registrar o agendamento com status pendente")
+    @Then("o sistema agenda o atendimento com status pendente para aprovacao")
     public void verificaAgendamentoComStatusPendente() {
         Assert.assertNotNull(result);
         Assert.assertEquals("pending_approval", result.getStatus());
@@ -157,7 +157,7 @@ public class AgendamentoTest {
 
 
 
-    @Then("o sistema deve recusar o agendamento informando indisponibilidade")
+    @Then("o sistema informa que o monitor está indisponível para agendamentos")
     public void verificaIndisponibilidadeDoMonitor() {
         Assert.assertNotNull(exception);
         Assert.assertTrue(exception.getMessage().contains("indisponível"));
