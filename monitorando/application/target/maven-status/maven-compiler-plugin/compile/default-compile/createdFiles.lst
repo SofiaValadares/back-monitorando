@@ -1,0 +1,3 @@
+br\com\cesarschool\application\port\user\RegisterUserPort.class
+br\com\cesarschool\application\usecase\user\RegisterUserUseCase.class
+br\com\cesarschool\application\Main.class

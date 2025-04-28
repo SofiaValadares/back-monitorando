@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres
+    container_name: monitorando-db
+    environment:
+      POSTGRES_USER: monitorando_bd
+      POSTGRES_PASSWORD: monitor123
+      POSTGRES_DB: monitorando
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
