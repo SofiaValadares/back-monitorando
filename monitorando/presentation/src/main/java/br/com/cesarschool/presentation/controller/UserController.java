@@ -1,22 +1,17 @@
 package br.com.cesarschool.presentation.controller;
 
-import br.com.cesarschool.application.port.user.FindUserPort;
-import br.com.cesarschool.application.port.user.LoginUserPort;
-import br.com.cesarschool.application.port.user.RegisterUserPort;
 import br.com.cesarschool.domain.entity.UserEntity;
 import br.com.cesarschool.domain.service.UserService;
-import br.com.cesarschool.infrastructure.adapter.user.FindUserAdapter;
-import br.com.cesarschool.infrastructure.adapter.user.LoginUserAdapter;
-import br.com.cesarschool.infrastructure.adapter.user.RegisterUserAdapter;
-import br.com.cesarschool.infrastructure.repository.UserRepository;
 import br.com.cesarschool.presentation.dto.user.UserLoginRequest;
 import br.com.cesarschool.presentation.dto.user.UserLoginResponse;
 import br.com.cesarschool.presentation.dto.user.UserRegisterRequest;
 import br.com.cesarschool.presentation.dto.user.UserRegisterResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/users")
