@@ -6,8 +6,6 @@ import br.com.cesarschool.infrastructure.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
-
 @Component
 @RequiredArgsConstructor
 public class LoginUserAdapter implements LoginUserPort<UserEntity> {
@@ -15,7 +13,14 @@ public class LoginUserAdapter implements LoginUserPort<UserEntity> {
     private final UserRepository userRepository;
 
     @Override
-    public Optional<UserEntity> findByEmail(String email) {
-        return userRepository.findByEmail(email);
+    public UserEntity loginUser(String email, String password) {
+        UserEntity user = userRepository.findByEmail(email)
+            .orElseThrow(() -> new IllegalArgumentException("Usuário não encontrado com o e-mail: " + email));
+
+        if (!user.getPassword().equals(password)) {
+            throw new IllegalArgumentException("Senha incorreta.");
+        }
+
+        return user;
     }
 }
