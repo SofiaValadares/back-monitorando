@@ -13,11 +13,9 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class UserService {
-
     private final RegisterUserPort registerUserPort;
     private final FindUserPort<UserEntity> findUserPort;
     private final LoginUserPort<UserEntity> loginUserPort;
-
 
     public void register(String name, String surname, String email, String password, String role) {
         Optional<UserEntity> userOptional = findUserPort.findByEmail(email);
