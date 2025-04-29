@@ -3,10 +3,12 @@ package br.com.cesarschool.domain.entity;
 import br.com.cesarschool.domain.entity.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "users")
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserEntity {
