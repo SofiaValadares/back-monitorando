@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b19cf2aa-b695-4bbf-b06d-33760a7c2274" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/monitorando/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitorando/src/main/java/br/com/cesarschool/monitorando/MonitorandoApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitorando/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitorando/src/test/java/br/com/cesarschool/monitorando/MonitorandoApplicationTests.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/monitorando/domain/src/main/java/br/com/cesarschool/domain/entity/enums/UserRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monitorando/application/src/main/java/br/com/cesarschool/application/port/user/RegisterUserPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/application/src/main/java/br/com/cesarschool/application/port/user/RegisterUserPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monitorando/domain/src/main/java/br/com/cesarschool/domain/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/domain/src/main/java/br/com/cesarschool/domain/entity/UserEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monitorando/domain/src/main/java/br/com/cesarschool/domain/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/domain/src/main/java/br/com/cesarschool/domain/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monitorando/infrastructure/src/main/java/br/com/cesarschool/infrastructure/adapter/user/RegisterUserAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/infrastructure/src/main/java/br/com/cesarschool/infrastructure/adapter/user/RegisterUserAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monitorando/presentation/src/main/java/br/com/cesarschool/presentation/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/presentation/src/main/java/br/com/cesarschool/presentation/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monitorando/presentation/src/main/java/br/com/cesarschool/presentation/dto/user/UserRegisterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/presentation/src/main/java/br/com/cesarschool/presentation/dto/user/UserRegisterRequest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +54,7 @@
   &quot;isMigrated&quot;: true
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -60,42 +64,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.br.com.cesarschool.domain.Main.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.MonitorandoApplication (1).executor": "Run",
-    "Spring Boot.MonitorandoApresentacaoApplication.executor": "Run",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "develop",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/svc2/IdeaProjects/back-monitorando/monitorando/infrastructure/src/main/java/br/com/cesarschool/infrastructure/adapter",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/svc2/IdeaProjects/back-monitorando/monitorando/infrastructure/src/main/java/br/com/cesarschool/infrastructure/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "run.configurations.included.in.services": "true",
-    "show.migrate.to.gradle.popup": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.br.com.cesarschool.domain.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.MonitorandoApplication (1).executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.MonitorandoApresentacaoApplication.executor&quot;: &quot;Run&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/svc2/IdeaProjects/back-monitorando/monitorando/infrastructure/src/main/java/br/com/cesarschool/infrastructure/adapter&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/svc2/IdeaProjects/back-monitorando/monitorando/infrastructure/src/main/java/br/com/cesarschool/infrastructure/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\resources" />
@@ -197,6 +201,8 @@
       <updated>1745860627318</updated>
       <workItem from="1745860628642" duration="5177000" />
       <workItem from="1745867464333" duration="3743000" />
+      <workItem from="1745871245656" duration="777000" />
+      <workItem from="1745926209610" duration="2012000" />
     </task>
     <servers />
   </component>
