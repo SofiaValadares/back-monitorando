@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserEntity {
-
-    private Long id;           // Não é mais @Id nem @GeneratedValue, é só atributo
+    private Long id;
     private String name;
     private String surname;
     private String email;

@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b19cf2aa-b695-4bbf-b06d-33760a7c2274" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/monitorando/domain/src/main/java/br/com/cesarschool/domain/entity/enums/UserRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/monitorando/infrastructure/src/main/java/br/com/cesarschool/infrastructure/persistence/entity/DisciplineJpaEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/monitorando/infrastructure/src/main/java/br/com/cesarschool/infrastructure/persistence/entity/StudentJpaEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/monitorando/infrastructure/src/main/java/br/com/cesarschool/infrastructure/persistence/mapper/DisciplineMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/monitorando/infrastructure/src/main/java/br/com/cesarschool/infrastructure/persistence/mapper/StudentMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitorando/application/src/main/java/br/com/cesarschool/application/port/user/RegisterUserPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/application/src/main/java/br/com/cesarschool/application/port/user/RegisterUserPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monitorando/domain/src/main/java/br/com/cesarschool/domain/entity/DisciplineEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/domain/src/main/java/br/com/cesarschool/domain/entity/DisciplineEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monitorando/domain/src/main/java/br/com/cesarschool/domain/entity/StudentEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/domain/src/main/java/br/com/cesarschool/domain/entity/StudentEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/monitorando/domain/src/main/java/br/com/cesarschool/domain/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/domain/src/main/java/br/com/cesarschool/domain/entity/UserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitorando/domain/src/main/java/br/com/cesarschool/domain/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/domain/src/main/java/br/com/cesarschool/domain/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitorando/infrastructure/src/main/java/br/com/cesarschool/infrastructure/adapter/user/RegisterUserAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/infrastructure/src/main/java/br/com/cesarschool/infrastructure/adapter/user/RegisterUserAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitorando/presentation/src/main/java/br/com/cesarschool/presentation/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/presentation/src/main/java/br/com/cesarschool/presentation/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitorando/presentation/src/main/java/br/com/cesarschool/presentation/dto/user/UserRegisterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/presentation/src/main/java/br/com/cesarschool/presentation/dto/user/UserRegisterRequest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
+        <option value="Exception" />
         <option value="Class" />
       </list>
     </option>
@@ -77,6 +79,7 @@
     &quot;Spring Boot.MonitorandoApplication (1).executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.MonitorandoApresentacaoApplication.executor&quot;: &quot;Run&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
     &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/svc2/IdeaProjects/back-monitorando/monitorando/infrastructure/src/main/java/br/com/cesarschool/infrastructure/adapter&quot;,
@@ -202,7 +205,9 @@
       <workItem from="1745860628642" duration="5177000" />
       <workItem from="1745867464333" duration="3743000" />
       <workItem from="1745871245656" duration="777000" />
-      <workItem from="1745926209610" duration="2012000" />
+      <workItem from="1745926209610" duration="16963000" />
+      <workItem from="1746013325759" duration="707000" />
+      <workItem from="1746021952826" duration="1203000" />
     </task>
     <servers />
   </component>
@@ -212,11 +217,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/monitorando/application/src/main/java/br/com/cesarschool/application/Main.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/monitorando/domain/src/main/java/br/com/cesarschool/domain/Main.java</url>
           <line>13</line>
