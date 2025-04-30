@@ -15,4 +15,9 @@ public class StudentEntity extends UserEntity{
         super(id, name, surname, email, password, role);
         this.disciplines = disciplines;
     }
+
+    public StudentEntity(UserEntity user, List<DisciplineEntity> disciplines) {
+        super(user.getId(), user.getName(), user.getSurname(), user.getEmail(), user.getPassword(), user.getRole());
+        this.disciplines = disciplines;
+    }
 }

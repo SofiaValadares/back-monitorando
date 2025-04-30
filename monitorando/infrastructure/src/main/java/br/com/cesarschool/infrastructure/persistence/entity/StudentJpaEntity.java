@@ -12,7 +12,16 @@ import java.util.List;
 @Table(name = "students")
 @Getter
 @NoArgsConstructor
-public class StudentJpaEntity extends UserJpaEntity {
+@AllArgsConstructor
+public class StudentJpaEntity{
+
+    @Id
+    private Long id;
+
+    @OneToOne
+    @MapsId // compartilha o mesmo ID do User
+    @JoinColumn(name = "id")
+    private UserJpaEntity user;
 
     @ManyToMany
     @JoinTable(
@@ -21,8 +30,4 @@ public class StudentJpaEntity extends UserJpaEntity {
             inverseJoinColumns = @JoinColumn(name = "discipline_id")
     )
     private List<DisciplineJpaEntity> disciplines;
-    public StudentJpaEntity(Long id, String name, String surname, String email, String password, List<DisciplineJpaEntity> disciplines) {
-        super(id, name, surname, email, password, UserRole.STUDENT);
-        this.disciplines = disciplines;
-    }
 }

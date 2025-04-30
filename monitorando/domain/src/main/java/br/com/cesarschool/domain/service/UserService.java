@@ -2,6 +2,7 @@ package br.com.cesarschool.domain.service;
 
 import br.com.cesarschool.application.port.user.FindUserPort;
 import br.com.cesarschool.application.port.user.LoginUserPort;
+import br.com.cesarschool.application.port.user.PromoteUserToStudentPort;
 import br.com.cesarschool.application.port.user.RegisterUserPort;
 import br.com.cesarschool.domain.entity.UserEntity;
 import br.com.cesarschool.domain.exception.EmailAlreadyInUseException;
@@ -15,6 +16,7 @@ import java.util.Optional;
 public class UserService {
 
     private final RegisterUserPort registerUserPort;
+    private final PromoteUserToStudentPort promoteUserToStudentPort;
     private final FindUserPort<UserEntity> findUserPort;
     private final LoginUserPort<UserEntity> loginUserPort;
 
@@ -27,6 +29,11 @@ public class UserService {
         }
 
         registerUserPort.register(name, surname, email, password, role);
+
+        if ("STUDENT".equalsIgnoreCase(role)) {
+            Optional<UserEntity> newUser = findUserPort.findByEmail(email);
+            newUser.ifPresent(user -> promoteUserToStudentPort.promote(user.getId()));
+        }
     }
 
     public UserEntity login(String email, String password) {

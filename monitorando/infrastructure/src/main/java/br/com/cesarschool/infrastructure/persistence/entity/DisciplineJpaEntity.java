@@ -28,4 +28,10 @@ public class DisciplineJpaEntity {
 
 //    @OneToMany(mappedBy = "discipline", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private List<MonitorJpaEntity> monitors;
+
+
+    public DisciplineJpaEntity(String name, String code) {
+        this.name = name;
+        this.code = code;
+    }
 }

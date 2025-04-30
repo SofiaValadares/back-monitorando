@@ -1,39 +1,38 @@
 package br.com.cesarschool.infrastructure.persistence.mapper;
 
-import br.com.cesarschool.domain.entity.DisciplineEntity;
 import br.com.cesarschool.domain.entity.StudentEntity;
 import br.com.cesarschool.infrastructure.persistence.entity.StudentJpaEntity;
+import br.com.cesarschool.infrastructure.persistence.entity.UserJpaEntity;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class StudentMapper {
-
     public static StudentJpaEntity toJpa(StudentEntity entity) {
+        UserJpaEntity user = new UserJpaEntity();
+        user.setId(entity.getId());
+
         return new StudentJpaEntity(
-            entity.getId(),
-            entity.getName(),
-            entity.getSurname(),
-            entity.getEmail(),
-            entity.getPassword(),
-            entity.getDisciplines() != null ?
-                entity.getDisciplines().stream()
-                    .map(DisciplineMapper::toJpa)
-                    .collect(Collectors.toList()) : null
+                entity.getId(),
+                user,
+                List.of()
         );
     }
 
+
     public static StudentEntity toDomain(StudentJpaEntity jpa) {
         return new StudentEntity(
-            jpa.getId(),
-            jpa.getName(),
-            jpa.getSurname(),
-            jpa.getEmail(),
-            jpa.getPassword(),
-            jpa.getRole(),
-            jpa.getDisciplines() != null ?
-                jpa.getDisciplines().stream()
-                    .map(DisciplineMapper::toDomain)
-                    .collect(Collectors.toList()) : null
+                jpa.getId(),
+                jpa.getUser().getName(),
+                jpa.getUser().getSurname(),
+                jpa.getUser().getEmail(),
+                jpa.getUser().getPassword(),
+                jpa.getUser().getRole(),
+                jpa.getDisciplines() != null
+                        ? jpa.getDisciplines().stream()
+                        .map(DisciplineMapper::toDomain)
+                        .collect(Collectors.toList())
+                        : List.of()
         );
     }
 }
