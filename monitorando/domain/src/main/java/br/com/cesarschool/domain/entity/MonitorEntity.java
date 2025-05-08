@@ -9,13 +9,27 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor
-public class MonitorEntity extends StudentEntity{
-    private DisciplineEntity discipline;
-    private List<MonitorAvailabilityEntity> availabilities;
+public class MonitorEntity extends StudentEntity {
 
-    public MonitorEntity(Long id, String name, String surname, String email, String password, UserRole role, List<DisciplineEntity> disciplines, DisciplineEntity discipline, List<MonitorAvailabilityEntity> availabilities) {
+    // Lista de horários de atendimento (aluno agenda)
+    private List<MonitorAvailabilityEntity> availableTimes;
+
+    // Lista de horários de monitoria (monitor oferece)
+    private List<MonitorAvailabilityEntity> monitorSchedule;
+
+    public MonitorEntity(
+            Long id,
+            String name,
+            String surname,
+            String email,
+            String password,
+            UserRole role,
+            List<DisciplineEntity> disciplines,
+            List<MonitorAvailabilityEntity> availableTimes,
+            List<MonitorAvailabilityEntity> monitorSchedule
+    ) {
         super(id, name, surname, email, password, role, disciplines);
-        this.discipline = discipline;
-        this.availabilities = availabilities;
+        this.availableTimes = availableTimes;
+        this.monitorSchedule = monitorSchedule;
     }
 }

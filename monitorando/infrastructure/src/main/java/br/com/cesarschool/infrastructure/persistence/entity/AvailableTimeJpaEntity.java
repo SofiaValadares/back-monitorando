@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalTime;
 
+import br.com.cesarschool.domain.entity.enums.WeekDay;
+
 @Entity
 @Table(name = "available_times")
 @Getter
@@ -18,7 +20,8 @@ public class AvailableTimeJpaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String dayOfWeek; // Example: MONDAY, TUESDAY, etc.
+    @Enumerated(EnumType.STRING)
+    private WeekDay dayOfWeek;
 
     private LocalTime startTime;
     private LocalTime endTime;
