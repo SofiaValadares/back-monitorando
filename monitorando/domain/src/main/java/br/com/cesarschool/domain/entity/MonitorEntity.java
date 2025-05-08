@@ -12,10 +12,10 @@ import java.util.List;
 public class MonitorEntity extends StudentEntity {
 
     // Lista de horários de atendimento (aluno agenda)
-    private List<MonitorAvailabilityEntity> availableTimes;
+    private List<AvailableTimeEntity> availableTimes;
 
     // Lista de horários de monitoria (monitor oferece)
-    private List<MonitorAvailabilityEntity> monitorSchedule;
+    private List<AvailableTimeEntity> monitorSchedule;
 
     public MonitorEntity(
             Long id,
@@ -25,8 +25,8 @@ public class MonitorEntity extends StudentEntity {
             String password,
             UserRole role,
             List<DisciplineEntity> disciplines,
-            List<MonitorAvailabilityEntity> availableTimes,
-            List<MonitorAvailabilityEntity> monitorSchedule
+            List<AvailableTimeEntity> availableTimes,
+            List<AvailableTimeEntity> monitorSchedule
     ) {
         super(id, name, surname, email, password, role, disciplines);
         this.availableTimes = availableTimes;

@@ -15,12 +15,12 @@ public class AvailableTimeMapper {
         );
     }
 
-    public static AvailableTimeJpaEntity toJpa(AvailableTimeEntity entity) {
+    /*public static AvailableTimeJpaEntity toJpa(AvailableTimeEntity entity) {
         AvailableTimeJpaEntity jpa = new AvailableTimeJpaEntity();
         jpa.setId(entity.getId());
         jpa.setDayOfWeek(entity.getDayOfWeek());
         jpa.setStartTime(entity.getStartTime());
         jpa.setEndTime(entity.getEndTime());
         return jpa;
-    }
+    }*/
 }
