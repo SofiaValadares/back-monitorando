@@ -1,5 +1,6 @@
 package br.com.cesarschool.infrastructure.persistence.entity;
 
+import br.com.cesarschool.domain.entity.enums.QuestionStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,4 +36,9 @@ public class QuestionJpaEntity {
     @ManyToOne
     @JoinColumn(name = "monitor_id")
     private MonitorJpaEntity monitor;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private QuestionStatus status = QuestionStatus.PENDING;
+
 }

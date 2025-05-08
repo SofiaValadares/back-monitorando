@@ -14,6 +14,7 @@ public class QuestionMapper {
             StudentMapper.toDomain(jpa.getStudent()),
             DisciplineMapper.toDomain(jpa.getDiscipline()),
             jpa.getIsPublic(),
+            jpa.getStatus(),
             jpa.getMonitor() != null ? MonitorMapper.toDomain(jpa.getMonitor()) : null
         );
     }
@@ -27,7 +28,8 @@ public class QuestionMapper {
             StudentMapper.toJpa(domain.getStudent()),
             DisciplineMapper.toJpa(domain.getDiscipline()),
             domain.getIsPublic(),
-            domain.getMonitor() != null ? MonitorMapper.toJpa(domain.getMonitor()) : null
+            domain.getMonitor() != null ? MonitorMapper.toJpa(domain.getMonitor()) : null,
+            domain.getStatus()
         );
     }
 }

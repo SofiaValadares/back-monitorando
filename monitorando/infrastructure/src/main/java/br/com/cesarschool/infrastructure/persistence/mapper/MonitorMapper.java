@@ -3,7 +3,6 @@ package br.com.cesarschool.infrastructure.persistence.mapper;
 import br.com.cesarschool.domain.entity.MonitorEntity;
 import br.com.cesarschool.infrastructure.persistence.entity.MonitorJpaEntity;
 import br.com.cesarschool.infrastructure.persistence.entity.UserJpaEntity;
-import br.com.cesarschool.infrastructure.persistence.entity.AvailableTimeJpaEntity;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,7 +35,9 @@ public class MonitorMapper {
                         .map(DisciplineMapper::toDomain)
                         .collect(Collectors.toList())
                         : List.of(),
-                jpa.getAvailableTimes() != null
+                null,
+                null
+                /*jpa.getAvailableTimes() != null
                         ? jpa.getAvailableTimes().stream()
                         .map(AvailableTimeMapper::toDomain)
                         .collect(Collectors.toList())
@@ -45,7 +46,7 @@ public class MonitorMapper {
                         ? jpa.getMonitorSchedule().stream()
                         .map(AvailableTimeMapper::toDomain)
                         .collect(Collectors.toList())
-                        : List.of()
+                        : List.of()*/
         );
     }
 }
