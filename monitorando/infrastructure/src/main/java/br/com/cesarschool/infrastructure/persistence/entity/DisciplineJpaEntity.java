@@ -26,8 +26,8 @@ public class DisciplineJpaEntity {
     @ManyToMany(mappedBy = "disciplines")
     private List<StudentJpaEntity> students;
 
-//    @OneToMany(mappedBy = "discipline", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<MonitorJpaEntity> monitors;
+    @OneToMany(mappedBy = "discipline", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<MonitorJpaEntity> monitors;
 
 
     public DisciplineJpaEntity(String name, String code) {

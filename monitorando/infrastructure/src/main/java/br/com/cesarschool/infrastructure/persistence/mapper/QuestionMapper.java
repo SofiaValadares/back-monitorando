@@ -3,6 +3,8 @@ package br.com.cesarschool.infrastructure.persistence.mapper;
 import br.com.cesarschool.domain.entity.QuestionEntity;
 import br.com.cesarschool.infrastructure.persistence.entity.QuestionJpaEntity;
 
+import java.util.List;
+
 public class QuestionMapper {
 
     public static QuestionEntity toDomain(QuestionJpaEntity jpa) {
@@ -29,7 +31,8 @@ public class QuestionMapper {
             DisciplineMapper.toJpa(domain.getDiscipline()),
             domain.getIsPublic(),
             domain.getMonitor() != null ? MonitorMapper.toJpa(domain.getMonitor()) : null,
-            domain.getStatus()
+            domain.getStatus(),
+            List.of()
         );
     }
 }

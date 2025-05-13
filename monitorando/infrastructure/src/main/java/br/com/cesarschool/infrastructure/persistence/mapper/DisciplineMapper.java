@@ -11,8 +11,8 @@ public class DisciplineMapper {
 
     public static DisciplineJpaEntity toJpa(DisciplineEntity entity) {
         return new DisciplineJpaEntity(
-            entity.getName(),
-            entity.getCode()
+                entity.getName(),
+                entity.getCode()
         );
     }
 
@@ -26,11 +26,25 @@ public class DisciplineMapper {
                         .collect(Collectors.toList());
 
         return new DisciplineEntity(
-            jpa.getId(),
-            jpa.getName(),
-            jpa.getCode(),
-            studentEntities,
-            null
+                jpa.getId(),
+                jpa.getName(),
+                jpa.getCode(),
+                studentEntities,
+                null
         );
+    }
+
+    public static List<DisciplineEntity> toDomainList(List<DisciplineJpaEntity> jpaList) {
+        if (jpaList == null) return List.of();
+        return jpaList.stream()
+                .map(DisciplineMapper::toDomain)
+                .collect(Collectors.toList());
+    }
+
+    public static List<DisciplineJpaEntity> toJpaList(List<DisciplineEntity> entityList) {
+        if (entityList == null) return List.of();
+        return entityList.stream()
+                .map(DisciplineMapper::toJpa)
+                .collect(Collectors.toList());
     }
 }

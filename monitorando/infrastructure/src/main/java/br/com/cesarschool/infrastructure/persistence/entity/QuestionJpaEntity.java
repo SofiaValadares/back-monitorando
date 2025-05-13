@@ -1,11 +1,14 @@
 package br.com.cesarschool.infrastructure.persistence.entity;
 
+import br.com.cesarschool.domain.entity.QuestionChatEntity;
 import br.com.cesarschool.domain.entity.enums.QuestionStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -41,4 +44,7 @@ public class QuestionJpaEntity {
     @Column(nullable = false)
     private QuestionStatus status = QuestionStatus.PENDING;
 
+
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<QuestionChatJpaEntity> chats;
 }

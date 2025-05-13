@@ -22,17 +22,10 @@ public class MonitorJpaEntity {
     @JoinColumn(name = "id")
     private UserJpaEntity user;
 
-    @ManyToMany
-    @JoinTable(
-        name = "monitor_discipline",
-        joinColumns = @JoinColumn(name = "monitor_id"),
-        inverseJoinColumns = @JoinColumn(name = "discipline_id")
-    )
-    private List<DisciplineJpaEntity> disciplines;
+    @ManyToOne
+    @JoinColumn(name = "discipline_id", nullable = false)
+    private DisciplineJpaEntity discipline;
 
     @OneToMany(mappedBy = "monitorForAttendance", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AvailableTimeJpaEntity> availableTimes;
-
-    @OneToMany(mappedBy = "monitorForSchedule", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<AvailableTimeJpaEntity> monitorSchedule;
 }

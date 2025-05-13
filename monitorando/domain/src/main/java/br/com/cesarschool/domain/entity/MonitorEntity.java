@@ -9,13 +9,11 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class MonitorEntity extends StudentEntity {
-
-    // Lista de horários de atendimento (aluno agenda)
     private List<AvailableTimeEntity> availableTimes;
 
-    // Lista de horários de monitoria (monitor oferece)
-    private List<AvailableTimeEntity> monitorSchedule;
+    private DisciplineEntity disciplineMonitor;
 
     public MonitorEntity(
             Long id,
@@ -26,10 +24,10 @@ public class MonitorEntity extends StudentEntity {
             UserRole role,
             List<DisciplineEntity> disciplines,
             List<AvailableTimeEntity> availableTimes,
-            List<AvailableTimeEntity> monitorSchedule
+            DisciplineEntity disciplineMonitor
     ) {
         super(id, name, surname, email, password, role, disciplines);
         this.availableTimes = availableTimes;
-        this.monitorSchedule = monitorSchedule;
+        this.disciplineMonitor = disciplineMonitor;
     }
 }
