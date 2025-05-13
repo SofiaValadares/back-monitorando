@@ -6,10 +6,12 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "question_chat")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class QuestionChatJpaEntity {

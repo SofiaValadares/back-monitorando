@@ -1,6 +1,7 @@
 package br.com.cesarschool.presentation.controller;
 
 import br.com.cesarschool.domain.service.QuestionService;
+import br.com.cesarschool.presentation.dto.question.QuestionChatRequestDTO;
 import br.com.cesarschool.presentation.dto.question.QuestionRequestDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,18 @@ public class QuestionController {
                 request.getDisciplineId(),
                 request.getMonitorId()
         );
+        return ResponseEntity.ok("Question to monitor created successfully.");
+    }
+
+    @PostMapping("/chat/answer")
+    public ResponseEntity<String> answerQuestionInChat(@RequestBody QuestionChatRequestDTO request) {
+
+        questionService.sendAnswerToQuestion(
+                request.getQuestionId(),
+                request.getUserId(),
+                request.getAnswer()
+        );
+
         return ResponseEntity.ok("Question to monitor created successfully.");
     }
 }

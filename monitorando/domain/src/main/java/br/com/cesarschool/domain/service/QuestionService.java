@@ -16,5 +16,9 @@ public class QuestionService {
         questionToMonitorPort.makeQuestionToMonitor(studentId, question, disciplineId, monitorId);
     }
 
+    public void sendAnswerToQuestion(Long questionId, Long userId, String answer) {
+        questionChatPort.sendAnswerQuestion(questionId, userId, answer);
+    }
+
 
 }
