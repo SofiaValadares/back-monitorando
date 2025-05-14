@@ -1,20 +1,22 @@
 package br.com.cesarschool.domain.service;
 
 import br.com.cesarschool.application.port.discipline.FindDisciplinePort;
+import br.com.cesarschool.application.port.question.FindQuestionPort;
 import br.com.cesarschool.application.port.question.QuestionChatPort;
 import br.com.cesarschool.application.port.question.QuestionToMonitorPort;
 import br.com.cesarschool.application.port.user.FindMonitorPort;
 import br.com.cesarschool.application.port.user.FindStudentPort;
-import br.com.cesarschool.domain.entity.DisciplineEntity;
-import br.com.cesarschool.domain.entity.MonitorEntity;
-import br.com.cesarschool.domain.entity.StudentEntity;
+import br.com.cesarschool.domain.entity.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class QuestionService {
 
+    private final FindQuestionPort<QuestionEntity> findQuestionPort;
     private final QuestionToMonitorPort questionToMonitorPort;
     private final QuestionChatPort questionChatPort;
     private final FindStudentPort<StudentEntity> findStudentPort;
@@ -44,6 +46,29 @@ public class QuestionService {
     }
 
     public void sendAnswerToQuestion(Long questionId, Long userId, String answer) {
+        QuestionEntity question = findQuestionPort.findById(questionId)
+                .orElseThrow(() -> new IllegalArgumentException("Pergunta não encontrada com ID: " + questionId));
+
+        StudentEntity student = question.getStudent();
+        DisciplineEntity discipline = question.getDiscipline();
+
+        UserEntity user = discipline.findUserInDiscipline(userId)
+            .orElseThrow(() -> new IllegalArgumentException("Usuario com ID " + userId + " não esta listado na disciplina"));
+
+        if (!question.getIsPublic()) {
+            if (user instanceof StudentEntity && user != student) {
+                throw new IllegalArgumentException("Pergunta privada, o usuario com ID " + userId + " não tem acesso a ela");
+            }
+
+            if (question.getMonitor() != null) {
+                MonitorEntity monitor = question.getMonitor();
+
+                if (user instanceof MonitorEntity && user != monitor) {
+                    throw new IllegalArgumentException("Pergunta privada, o usuario com ID " + userId + " não tem acesso a ela");
+                }
+            }
+        }
+
         questionChatPort.sendAnswerQuestion(questionId, userId, answer);
     }
 
