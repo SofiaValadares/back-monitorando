@@ -1,3 +1,11 @@
-C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\application\src\main\java\br\com\cesarschool\application\Main.java
-C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\application\src\main\java\br\com\cesarschool\application\port\user\RegisterUserPort.java
-C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\application\src\main\java\br\com\cesarschool\application\usecase\user\RegisterUserUseCase.java
+C:\Users\LENI\IdeaProjects\back-monitorando\monitorando\application\src\main\java\br\com\cesarschool\application\Main.java
+C:\Users\LENI\IdeaProjects\back-monitorando\monitorando\application\src\main\java\br\com\cesarschool\application\port\discipline\FindDisciplinePort.java
+C:\Users\LENI\IdeaProjects\back-monitorando\monitorando\application\src\main\java\br\com\cesarschool\application\port\question\FindQuestionPort.java
+C:\Users\LENI\IdeaProjects\back-monitorando\monitorando\application\src\main\java\br\com\cesarschool\application\port\question\QuestionChatPort.java
+C:\Users\LENI\IdeaProjects\back-monitorando\monitorando\application\src\main\java\br\com\cesarschool\application\port\question\QuestionToMonitorPort.java
+C:\Users\LENI\IdeaProjects\back-monitorando\monitorando\application\src\main\java\br\com\cesarschool\application\port\user\FindMonitorPort.java
+C:\Users\LENI\IdeaProjects\back-monitorando\monitorando\application\src\main\java\br\com\cesarschool\application\port\user\FindStudentPort.java
+C:\Users\LENI\IdeaProjects\back-monitorando\monitorando\application\src\main\java\br\com\cesarschool\application\port\user\FindUserPort.java
+C:\Users\LENI\IdeaProjects\back-monitorando\monitorando\application\src\main\java\br\com\cesarschool\application\port\user\LoginUserPort.java
+C:\Users\LENI\IdeaProjects\back-monitorando\monitorando\application\src\main\java\br\com\cesarschool\application\port\user\PromoteUserToStudentPort.java
+C:\Users\LENI\IdeaProjects\back-monitorando\monitorando\application\src\main\java\br\com\cesarschool\application\port\user\RegisterUserPort.java

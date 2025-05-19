@@ -21,6 +21,7 @@
 		<module>domain</module>
 		<module>infrastructure</module>
 		<module>application</module>
+		<module>bdd</module>
 	</modules>
 
 	<properties>
