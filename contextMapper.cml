@@ -1,0 +1,140 @@
+Domain Monitorando {
+	Subdomain InteracaoAcademica
+	Subdomain GestaoUsuarios
+	Subdomain Monitoramento
+}
+
+ContextMap {
+	contains InteracaoAcademica
+	contains GestaoUsuarios
+	contains Monitoramento
+
+	InteracaoAcademica Shared-Kernel GestaoUsuarios
+	Monitoramento Shared-Kernel GestaoUsuarios
+	Monitoramento Shared-Kernel InteracaoAcademica
+}
+
+BoundedContext GestaoUsuarios implements GestaoUsuarios {
+	Aggregate Usuario {
+		Entity Usuario {
+			aggregateRoot
+
+			-UsuarioId id
+			String nome
+			Email enderecoEmail
+			TipoUsuario tipo
+		}
+
+		ValueObject UsuarioId {
+			int id
+		}
+
+		ValueObject Email {
+			String endereco
+		}
+
+		ValueObject TipoUsuario {
+			String tipo // ALUNO, MONITOR, PROFESSOR
+		}
+	}
+}
+
+BoundedContext InteracaoAcademica implements InteracaoAcademica {
+	Aggregate Atendimento {
+		Entity Atendimento {
+			aggregateRoot
+
+			-AtendimentoId id
+			-UsuarioId aluno
+			-UsuarioId monitor
+			Horario horario
+			StatusAtendimento status
+			Relato relato nullable
+			Avaliacao avaliacaoAluno nullable
+			Avaliacao avaliacaoMonitor nullable
+
+			def confirmar();
+			def concluir(@Relato relato);
+		}
+
+		ValueObject AtendimentoId {
+			int id
+		}
+
+		ValueObject Horario {
+			Date inicio
+			Date fim
+		}
+
+		ValueObject StatusAtendimento {
+			String status // AGENDADO, CONFIRMADO, CONCLUIDO
+		}
+
+		ValueObject Relato {
+			String texto
+			Date data
+		}
+
+		ValueObject Avaliacao {
+			int nota
+			String comentario nullable
+		}
+	}
+
+	Aggregate Duvida {
+		Entity Duvida {
+			aggregateRoot
+
+			-DuvidaId id
+			-UsuarioId aluno
+			-UsuarioId monitor
+			String pergunta
+			Resposta resposta nullable
+
+			def responder(@Resposta resposta);
+		}
+
+		ValueObject DuvidaId {
+			int id
+		}
+
+		ValueObject Resposta {
+			String texto
+			Date dataResposta
+		}
+	}
+}
+
+BoundedContext Monitoramento implements Monitoramento {
+	Aggregate DesignacaoMonitor {
+		Entity DesignacaoMonitor {
+			aggregateRoot
+
+			-UsuarioId monitor
+			-UsuarioId professor
+			String disciplina
+			List<HorarioDisponivel> horarios
+		}
+
+		ValueObject HorarioDisponivel {
+			Date inicio
+			Date fim
+		}
+	}
+
+	Aggregate AvaliacaoMonitoria {
+		Entity AvaliacaoMonitoria {
+			aggregateRoot
+
+			-AvaliacaoMonitoriaId id
+			-UsuarioId avaliador
+			-UsuarioId avaliado
+			int nota
+			String comentario nullable
+		}
+
+		ValueObject AvaliacaoMonitoriaId {
+			int id
+		}
+	}
+}
