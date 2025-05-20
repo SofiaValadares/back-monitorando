@@ -5,17 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b19cf2aa-b695-4bbf-b06d-33760a7c2274" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/monitorando/bdd/src/test/java/steps/builders/BasicQuestionBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitorando/application/target/application-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/application/target/application-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitorando/application/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/application/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitorando/application/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/application/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitorando/application/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitorando/application/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitorando/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monitorando/bdd/src/test/java/builders/MonitorBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/bdd/src/test/java/steps/builders/BasicMonitorBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monitorando/bdd/src/test/java/builders/QuestionEntityBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/monitorando/bdd/src/test/java/steps/EnviarDuvidaSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/bdd/src/test/java/steps/EnviarDuvidaSteps.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +33,8 @@
         <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/monitorando" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -85,10 +82,11 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Spring Boot.MonitorandoApplication (1).executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.MonitorandoApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.MonitorandoApresentacaoApplication.executor&quot;: &quot;Run&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/svc2/IdeaProjects/screenmatch&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -97,7 +95,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/LENI/IdeaProjects/back-monitorando/monitorando/bdd/src/main/java/br/com/cesarschool/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
@@ -167,6 +165,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="runner" />
       <option name="MAIN_CLASS_NAME" value="runner.RunCucumberTest" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -203,6 +202,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.br.com.cesarschool.domain.Main" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.RunCucumberTest" />
+      <item itemvalue="Spring Boot.MonitorandoApplication" />
+      <item itemvalue="Spring Boot.MonitorandoApplication (1)" />
+      <item itemvalue="Spring Boot.MonitorandoApresentacaoApplication" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.RunCucumberTest" />
@@ -245,7 +252,10 @@
       <workItem from="1747664877211" duration="338000" />
       <workItem from="1747665759590" duration="4587000" />
       <workItem from="1747678997487" duration="7203000" />
-      <workItem from="1747692708301" duration="1723000" />
+      <workItem from="1747692708301" duration="2423000" />
+      <workItem from="1747695165610" duration="945000" />
+      <workItem from="1747745239936" duration="1265000" />
+      <workItem from="1747751249515" duration="3863000" />
     </task>
     <servers />
   </component>
