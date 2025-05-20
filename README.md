@@ -26,11 +26,18 @@ No desenvolvimento do nosso projeto, utilizamos os seguintes padrões de projeto
       
   </dt>
 
-  <tr>- Dentro de um terminal do Backend, rode:
+  <tr>- Dentro de um terminal do Backend, rode para subir o banco de dados:
   <dt>
 
       cd ./monitorando
       docker compose up -d --build
+      
+  </dt>
+
+  <tr>- Caso queira apagar o banco de dados rode:
+  <dt>
+
+       docker compose -v down
       
   </dt>
 
@@ -43,6 +50,20 @@ No desenvolvimento do nosso projeto, utilizamos os seguintes padrões de projeto
        docker compose -v down
       
   </dt>
+
+  <tr>- Para compilar o projeto rode:
+  <dt>
+
+       mvn clean package
+      
+  </dt>  
+
+  <tr>- Por fim para rodar o projeto, use o comando:
+  <dt>
+
+       mvn spring-boot:run
+      
+  </dt>  
   
 </table>
 
