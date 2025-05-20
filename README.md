@@ -41,9 +41,6 @@ No desenvolvimento do nosso projeto, utilizamos os seguintes padrões de projeto
       
   </dt>
 
-  <tr>- O backend já esta rodando dentro da porta 8080.<br>
-  Obs: Certifique-se que não haja conflito de volumes ou contêineres. O nosso banco PostgreSQL roda na porta 5432.
-
   <tr>- Para desfazer os conteiners do docker rode:
   <dt>
 
@@ -64,6 +61,9 @@ No desenvolvimento do nosso projeto, utilizamos os seguintes padrões de projeto
        mvn spring-boot:run
       
   </dt>  
+
+  <tr>- O backend já esta rodando dentro da porta 8080.<br>
+  Obs: Certifique-se que não haja conflito de volumes ou contêineres. O nosso banco PostgreSQL roda na porta 5432.
   
 </table>
 
