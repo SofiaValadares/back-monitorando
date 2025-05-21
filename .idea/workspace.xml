@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b19cf2aa-b695-4bbf-b06d-33760a7c2274" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/monitorando/bdd/src/test/java/steps/builders/BasicQuestionBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a105a7e6-285d-4770-8f94-55213cc335a7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a105a7e6-285d-4770-8f94-55213cc335a7.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitorando/bdd/src/test/java/builders/MonitorBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/bdd/src/test/java/steps/builders/BasicMonitorBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitorando/bdd/src/test/java/builders/QuestionEntityBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/monitorando/bdd/src/test/java/steps/EnviarDuvidaSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/monitorando/bdd/src/test/java/steps/EnviarDuvidaSteps.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +31,7 @@
         <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/monitorando" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -45,7 +43,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/SofiaValadares/back-monitorando.git&quot;,
-    &quot;accountId&quot;: &quot;46d93a71-c1e5-426b-bb76-ac79b4ad82c7&quot;
+    &quot;accountId&quot;: &quot;ab749b47-36e1-4934-a8ac-7a80e6629334&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -86,9 +84,9 @@
     &quot;Spring Boot.MonitorandoApresentacaoApplication.executor&quot;: &quot;Run&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/svc2/IdeaProjects/screenmatch&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/svc2/IdeaProjects/api&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -100,7 +98,7 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
     &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.AIAssistantPromptsLibrary&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -203,11 +201,11 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.br.com.cesarschool.domain.Main" />
       <item itemvalue="Application.Main" />
+      <item itemvalue="Application.br.com.cesarschool.domain.Main" />
       <item itemvalue="JUnit.RunCucumberTest" />
-      <item itemvalue="Spring Boot.MonitorandoApplication" />
       <item itemvalue="Spring Boot.MonitorandoApplication (1)" />
+      <item itemvalue="Spring Boot.MonitorandoApplication" />
       <item itemvalue="Spring Boot.MonitorandoApresentacaoApplication" />
     </list>
     <recent_temporary>
@@ -221,8 +219,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.23654.153" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-IU-243.23654.153" />
       </set>
     </attachedChunks>
   </component>
@@ -256,6 +254,8 @@
       <workItem from="1747695165610" duration="945000" />
       <workItem from="1747745239936" duration="1265000" />
       <workItem from="1747751249515" duration="3863000" />
+      <workItem from="1747833177476" duration="32000" />
+      <workItem from="1747841642354" duration="6000" />
     </task>
     <servers />
   </component>
