@@ -1,0 +1,10 @@
+br\com\cesarschool\presentation\dto\user\UserLoginRequest.class
+br\com\cesarschool\presentation\dto\user\UserLoginResponse.class
+br\com\cesarschool\presentation\controller\UserController.class
+br\com\cesarschool\presentation\dto\question\QuestionChatRequestDTO.class
+br\com\cesarschool\presentation\controller\QuestionController.class
+br\com\cesarschool\presentation\dto\user\UserRegisterRequest.class
+br\com\cesarschool\presentation\handler\GlobalExceptionHandler.class
+br\com\cesarschool\presentation\dto\question\QuestionRequestDTO.class
+br\com\cesarschool\presentation\MonitorandoApplication.class
+br\com\cesarschool\presentation\dto\user\UserRegisterResponse.class
