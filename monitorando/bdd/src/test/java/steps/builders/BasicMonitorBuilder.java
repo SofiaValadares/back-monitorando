@@ -6,6 +6,7 @@ import br.com.cesarschool.domain.entity.MonitorEntity;
 import br.com.cesarschool.domain.entity.enums.UserRole;
 import steps.interfaces.MonitorBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BasicMonitorBuilder implements MonitorBuilder {
@@ -65,8 +66,8 @@ public class BasicMonitorBuilder implements MonitorBuilder {
     public void buildAvailableTimes() {
         // Supondo que AvailableTimeEntity tem um construtor básico
         this.availableTimes = new ArrayList<>();
-        this.availableTimes.add(new AvailableTimeEntity("Segunda-feira", "14:00"));
-        this.availableTimes.add(new AvailableTimeEntity("Quarta-feira", "10:00"));
+        //this.availableTimes.add(new AvailableTimeEntity("Segunda-feira", "14:00"));
+        //this.availableTimes.add(new AvailableTimeEntity("Quarta-feira", "10:00"));
     }
 
     @Override

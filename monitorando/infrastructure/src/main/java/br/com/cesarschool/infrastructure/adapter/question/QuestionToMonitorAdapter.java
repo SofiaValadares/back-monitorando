@@ -1,7 +1,7 @@
 package br.com.cesarschool.infrastructure.adapter.question;
 
-import br.com.cesarschool.application.port.question.QuestionToMonitorPort;
 import br.com.cesarschool.domain.entity.enums.QuestionStatus;
+import br.com.cesarschool.domain.repository.question.QuestionToMonitorRepository;
 import br.com.cesarschool.infrastructure.persistence.entity.DisciplineJpaEntity;
 import br.com.cesarschool.infrastructure.persistence.entity.MonitorJpaEntity;
 import br.com.cesarschool.infrastructure.persistence.entity.QuestionJpaEntity;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class QuestionToMonitorAdapter implements QuestionToMonitorPort {
+public class QuestionToMonitorAdapter implements QuestionToMonitorRepository {
 
     private final StudentJpaRepository studentRepository;
     private final DisciplineJpaRepository disciplineRepository;

@@ -1,20 +1,33 @@
 package br.com.cesarschool.domain.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+
 import java.util.List;
 import java.util.Optional;
 
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class DisciplineEntity {
-    private Long id;
-    private String name;
-    private String code;
-    private List<StudentEntity> students;
-    private List<MonitorEntity>  monitors;
+    private final Long id;
+    private final String name;
+    private final String code;
+    private final List<StudentEntity> students;
+    private final List<MonitorEntity> monitors;
+
+    public DisciplineEntity(Long id, String name, String code, List<StudentEntity> students, List<MonitorEntity> monitors) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("O nome da disciplina não pode estar vazio.");
+        }
+        if (code == null || code.isBlank()) {
+            throw new IllegalArgumentException("O código da disciplina não pode estar vazio.");
+        }
+
+        this.id = id;
+        this.name = name;
+        this.code = code;
+        this.students = students;
+        this.monitors = monitors;
+    }
+
 
     public Optional<UserEntity> findUserInDiscipline(Long userId) {
         if (students != null) {
@@ -35,5 +48,4 @@ public class DisciplineEntity {
 
         return Optional.empty();
     }
-
 }

@@ -1,52 +1,50 @@
 package br.com.cesarschool.domain.service;
 
-import br.com.cesarschool.application.port.discipline.FindDisciplinePort;
-import br.com.cesarschool.application.port.question.FindQuestionPort;
-import br.com.cesarschool.application.port.question.QuestionChatPort;
-import br.com.cesarschool.application.port.question.QuestionToMonitorPort;
-import br.com.cesarschool.application.port.user.FindMonitorPort;
-import br.com.cesarschool.application.port.user.FindStudentPort;
 import br.com.cesarschool.domain.entity.*;
+import br.com.cesarschool.domain.repository.discipline.FindDisciplineRepository;
+import br.com.cesarschool.domain.repository.question.FindQuestionRepository;
+import br.com.cesarschool.domain.repository.question.QuestionChatRepository;
+import br.com.cesarschool.domain.repository.question.QuestionToMonitorRepository;
+import br.com.cesarschool.domain.repository.user.FindMonitorRepository;
+import br.com.cesarschool.domain.repository.user.FindStudentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class QuestionService {
 
-    private final FindQuestionPort<QuestionEntity> findQuestionPort;
-    private final QuestionToMonitorPort questionToMonitorPort;
-    private final QuestionChatPort questionChatPort;
-    private final FindStudentPort<StudentEntity> findStudentPort;
-    private final FindMonitorPort<MonitorEntity> findMonitorPort;
-    private final FindDisciplinePort<DisciplineEntity> findDisciplinePort;
+    private final FindQuestionRepository<QuestionEntity> findQuestionRepository;
+    private final QuestionToMonitorRepository questionToMonitorRepository;
+    private final QuestionChatRepository questionChatRepository;
+    private final FindStudentRepository<StudentEntity> findStudentRepository;
+    private final FindMonitorRepository<MonitorEntity> findMonitorRepository;
+    private final FindDisciplineRepository<DisciplineEntity> findDisciplineRepository;
 
 
     public void makeQuestionToMonitor(Long studentId, String question, Long disciplineId, Long monitorId) {
-        StudentEntity student = findStudentPort.findById(studentId)
+        StudentEntity student = findStudentRepository.findById(studentId)
                 .orElseThrow(() -> new IllegalArgumentException("Estudante não encontrado com ID: " + studentId));
 
         if (question.isBlank() || question.isEmpty()) {
             throw new IllegalArgumentException("Pergunta esta vazia");
         }
 
-        DisciplineEntity discipline = findDisciplinePort.findById(disciplineId)
+        DisciplineEntity discipline = findDisciplineRepository.findById(disciplineId)
                 .orElseThrow(() -> new IllegalArgumentException("Disciplina não encontrada com ID: " + disciplineId));
 
-        MonitorEntity monitor = findMonitorPort.findById(monitorId)
+        MonitorEntity monitor = findMonitorRepository.findById(monitorId)
                 .orElseThrow(() -> new IllegalArgumentException("Monitor não encontrada com ID: " + monitorId));
 
         if (!discipline.getMonitors().contains(monitor)) {
             throw new IllegalArgumentException("Monitor com ID " + monitorId +" não pertertence a disciplina com ID " + disciplineId);
         }
 
-        questionToMonitorPort.makeQuestionToMonitor(studentId, question, disciplineId, monitorId);
+        questionToMonitorRepository.makeQuestionToMonitor(studentId, question, disciplineId, monitorId);
     }
 
     public void sendAnswerToQuestion(Long questionId, Long userId, String answer) {
-        QuestionEntity question = findQuestionPort.findById(questionId)
+        QuestionEntity question = findQuestionRepository.findById(questionId)
                 .orElseThrow(() -> new IllegalArgumentException("Pergunta não encontrada com ID: " + questionId));
 
         StudentEntity student = question.getStudent();
@@ -69,7 +67,7 @@ public class QuestionService {
             }
         }
 
-        questionChatPort.sendAnswerQuestion(questionId, userId, answer);
+        questionChatRepository.sendAnswerQuestion(questionId, userId, answer);
     }
 
 

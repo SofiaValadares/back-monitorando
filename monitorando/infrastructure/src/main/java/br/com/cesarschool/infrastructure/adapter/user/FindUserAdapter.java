@@ -1,7 +1,7 @@
 package br.com.cesarschool.infrastructure.adapter.user;
 
-import br.com.cesarschool.application.port.user.FindUserPort;
 import br.com.cesarschool.domain.entity.UserEntity;
+import br.com.cesarschool.domain.repository.user.FindUserRepository;
 import br.com.cesarschool.infrastructure.persistence.entity.UserJpaEntity;
 import br.com.cesarschool.infrastructure.persistence.mapper.UserEntityMapper;
 import br.com.cesarschool.infrastructure.repository.UserJpaRepository;
@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class FindUserAdapter implements FindUserPort<UserEntity> {
+public class FindUserAdapter implements FindUserRepository<UserEntity> {
 
     private final UserJpaRepository userRepository;
 

@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Getter
-@NoArgsConstructor
 public class StudentEntity extends UserEntity{
     private List<DisciplineEntity> disciplines;
 

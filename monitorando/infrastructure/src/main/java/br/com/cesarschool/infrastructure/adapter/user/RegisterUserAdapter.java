@@ -1,9 +1,9 @@
 package br.com.cesarschool.infrastructure.adapter.user;
 
-import br.com.cesarschool.application.port.user.RegisterUserPort;
 import br.com.cesarschool.domain.entity.UserEntity;
 import br.com.cesarschool.domain.entity.enums.UserRole;
 import br.com.cesarschool.domain.exception.EmailAlreadyInUseException;
+import br.com.cesarschool.domain.repository.user.RegisterUserRepository;
 import br.com.cesarschool.infrastructure.persistence.entity.UserJpaEntity;
 import br.com.cesarschool.infrastructure.persistence.mapper.UserEntityMapper;
 import br.com.cesarschool.infrastructure.repository.UserJpaRepository;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class RegisterUserAdapter implements RegisterUserPort {
+public class RegisterUserAdapter implements RegisterUserRepository {
 
     private final UserJpaRepository userRepository;
 

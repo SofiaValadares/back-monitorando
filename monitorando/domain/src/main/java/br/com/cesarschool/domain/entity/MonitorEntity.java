@@ -1,19 +1,14 @@
 package br.com.cesarschool.domain.entity;
 
 import br.com.cesarschool.domain.entity.enums.UserRole;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class MonitorEntity extends StudentEntity {
-    private List<AvailableTimeEntity> availableTimes;
-
-    private DisciplineEntity disciplineMonitor;
+    private final List<AvailableTimeEntity> availableTimes;
+    private final DisciplineEntity disciplineMonitor;
 
     public MonitorEntity(
             Long id,
@@ -27,7 +22,13 @@ public class MonitorEntity extends StudentEntity {
             DisciplineEntity disciplineMonitor
     ) {
         super(id, name, surname, email, password, role, disciplines);
+
+        if (disciplineMonitor == null) {
+            throw new IllegalArgumentException("Monitor deve estar associado a uma disciplina.");
+        }
+
         this.availableTimes = availableTimes;
         this.disciplineMonitor = disciplineMonitor;
     }
+
 }

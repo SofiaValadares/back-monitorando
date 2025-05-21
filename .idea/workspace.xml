@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b19cf2aa-b695-4bbf-b06d-33760a7c2274" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a105a7e6-285d-4770-8f94-55213cc335a7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a105a7e6-285d-4770-8f94-55213cc335a7.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,6 +107,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\domain\src\main\java\br\com\cesarschool\domain" />
       <recent name="C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\resources" />
       <recent name="C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation" />
       <recent name="C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\src\main\java\br\com\cesarschool\monitorando" />
@@ -126,7 +124,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.RunCucumberTest">
+  <component name="RunManager" selected="Spring Boot.MonitorandoApplication (1)">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="br.com.cesarschool.application.Main" />
       <module name="application" />
@@ -256,6 +254,7 @@
       <workItem from="1747751249515" duration="3863000" />
       <workItem from="1747833177476" duration="32000" />
       <workItem from="1747841642354" duration="6000" />
+      <workItem from="1747845091190" duration="2974000" />
     </task>
     <servers />
   </component>

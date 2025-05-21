@@ -1,9 +1,9 @@
 package br.com.cesarschool.domain.service;
 
-import br.com.cesarschool.application.port.user.FindUserPort;
-import br.com.cesarschool.application.port.user.LoginUserPort;
-import br.com.cesarschool.application.port.user.PromoteUserToStudentPort;
-import br.com.cesarschool.application.port.user.RegisterUserPort;
+import br.com.cesarschool.domain.repository.user.FindUserRepository;
+import br.com.cesarschool.domain.repository.user.LoginUserRepository;
+import br.com.cesarschool.domain.repository.user.PromoteUserToStudentRepository;
+import br.com.cesarschool.domain.repository.user.RegisterUserRepository;
 import br.com.cesarschool.domain.entity.UserEntity;
 import br.com.cesarschool.domain.exception.EmailAlreadyInUseException;
 import lombok.RequiredArgsConstructor;
@@ -15,29 +15,29 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserService {
 
-    private final RegisterUserPort registerUserPort;
-    private final PromoteUserToStudentPort promoteUserToStudentPort;
-    private final FindUserPort<UserEntity> findUserPort;
-    private final LoginUserPort<UserEntity> loginUserPort;
+    private final RegisterUserRepository registerUserRepository;
+    private final PromoteUserToStudentRepository promoteUserToStudentRepository;
+    private final FindUserRepository<UserEntity> findUserRepository;
+    private final LoginUserRepository<UserEntity> loginUserRepository;
 
 
     public void register(String name, String surname, String email, String password, String role) {
-        Optional<UserEntity> userOptional = findUserPort.findByEmail(email);
+        Optional<UserEntity> userOptional = findUserRepository.findByEmail(email);
 
         if (userOptional.isPresent()) {
             throw new EmailAlreadyInUseException("Já existe um usuário cadastrado com o e-mail: " + email);
         }
 
-        registerUserPort.register(name, surname, email, password, role);
+        registerUserRepository.register(name, surname, email, password, role);
 
         if ("STUDENT".equalsIgnoreCase(role)) {
-            Optional<UserEntity> newUser = findUserPort.findByEmail(email);
-            newUser.ifPresent(user -> promoteUserToStudentPort.promote(user.getId()));
+            Optional<UserEntity> newUser = findUserRepository.findByEmail(email);
+            newUser.ifPresent(user -> promoteUserToStudentRepository.promote(user.getId()));
         }
     }
 
     public UserEntity login(String email, String password) {
-        return loginUserPort.loginUser(email, password);
+        return loginUserRepository.loginUser(email, password);
     }
 
 }

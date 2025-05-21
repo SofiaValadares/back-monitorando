@@ -1,5 +1,5 @@
-package br.com.cesarschool.application.port.question;
+package br.com.cesarschool.domain.repository.question;
 
-public interface QuestionToMonitorPort {
+public interface QuestionToMonitorRepository {
     void makeQuestionToMonitor(Long studentId, String question, Long disciplineId, Long monitorId);
 }

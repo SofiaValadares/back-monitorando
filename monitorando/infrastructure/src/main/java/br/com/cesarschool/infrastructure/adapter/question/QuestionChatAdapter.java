@@ -1,6 +1,6 @@
 package br.com.cesarschool.infrastructure.adapter.question;
 
-import br.com.cesarschool.application.port.question.QuestionChatPort;
+import br.com.cesarschool.domain.repository.question.QuestionChatRepository;
 import br.com.cesarschool.infrastructure.persistence.entity.QuestionChatJpaEntity;
 import br.com.cesarschool.infrastructure.persistence.entity.QuestionJpaEntity;
 import br.com.cesarschool.infrastructure.persistence.entity.UserJpaEntity;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class QuestionChatAdapter implements QuestionChatPort {
+public class QuestionChatAdapter implements QuestionChatRepository {
     private final UserJpaRepository userRepository;
     private final QuestionJpaRepository questionRepository;
     private final QuestionChatJpaRepository questionChatJpaRepository;

@@ -1,6 +1,6 @@
 package br.com.cesarschool.infrastructure.adapter.user;
 
-import br.com.cesarschool.application.port.user.PromoteUserToStudentPort;
+import br.com.cesarschool.domain.repository.user.PromoteUserToStudentRepository;
 import br.com.cesarschool.infrastructure.persistence.entity.StudentJpaEntity;
 import br.com.cesarschool.infrastructure.persistence.entity.UserJpaEntity;
 import br.com.cesarschool.infrastructure.repository.StudentJpaRepository;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class PromoteUserToStudentAdapter implements PromoteUserToStudentPort {
+public class PromoteUserToStudentAdapter implements PromoteUserToStudentRepository {
 
     private final UserJpaRepository userRepository;
     private final StudentJpaRepository studentRepository;

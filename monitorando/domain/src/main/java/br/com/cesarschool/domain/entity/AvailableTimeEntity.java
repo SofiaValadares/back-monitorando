@@ -1,19 +1,36 @@
 package br.com.cesarschool.domain.entity;
 
 import br.com.cesarschool.domain.entity.enums.WeekDay;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalTime;
 
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class AvailableTimeEntity {
 
-    private Long id; // <-- compatível com @Id do JPA
-    private WeekDay weekDay; // precisa garantir compatibilidade no JPA
-    private LocalTime startTime;
-    private LocalTime endTime;
+    private final Long id;
+    private final WeekDay weekDay;
+    private final LocalTime startTime;
+    private final LocalTime endTime;
+
+    public AvailableTimeEntity(Long id, WeekDay weekDay, LocalTime startTime, LocalTime endTime) {
+        if (weekDay == null) {
+            throw new IllegalArgumentException("O dia da semana não pode ser nulo.");
+        }
+        if (startTime == null) {
+            throw new IllegalArgumentException("O horário de início não pode ser nulo.");
+        }
+        if (endTime == null) {
+            throw new IllegalArgumentException("O horário de fim não pode ser nulo.");
+        }
+        if (!startTime.isBefore(endTime)) {
+            throw new IllegalArgumentException("O horário de início deve ser anterior ao horário de fim.");
+        }
+
+        this.id = id;
+        this.weekDay = weekDay;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
 }

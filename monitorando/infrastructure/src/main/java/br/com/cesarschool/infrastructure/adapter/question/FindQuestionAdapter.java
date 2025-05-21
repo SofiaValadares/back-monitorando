@@ -1,7 +1,8 @@
 package br.com.cesarschool.infrastructure.adapter.question;
 
-import br.com.cesarschool.application.port.question.FindQuestionPort;
+
 import br.com.cesarschool.domain.entity.QuestionEntity;
+import br.com.cesarschool.domain.repository.question.FindQuestionRepository;
 import br.com.cesarschool.infrastructure.persistence.entity.QuestionJpaEntity;
 import br.com.cesarschool.infrastructure.persistence.mapper.QuestionMapper;
 import br.com.cesarschool.infrastructure.repository.QuestionJpaRepository;
@@ -12,7 +13,7 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class FindQuestionAdapter implements FindQuestionPort<QuestionEntity> {
+public class FindQuestionAdapter implements FindQuestionRepository<QuestionEntity> {
     private final QuestionJpaRepository questionRepository;
     @Override
     public Optional<QuestionEntity> findById(Long id) {
