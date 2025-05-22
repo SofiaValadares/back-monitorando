@@ -1,6 +1,5 @@
 package br.com.cesarschool.infrastructure.adapter.discipline;
 
-
 import br.com.cesarschool.domain.entity.DisciplineEntity;
 import br.com.cesarschool.domain.repository.discipline.FindDisciplineRepository;
 import br.com.cesarschool.infrastructure.persistence.entity.DisciplineJpaEntity;

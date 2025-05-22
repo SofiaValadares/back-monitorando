@@ -1,11 +1,1 @@
 br\com\cesarschool\application\Main.class
-br\com\cesarschool\application\port\user\FindUserPort.class
-br\com\cesarschool\application\port\question\QuestionChatPort.class
-br\com\cesarschool\application\port\user\FindMonitorPort.class
-br\com\cesarschool\application\port\user\FindStudentPort.class
-br\com\cesarschool\application\port\user\LoginUserPort.class
-br\com\cesarschool\application\port\question\FindQuestionPort.class
-br\com\cesarschool\application\port\user\RegisterUserPort.class
-br\com\cesarschool\application\port\user\PromoteUserToStudentPort.class
-br\com\cesarschool\application\port\discipline\FindDisciplinePort.class
-br\com\cesarschool\application\port\question\QuestionToMonitorPort.class

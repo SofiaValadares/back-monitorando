@@ -1,113 +1,50 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocationa="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
+    <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>br.com.cesarschool</groupId>
         <artifactId>monitorando</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <groupId>br.com.cesarschool</groupId>
     <artifactId>bdd</artifactId>
-    <version>1.0.0</version>
-    <packaging>jar</packaging>
-
-    <name>Módulo de Testes BDD</name>
-    <description>Modulo de testes com Cucumber, Builders e arquitetura de testes organizados</description>
 
     <dependencies>
         <dependency>
-            <groupId>br.com.cesarschool.domain</groupId>
+            <groupId>br.com.cesarschool</groupId>
             <artifactId>domain</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
-
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>7.14.0</version>
         </dependency>
-
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit-platform-engine</artifactId>
             <version>7.14.0</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- Suporte para testes com JUnit -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>5.9.3</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-suite-api</artifactId>
+            <artifactId>junit-platform-suite</artifactId>
             <version>1.9.3</version>
             <scope>test</scope>
         </dependency>
 
-        <!-- Biblioteca AssertJ para asserções mais legíveis -->
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.24.2</version>
-        </dependency>
-
-        <!-- Lombok para simplificar criação de Builders e classes -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope> <!-- Disponível apenas em tempo de desenvolvimento -->
-            <version>1.18.28</version>
-        </dependency>
-
-        <!-- Log4j para logs em tempo de execução dos testes -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>2.20.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.20.0</version>
-        </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <!-- Plugin do Cucumber para execução dos testes -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <includes>
-                        <include>**/runners/RunCucumberTest.java</include>
-                    </includes>
-                </configuration>
-            </plugin>
-
-            <!-- Plugin do Lombok para processar anotações no tempo de build -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
-                <configuration>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>1.18.28</version>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

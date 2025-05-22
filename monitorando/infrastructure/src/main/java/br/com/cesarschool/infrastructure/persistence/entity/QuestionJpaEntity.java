@@ -1,6 +1,5 @@
 package br.com.cesarschool.infrastructure.persistence.entity;
 
-import br.com.cesarschool.domain.entity.QuestionChatEntity;
 import br.com.cesarschool.domain.entity.enums.QuestionStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
