@@ -8,18 +8,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="presentation" />
+        <module name="bdd" />
         <module name="application" />
         <module name="infrastructure" />
         <module name="domain" />
-      </profile>
-      <profile name="Annotation profile for monitorando" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.28/lombok-1.18.28.jar" />
-        </processorPath>
-        <module name="bdd" />
       </profile>
     </annotationProcessing>
   </component>

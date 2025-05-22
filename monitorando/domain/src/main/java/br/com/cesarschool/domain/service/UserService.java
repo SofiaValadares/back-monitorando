@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
+
 public class UserService {
 
     private final RegisterUserRepository registerUserRepository;
@@ -20,6 +20,12 @@ public class UserService {
     private final FindUserRepository<UserEntity> findUserRepository;
     private final LoginUserRepository<UserEntity> loginUserRepository;
 
+    public UserService(RegisterUserRepository registerUserRepository, PromoteUserToStudentRepository promoteUserToStudentRepository, FindUserRepository<UserEntity> findUserRepository, LoginUserRepository<UserEntity> loginUserRepository) {
+        this.registerUserRepository = registerUserRepository;
+        this.promoteUserToStudentRepository = promoteUserToStudentRepository;
+        this.findUserRepository = findUserRepository;
+        this.loginUserRepository = loginUserRepository;
+    }
 
     public void register(String name, String surname, String email, String password, String role) {
         Optional<UserEntity> userOptional = findUserRepository.findByEmail(email);

@@ -1,13 +1,10 @@
 package br.com.cesarschool.domain.entity;
 
 import br.com.cesarschool.domain.entity.enums.UserRole;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+
 import java.util.List;
 
-@Getter
-public class StudentEntity extends UserEntity{
+public class StudentEntity extends UserEntity {
     private List<DisciplineEntity> disciplines;
 
     public StudentEntity(Long id, String name, String surname, String email, String password, UserRole role, List<DisciplineEntity> disciplines) {
@@ -19,4 +16,9 @@ public class StudentEntity extends UserEntity{
         super(user.getId(), user.getName(), user.getSurname(), user.getEmail(), user.getPassword(), user.getRole());
         this.disciplines = disciplines;
     }
+
+    public List<DisciplineEntity> getDisciplines() {
+        return disciplines;
+    }
+
 }

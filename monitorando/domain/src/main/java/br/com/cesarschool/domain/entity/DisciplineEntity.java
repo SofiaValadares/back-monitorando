@@ -1,11 +1,9 @@
 package br.com.cesarschool.domain.entity;
 
-import lombok.Getter;
-
 import java.util.List;
 import java.util.Optional;
 
-@Getter
+
 public class DisciplineEntity {
     private final Long id;
     private final String name;
@@ -47,5 +45,25 @@ public class DisciplineEntity {
         }
 
         return Optional.empty();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public List<StudentEntity> getStudents() {
+        return students;
+    }
+
+    public List<MonitorEntity> getMonitors() {
+        return monitors;
     }
 }

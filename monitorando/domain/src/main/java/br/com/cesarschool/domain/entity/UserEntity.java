@@ -1,12 +1,9 @@
 package br.com.cesarschool.domain.entity;
 
 import br.com.cesarschool.domain.entity.enums.UserRole;
-import lombok.Getter;
 
-import java.util.Objects;
 import java.util.regex.Pattern;
 
-@Getter
 public class UserEntity {
     private final Long id;
     private final String name;
@@ -62,4 +59,27 @@ public class UserEntity {
         }
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
 }

@@ -4,7 +4,6 @@ import br.com.cesarschool.domain.entity.enums.QuestionStatus;
 import lombok.Getter;
 
 
-@Getter
 public class QuestionEntity {
     private Long id;
     private String question;
@@ -48,4 +47,31 @@ public class QuestionEntity {
         this.monitor = monitor;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public StudentEntity getStudent() {
+        return student;
+    }
+
+    public DisciplineEntity getDiscipline() {
+        return discipline;
+    }
+
+    public Boolean getPublic() {
+        return isPublic;
+    }
+
+    public QuestionStatus getStatus() {
+        return status;
+    }
+
+    public MonitorEntity getMonitor() {
+        return monitor;
+    }
 }

@@ -5,7 +5,7 @@ import lombok.Getter;
 
 import java.time.LocalTime;
 
-@Getter
+
 public class AvailableTimeEntity {
 
     private final Long id;
@@ -33,4 +33,19 @@ public class AvailableTimeEntity {
         this.endTime = endTime;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public WeekDay getWeekDay() {
+        return weekDay;
+    }
+
+    public LocalTime getStartTime() {
+        return startTime;
+    }
+
+    public LocalTime getEndTime() {
+        return endTime;
+    }
 }

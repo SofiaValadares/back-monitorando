@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
+
 public class QuestionService {
 
     private final FindQuestionRepository<QuestionEntity> findQuestionRepository;
@@ -21,6 +21,14 @@ public class QuestionService {
     private final FindMonitorRepository<MonitorEntity> findMonitorRepository;
     private final FindDisciplineRepository<DisciplineEntity> findDisciplineRepository;
 
+    public QuestionService(FindQuestionRepository<QuestionEntity> findQuestionRepository, QuestionToMonitorRepository questionToMonitorRepository, QuestionChatRepository questionChatRepository, FindStudentRepository<StudentEntity> findStudentRepository, FindMonitorRepository<MonitorEntity> findMonitorRepository, FindDisciplineRepository<DisciplineEntity> findDisciplineRepository) {
+        this.findQuestionRepository = findQuestionRepository;
+        this.questionToMonitorRepository = questionToMonitorRepository;
+        this.questionChatRepository = questionChatRepository;
+        this.findStudentRepository = findStudentRepository;
+        this.findMonitorRepository = findMonitorRepository;
+        this.findDisciplineRepository = findDisciplineRepository;
+    }
 
     public void makeQuestionToMonitor(Long studentId, String question, Long disciplineId, Long monitorId) {
         StudentEntity student = findStudentRepository.findById(studentId)
@@ -53,7 +61,7 @@ public class QuestionService {
         UserEntity user = discipline.findUserInDiscipline(userId)
             .orElseThrow(() -> new IllegalArgumentException("Usuario com ID " + userId + " não esta listado na disciplina"));
 
-        if (!question.getIsPublic()) {
+        if (!question.getPublic()) {
             if (user instanceof StudentEntity && user != student) {
                 throw new IllegalArgumentException("Pergunta privada, o usuario com ID " + userId + " não tem acesso a ela");
             }

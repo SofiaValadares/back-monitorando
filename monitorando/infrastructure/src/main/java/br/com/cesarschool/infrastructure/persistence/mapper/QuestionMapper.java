@@ -29,7 +29,7 @@ public class QuestionMapper {
             domain.getQuestion(),
             StudentMapper.toJpa(domain.getStudent()),
             DisciplineMapper.toJpa(domain.getDiscipline()),
-            domain.getIsPublic(),
+            domain.getPublic(),
             domain.getMonitor() != null ? MonitorMapper.toJpa(domain.getMonitor()) : null,
             domain.getStatus(),
             List.of()

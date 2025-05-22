@@ -34,4 +34,9 @@ public class AvailableTimeJpaEntity {
     @ManyToOne
     @JoinColumn(name = "monitor_schedule_id")
     private MonitorJpaEntity monitorForSchedule;
+
+    public void setMonitorForSchedule(MonitorJpaEntity monitor) {
+        this.monitorForSchedule = monitor;
+    }
+
 }

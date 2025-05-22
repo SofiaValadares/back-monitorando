@@ -5,7 +5,7 @@ import lombok.Getter;
 
 import java.util.List;
 
-@Getter
+
 public class MonitorEntity extends StudentEntity {
     private final List<AvailableTimeEntity> availableTimes;
     private final DisciplineEntity disciplineMonitor;
@@ -31,4 +31,11 @@ public class MonitorEntity extends StudentEntity {
         this.disciplineMonitor = disciplineMonitor;
     }
 
+    public List<AvailableTimeEntity> getAvailableTimes() {
+        return availableTimes;
+    }
+
+    public DisciplineEntity getDisciplineMonitor() {
+        return disciplineMonitor;
+    }
 }
