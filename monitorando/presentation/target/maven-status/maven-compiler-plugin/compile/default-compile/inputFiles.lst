@@ -1,7 +1,10 @@
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\controller\AvailableTimeController.java
 C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\controller\QuestionController.java
 C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\controller\UserController.java
 C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\question\QuestionChatRequestDTO.java
 C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\question\QuestionRequestDTO.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\AvailableTimeRequestDTO.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\AvailableTimeResponseDTO.java
 C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\UserLoginRequest.java
 C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\UserLoginResponse.java
 C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\UserRegisterRequest.java
