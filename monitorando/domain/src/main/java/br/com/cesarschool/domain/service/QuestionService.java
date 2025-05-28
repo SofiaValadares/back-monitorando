@@ -7,7 +7,6 @@ import br.com.cesarschool.domain.repository.question.QuestionChatRepository;
 import br.com.cesarschool.domain.repository.question.QuestionToMonitorRepository;
 import br.com.cesarschool.domain.repository.user.FindMonitorRepository;
 import br.com.cesarschool.domain.repository.user.FindStudentRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service

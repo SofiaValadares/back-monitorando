@@ -6,7 +6,6 @@ import br.com.cesarschool.domain.repository.user.PromoteUserToStudentRepository;
 import br.com.cesarschool.domain.repository.user.RegisterUserRepository;
 import br.com.cesarschool.domain.entity.UserEntity;
 import br.com.cesarschool.domain.exception.EmailAlreadyInUseException;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

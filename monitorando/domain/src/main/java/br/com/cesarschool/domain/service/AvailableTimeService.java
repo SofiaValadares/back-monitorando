@@ -3,7 +3,6 @@ package br.com.cesarschool.domain.service;
 import br.com.cesarschool.domain.repository.user.AvaliableTimeRepository ;
 import br.com.cesarschool.domain.entity.AvailableTimeEntity;
 import br.com.cesarschool.domain.entity.MonitorEntity;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
