@@ -1,7 +1,6 @@
 package br.com.cesarschool.domain.entity;
 
 import br.com.cesarschool.domain.entity.enums.WeekDay;
-import lombok.Getter;
 
 import java.time.LocalTime;
 

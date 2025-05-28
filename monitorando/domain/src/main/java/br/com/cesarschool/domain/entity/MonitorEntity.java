@@ -1,7 +1,6 @@
 package br.com.cesarschool.domain.entity;
 
 import br.com.cesarschool.domain.entity.enums.UserRole;
-import lombok.Getter;
 
 import java.util.List;
 
@@ -17,11 +16,11 @@ public class MonitorEntity extends StudentEntity {
             String email,
             String password,
             UserRole role,
-            List<DisciplineEntity> disciplines,
+            List<Long> disciplinesIds,
             List<AvailableTimeEntity> availableTimes,
             DisciplineEntity disciplineMonitor
     ) {
-        super(id, name, surname, email, password, role, disciplines);
+        super(id, name, surname, email, password, role, disciplinesIds);
 
         if (disciplineMonitor == null) {
             throw new IllegalArgumentException("Monitor deve estar associado a uma disciplina.");

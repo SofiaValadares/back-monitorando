@@ -1,11 +1,9 @@
 package br.com.cesarschool.domain.entity;
 
-import lombok.Getter;
-
 import java.time.LocalTime;
 import java.util.Date;
 
-@Getter
+
 public class AssistsEntity {
     private final StudentEntity student;
     private final MonitorEntity monitor;
@@ -40,4 +38,23 @@ public class AssistsEntity {
         this.endTime = endTime;
     }
 
+    public StudentEntity getStudent() {
+        return student;
+    }
+
+    public MonitorEntity getMonitor() {
+        return monitor;
+    }
+
+    public Date getDay() {
+        return day;
+    }
+
+    public LocalTime getStartTime() {
+        return startTime;
+    }
+
+    public LocalTime getEndTime() {
+        return endTime;
+    }
 }

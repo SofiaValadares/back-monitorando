@@ -1,5 +1,6 @@
 package br.com.cesarschool.infrastructure.persistence.mapper;
 
+import br.com.cesarschool.domain.entity.DisciplineEntity;
 import br.com.cesarschool.domain.entity.StudentEntity;
 import br.com.cesarschool.infrastructure.persistence.entity.StudentJpaEntity;
 import br.com.cesarschool.infrastructure.persistence.entity.UserJpaEntity;
@@ -21,18 +22,24 @@ public class StudentMapper {
 
 
     public static StudentEntity toDomain(StudentJpaEntity jpa) {
-        return new StudentEntity(
+        List<DisciplineEntity> disciplineEntities = jpa.getDisciplines() != null
+                ? jpa.getDisciplines().stream()
+                .map(DisciplineMapper::toDomain)
+                .collect(Collectors.toList())
+                : List.of();
+
+        List<Long> disciplineIds = disciplineEntities.stream()
+                .map(DisciplineEntity::getId)
+                .collect(Collectors.toList());
+
+    return new StudentEntity(
                 jpa.getId(),
                 jpa.getUser().getName(),
                 jpa.getUser().getSurname(),
                 jpa.getUser().getEmail(),
                 jpa.getUser().getPassword(),
                 jpa.getUser().getRole(),
-                jpa.getDisciplines() != null
-                        ? jpa.getDisciplines().stream()
-                        .map(DisciplineMapper::toDomain)
-                        .collect(Collectors.toList())
-                        : List.of()
+                disciplineIds
         );
     }
 }

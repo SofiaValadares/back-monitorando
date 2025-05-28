@@ -1,8 +1,5 @@
 package br.com.cesarschool.domain.entity;
 
-import lombok.Getter;
-
-@Getter
 public class QuestionChatEntity {
     private Long id;
     private QuestionEntity question;
@@ -24,5 +21,21 @@ public class QuestionChatEntity {
         this.question = question;
         this.user = user;
         this.answer = answer;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public QuestionEntity getQuestion() {
+        return question;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public String getAnswer() {
+        return answer;
     }
 }

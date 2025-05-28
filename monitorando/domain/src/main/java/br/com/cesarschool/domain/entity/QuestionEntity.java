@@ -1,7 +1,6 @@
 package br.com.cesarschool.domain.entity;
 
 import br.com.cesarschool.domain.entity.enums.QuestionStatus;
-import lombok.Getter;
 
 
 public class QuestionEntity {
