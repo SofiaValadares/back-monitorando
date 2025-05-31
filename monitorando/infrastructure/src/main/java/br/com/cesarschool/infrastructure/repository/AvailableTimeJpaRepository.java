@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface AvailableTimeJpaRepository extends JpaRepository<AvailableTimeJpaEntity, Long> {
 
-    List<AvailableTimeJpaEntity> findByMonitorForScheduleId(Long monitorId);
+    List<AvailableTimeJpaEntity> findByMonitor_Id(Long monitorId);
 }

@@ -13,13 +13,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class AvailableTimeAdapter implements AvaliableTimeRepository{
+public class AvailableTimeAdapter implements AvaliableTimeRepository {
 
     private final AvailableTimeJpaRepository availableTimeJpaRepository;
     private final MonitorJpaRepository monitorJpaRepository;
 
     public AvailableTimeAdapter(AvailableTimeJpaRepository availableTimeJpaRepository,
-                                MonitorJpaRepository monitorJpaRepository) {
+                                 MonitorJpaRepository monitorJpaRepository) {
         this.availableTimeJpaRepository = availableTimeJpaRepository;
         this.monitorJpaRepository = monitorJpaRepository;
     }
@@ -29,10 +29,9 @@ public class AvailableTimeAdapter implements AvaliableTimeRepository{
         MonitorJpaEntity monitor = monitorJpaRepository.findById(monitorId)
                 .orElseThrow(() -> new RuntimeException("Monitor não encontrado com ID: " + monitorId));
 
-        AvailableTimeJpaEntity jpa = AvailableTimeMapper.toJpa(availableTime);
-        jpa.setMonitorForSchedule(monitor); // relação de monitor → horário disponível
-
+        AvailableTimeJpaEntity jpa = AvailableTimeMapper.toJpa(availableTime, monitor);
         AvailableTimeJpaEntity saved = availableTimeJpaRepository.save(jpa);
+
         return AvailableTimeMapper.toDomain(saved);
     }
 
@@ -43,7 +42,7 @@ public class AvailableTimeAdapter implements AvaliableTimeRepository{
 
     @Override
     public List<AvailableTimeEntity> findByMonitorId(Long monitorId) {
-        List<AvailableTimeJpaEntity> horarios = availableTimeJpaRepository.findByMonitorForScheduleId(monitorId);
+        List<AvailableTimeJpaEntity> horarios = availableTimeJpaRepository.findByMonitor_Id(monitorId);
         return horarios.stream()
                 .map(AvailableTimeMapper::toDomain)
                 .collect(Collectors.toList());

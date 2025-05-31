@@ -1,11 +1,2 @@
-steps\EnviarDuvidaSteps.class
-steps\director\StudentDirector.class
-steps\director\MonitorDirector.class
-steps\interfaces\QuestionBuilder.class
 runner\RunCucumberTest.class
-steps\director\QuestionDirector.class
-steps\interfaces\StudentBuilder.class
-steps\builders\BasicMonitorBuilder.class
-steps\builders\BasicQuestionBuilder.class
-steps\builders\BasicStudentBuilder.class
-steps\interfaces\MonitorBuilder.class
+steps\EnviarDuvidaSteps.class

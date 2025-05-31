@@ -2,47 +2,26 @@ package br.com.cesarschool.infrastructure.persistence.mapper;
 
 import br.com.cesarschool.domain.entity.AvailableTimeEntity;
 import br.com.cesarschool.infrastructure.persistence.entity.AvailableTimeJpaEntity;
-
-import java.util.List;
-import java.util.stream.Collectors;
+import br.com.cesarschool.infrastructure.persistence.entity.MonitorJpaEntity;
 
 public class AvailableTimeMapper {
 
-    public static AvailableTimeEntity toDomain(AvailableTimeJpaEntity jpa) {
-        if (jpa == null) return null;
-
-        return new AvailableTimeEntity(
-                jpa.getId(),
-                jpa.getDayOfWeek(),
-                jpa.getStartTime(),
-                jpa.getEndTime()
-        );
-    }
-
-    public static AvailableTimeJpaEntity toJpa(AvailableTimeEntity entity) {
-        if (entity == null) return null;
-
+    public static AvailableTimeJpaEntity toJpa(AvailableTimeEntity entity, MonitorJpaEntity monitor) {
         return new AvailableTimeJpaEntity(
-                entity.getId(),
-                entity.getWeekDay(),
-                entity.getStartTime(),
-                entity.getEndTime(),
-                null, // monitorForAttendance será setado externamente, se necessário
-                null  // monitorForSchedule também
+            entity.getId(),
+            entity.getWeekDay(),
+            entity.getStartTime(),
+            entity.getEndTime(),
+            monitor
         );
     }
 
-    public static List<AvailableTimeEntity> toEntityList(List<AvailableTimeJpaEntity> jpaList) {
-        if (jpaList == null) return null;
-        return jpaList.stream()
-                .map(AvailableTimeMapper::toDomain)
-                .collect(Collectors.toList());
-    }
-
-    public static List<AvailableTimeJpaEntity> toJpaList(List<AvailableTimeEntity> entityList) {
-        if (entityList == null) return null;
-        return entityList.stream()
-                .map(AvailableTimeMapper::toJpa)
-                .collect(Collectors.toList());
+    public static AvailableTimeEntity toDomain(AvailableTimeJpaEntity jpaEntity) {
+        return new AvailableTimeEntity(
+            jpaEntity.getId(),
+            jpaEntity.getWeekDay(),
+            jpaEntity.getStartTime(),
+            jpaEntity.getEndTime()
+        );
     }
 }

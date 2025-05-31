@@ -1,6 +1,7 @@
 package br.com.cesarschool.domain.service;
 
 import br.com.cesarschool.domain.repository.user.AvaliableTimeRepository ;
+import br.com.cesarschool.domain.repository.user.FindMonitorRepository;
 import br.com.cesarschool.domain.entity.AvailableTimeEntity;
 import br.com.cesarschool.domain.entity.MonitorEntity;
 import org.springframework.stereotype.Service;
@@ -14,11 +15,18 @@ public class AvailableTimeService {
 
     private final AvaliableTimeRepository availableTimeRepository;
     private final NotificationService notificationService;
+    private final FindMonitorRepository<MonitorEntity> findMonitorRepository;
+    
 
-    public AvailableTimeService(AvaliableTimeRepository availableTimeRepository, NotificationService notificationService) {
-        this.availableTimeRepository = availableTimeRepository;
-        this.notificationService = notificationService;
-    }
+    public AvailableTimeService(
+    	    AvaliableTimeRepository availableTimeRepository,
+    	    NotificationService notificationService,
+    	    FindMonitorRepository<MonitorEntity> findMonitorRepository
+    	) {
+    	    this.availableTimeRepository = availableTimeRepository;
+    	    this.notificationService = notificationService;
+    	    this.findMonitorRepository = findMonitorRepository;
+    	}
 
     public AvailableTimeEntity defineAvailableTime(AvailableTimeEntity newTime, Long monitorId) {
         // Validações de horário
@@ -63,14 +71,9 @@ public class AvailableTimeService {
 
         // Recupera a lista atualizada de horários e o monitor para notificação
         List<AvailableTimeEntity> horariosAtualizados = availableTimeRepository.findByMonitorId(monitorId);
-        MonitorEntity monitor = existingTimes.isEmpty() ? null : ((MonitorEntity) null); // <-- você precisará obter o monitor
 
-        // Aqui você precisa recuperar o MonitorEntity completo
-        // Dependendo da arquitetura, você pode ter um FindMonitorPort ou outro meio de acessar isso
-
-        if (monitor != null) {
-            notificationService.notifyStudentsOfUpdatedSchedule(monitor, horariosAtualizados);
-        }
+        findMonitorRepository.findById(monitorId)
+            .ifPresent(monitor -> notificationService.notifyStudentsOfUpdatedSchedule(monitor, horariosAtualizados));
 
         return saved;
     }
