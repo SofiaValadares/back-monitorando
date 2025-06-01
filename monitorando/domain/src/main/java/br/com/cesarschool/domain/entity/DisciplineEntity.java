@@ -8,8 +8,8 @@ public class DisciplineEntity {
     private final Long id;
     private final String name;
     private final String code;
-    private final List<StudentEntity> students;
-    private final List<MonitorEntity> monitors;
+    private List<Long> studentsIds = List.of();
+    private List<Long> monitorsIds = List.of();
 
     public DisciplineEntity(Long id, String name, String code, List<StudentEntity> students, List<MonitorEntity> monitors) {
         if (name == null || name.isBlank()) {
@@ -22,29 +22,6 @@ public class DisciplineEntity {
         this.id = id;
         this.name = name;
         this.code = code;
-        this.students = students;
-        this.monitors = monitors;
-    }
-
-
-    public Optional<UserEntity> findUserInDiscipline(Long userId) {
-        if (students != null) {
-            for (StudentEntity student : students) {
-                if (student.getId().equals(userId)) {
-                    return Optional.of(student);
-                }
-            }
-        }
-
-        if (monitors != null) {
-            for (MonitorEntity monitor : monitors) {
-                if (monitor.getId().equals(userId)) {
-                    return Optional.of(monitor);
-                }
-            }
-        }
-
-        return Optional.empty();
     }
 
     public Long getId() {
@@ -59,11 +36,15 @@ public class DisciplineEntity {
         return code;
     }
 
-    public List<StudentEntity> getStudents() {
-        return students;
-    }
+    public List<Long> getStudentsIds() { return studentsIds; }
 
-    public List<MonitorEntity> getMonitors() {
-        return monitors;
-    }
+    public void addStudentId(Long studentId){ studentsIds.add(studentId); }
+
+    public void removeStudentId(Long studentId) { studentsIds.remove(studentId); }
+
+    public List<Long> getMonitorsIds() { return  monitorsIds; }
+
+    public void addMonitorId(Long monitorId) { monitorsIds.add(monitorId); }
+
+    public void removeMonitorId(Long monitorId) { monitorsIds.remove(monitorId); }
 }

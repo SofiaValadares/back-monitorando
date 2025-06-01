@@ -54,21 +54,21 @@ public class QuestionService {
         QuestionEntity question = findQuestionRepository.findById(questionId)
                 .orElseThrow(() -> new IllegalArgumentException("Pergunta não encontrada com ID: " + questionId));
 
-        StudentEntity student = question.getStudent();
         DisciplineEntity discipline = question.getDiscipline();
 
-        UserEntity user = discipline.findUserInDiscipline(userId)
-            .orElseThrow(() -> new IllegalArgumentException("Usuario com ID " + userId + " não esta listado na disciplina"));
+        if (!(discipline.getStudentsIds().contains(userId) || discipline.getMonitors().contains(userId))) {
+            throw new IllegalArgumentException("Usuario " + userId + " não esta lsitado na disciplina");
+        }
 
         if (!question.getPublic()) {
-            if (user instanceof StudentEntity && user != student) {
+            if (question.getStudent().getId() == userId) {
                 throw new IllegalArgumentException("Pergunta privada, o usuario com ID " + userId + " não tem acesso a ela");
             }
 
             if (question.getMonitor() != null) {
                 MonitorEntity monitor = question.getMonitor();
 
-                if (user instanceof MonitorEntity && user != monitor) {
+                if (monitor.getId() == userId) {
                     throw new IllegalArgumentException("Pergunta privada, o usuario com ID " + userId + " não tem acesso a ela");
                 }
             }
