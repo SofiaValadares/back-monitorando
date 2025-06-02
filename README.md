@@ -26,7 +26,7 @@ No desenvolvimento do nosso projeto, utilizamos os seguintes padrões de projeto
       
   </dt>
 
-  <tr>- Dentro de um terminal do Backend, rode:
+  <tr>- Dentro de um terminal do Backend, rode para subir o banco de dados:
   <dt>
 
       cd ./monitorando
@@ -34,8 +34,12 @@ No desenvolvimento do nosso projeto, utilizamos os seguintes padrões de projeto
       
   </dt>
 
-  <tr>- O backend já esta rodando dentro da porta 8080.<br>
-  Obs: Certifique-se que não haja conflito de volumes ou contêineres. O nosso banco PostgreSQL roda na porta 5432.
+  <tr>- Caso queira apagar o banco de dados rode:
+  <dt>
+
+       docker compose -v down
+      
+  </dt>
 
   <tr>- Para desfazer os conteiners do docker rode:
   <dt>
@@ -43,6 +47,23 @@ No desenvolvimento do nosso projeto, utilizamos os seguintes padrões de projeto
        docker compose -v down
       
   </dt>
+
+  <tr>- Para compilar o projeto rode:
+  <dt>
+
+       mvn clean package
+      
+  </dt>  
+
+  <tr>- Por fim para rodar o projeto, use o comando:
+  <dt>
+
+       mvn spring-boot:run
+      
+  </dt>  
+
+  <tr>- O backend já esta rodando dentro da porta 8080.<br>
+  Obs: Certifique-se que não haja conflito de volumes ou contêineres. O nosso banco PostgreSQL roda na porta 5432.
   
 </table>
 
