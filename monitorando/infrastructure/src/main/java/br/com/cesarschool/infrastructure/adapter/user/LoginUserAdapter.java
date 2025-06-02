@@ -27,6 +27,9 @@ public class LoginUserAdapter implements LoginUserRepository<UserEntity> {
             throw new LoginIncorrectException();
         }
 
+        userJPA.setActive(true);
+        userRepository.save(userJPA);
+
         return user;
     }
 
@@ -48,6 +51,8 @@ public class LoginUserAdapter implements LoginUserRepository<UserEntity> {
         if (userJPA == null) {
             throw new LoginIncorrectException();
         }
+
+        userJPA.setActive(false);
 
         userRepository.save(userJPA);
     }

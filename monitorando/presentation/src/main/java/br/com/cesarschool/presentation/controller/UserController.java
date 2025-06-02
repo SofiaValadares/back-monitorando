@@ -33,18 +33,26 @@ public class UserController {
                 user.getRole()
         );
 
+
+
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/section")
-    public ResponseEntity<UserSectionResponse> section(@RequestBody UserSectionRequest request) {
-        Boolean section = userService.getUserAutenticado(request.getId());
+    public ResponseEntity<UserSectionResponse> section(@RequestParam Long id) {
+        Boolean section = userService.getUserAutenticado(id);
 
         UserSectionResponse response = new UserSectionResponse(
                 section
         );
 
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<UserLogoutResponse> logout(@RequestBody UserLogoutRequest request) {
+        userService.logout(request.id());
+        return ResponseEntity.ok(new UserLogoutResponse("Logout com sucesso!"));
     }
 
 }

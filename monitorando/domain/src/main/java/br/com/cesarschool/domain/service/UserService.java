@@ -42,7 +42,11 @@ public class UserService {
     }
 
     public UserEntity login(String email, String password) {
-        return loginUserRepository.loginUser(email, password);
+        UserEntity user = loginUserRepository.loginUser(email, password);
+
+        user.setActive(true);
+
+        return user;
     }
 
     public Boolean getUserAutenticado(Long id) {
