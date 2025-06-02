@@ -2,10 +2,7 @@ package br.com.cesarschool.presentation.controller;
 
 import br.com.cesarschool.domain.entity.UserEntity;
 import br.com.cesarschool.domain.service.UserService;
-import br.com.cesarschool.presentation.dto.user.UserLoginRequest;
-import br.com.cesarschool.presentation.dto.user.UserLoginResponse;
-import br.com.cesarschool.presentation.dto.user.UserRegisterRequest;
-import br.com.cesarschool.presentation.dto.user.UserRegisterResponse;
+import br.com.cesarschool.presentation.dto.user.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,6 +34,16 @@ public class UserController {
                 user.getSurname(),
                 user.getEmail(),
                 user.getRole()
+        );
+
+        return ResponseEntity.ok(response);
+    }
+
+    public ResponseEntity<UserSectionResponse> section(@RequestBody UserSectionRequest request) {
+        Boolean section = userService.getUserAutenticado(request.getId());
+
+        UserSectionResponse response = new UserSectionResponse(
+                section
         );
 
         return ResponseEntity.ok(response);
