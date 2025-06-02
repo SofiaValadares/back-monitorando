@@ -6,14 +6,15 @@ import br.com.cesarschool.domain.repository.user.LoginUserRepository;
 import br.com.cesarschool.infrastructure.persistence.entity.UserJpaEntity;
 import br.com.cesarschool.infrastructure.persistence.mapper.UserEntityMapper;
 import br.com.cesarschool.infrastructure.repository.UserJpaRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
 public class LoginUserAdapter implements LoginUserRepository<UserEntity> {
-
     private final UserJpaRepository userRepository;
+
+    public LoginUserAdapter(UserJpaRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public UserEntity loginUser(String email, String password) {

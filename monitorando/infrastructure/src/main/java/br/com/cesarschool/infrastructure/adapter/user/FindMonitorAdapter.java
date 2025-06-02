@@ -6,15 +6,17 @@ import br.com.cesarschool.domain.repository.user.FindMonitorRepository;
 import br.com.cesarschool.infrastructure.persistence.entity.MonitorJpaEntity;
 import br.com.cesarschool.infrastructure.persistence.mapper.MonitorMapper;
 import br.com.cesarschool.infrastructure.repository.MonitorJpaRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
 @Component
-@RequiredArgsConstructor
 public class FindMonitorAdapter implements FindMonitorRepository<MonitorEntity> {
-    MonitorJpaRepository monitorJpaRepository;
+    private final MonitorJpaRepository monitorJpaRepository;
+
+    public FindMonitorAdapter(MonitorJpaRepository monitorJpaRepository) {
+        this.monitorJpaRepository = monitorJpaRepository;
+    }
 
     @Override
     public Optional<MonitorEntity> findById(Long id) {

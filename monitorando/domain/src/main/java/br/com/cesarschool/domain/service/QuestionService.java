@@ -40,10 +40,7 @@ public class QuestionService {
         DisciplineEntity discipline = findDisciplineRepository.findById(disciplineId)
                 .orElseThrow(() -> new IllegalArgumentException("Disciplina não encontrada com ID: " + disciplineId));
 
-        MonitorEntity monitor = findMonitorRepository.findById(monitorId)
-                .orElseThrow(() -> new IllegalArgumentException("Monitor não encontrada com ID: " + monitorId));
-
-        if (!discipline.getMonitors().contains(monitor)) {
+        if (!discipline.getMonitorsIds().contains(monitorId)) {
             throw new IllegalArgumentException("Monitor com ID " + monitorId +" não pertertence a disciplina com ID " + disciplineId);
         }
 
@@ -54,21 +51,22 @@ public class QuestionService {
         QuestionEntity question = findQuestionRepository.findById(questionId)
                 .orElseThrow(() -> new IllegalArgumentException("Pergunta não encontrada com ID: " + questionId));
 
-        DisciplineEntity discipline = question.getDiscipline();
+        DisciplineEntity discipline = findDisciplineRepository.findById(question.getDisciplineId())
+                .orElseThrow(() -> new IllegalArgumentException("Disciplina não encontrada com ID: " + question.getDisciplineId()));
 
-        if (!(discipline.getStudentsIds().contains(userId) || discipline.getMonitors().contains(userId))) {
+        if (!(discipline.getStudentsIds().contains(userId) || discipline.getMonitorsIds().contains(userId))) {
             throw new IllegalArgumentException("Usuario " + userId + " não esta lsitado na disciplina");
         }
 
         if (!question.getPublic()) {
-            if (question.getStudent().getId() == userId) {
+            if (question.getStudentId() == userId) {
                 throw new IllegalArgumentException("Pergunta privada, o usuario com ID " + userId + " não tem acesso a ela");
             }
 
-            if (question.getMonitor() != null) {
-                MonitorEntity monitor = question.getMonitor();
+            if (question.getMonitorId() != null) {
+                Long monitor = question.getMonitorId();
 
-                if (monitor.getId() == userId) {
+                if (monitor == userId) {
                     throw new IllegalArgumentException("Pergunta privada, o usuario com ID " + userId + " não tem acesso a ela");
                 }
             }

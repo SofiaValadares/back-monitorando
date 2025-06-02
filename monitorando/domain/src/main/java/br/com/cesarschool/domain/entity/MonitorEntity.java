@@ -2,12 +2,13 @@ package br.com.cesarschool.domain.entity;
 
 import br.com.cesarschool.domain.entity.enums.UserRole;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class MonitorEntity extends StudentEntity {
-    private final List<AvailableTimeEntity> availableTimes;
-    private final DisciplineEntity disciplineMonitor;
+    private Long disciplineId;
+    private List<Long> availableTimesIds = List.of();
 
     public MonitorEntity(
             Long id,
@@ -17,24 +18,28 @@ public class MonitorEntity extends StudentEntity {
             String password,
             UserRole role,
             List<Long> disciplinesIds,
-            List<AvailableTimeEntity> availableTimes,
-            DisciplineEntity disciplineMonitor
+            Long disciplineId,
+            List<Long> availableTimesIds
     ) {
         super(id, name, surname, email, password, role, disciplinesIds);
 
-        if (disciplineMonitor == null) {
+        if (disciplineId == null) {
             throw new IllegalArgumentException("Monitor deve estar associado a uma disciplina.");
         }
 
-        this.availableTimes = availableTimes;
-        this.disciplineMonitor = disciplineMonitor;
+        this.disciplineId = disciplineId;
+
+        if (availableTimesIds != null) {
+            this.availableTimesIds = availableTimesIds;
+        }
     }
 
-    public List<AvailableTimeEntity> getAvailableTimes() {
-        return availableTimes;
-    }
+    public Long getDisciplineId() { return disciplineId; }
 
-    public DisciplineEntity getDisciplineMonitor() {
-        return disciplineMonitor;
-    }
+    public List<Long> getAvailableTimesIds() { return availableTimesIds; }
+
+    public void addAvailableTimesId(Long timesId) { availableTimesIds.add(timesId); }
+
+    public void removeAvailableTimesId(Long timesId) { availableTimesIds.remove(timesId); }
+
 }

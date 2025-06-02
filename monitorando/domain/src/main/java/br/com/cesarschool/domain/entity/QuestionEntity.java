@@ -6,28 +6,28 @@ import br.com.cesarschool.domain.entity.enums.QuestionStatus;
 public class QuestionEntity {
     private Long id;
     private String question;
-    private StudentEntity student;
-    private DisciplineEntity discipline;
+    private Long studentId;
+    private Long disciplineId;
     private Boolean isPublic;
     private QuestionStatus status;
-    private MonitorEntity monitor;
+    private Long monitorId;
 
     public QuestionEntity(
             Long id,
             String question,
-            StudentEntity student,
-            DisciplineEntity discipline,
+            Long studentId,
+            Long disciplineId,
             Boolean isPublic,
             QuestionStatus status,
-            MonitorEntity monitor
+            Long monitorId
     ) {
         if (question == null || question.isBlank()) {
             throw new IllegalArgumentException("A pergunta não pode estar vazia.");
         }
-        if (student == null) {
+        if (studentId == null) {
             throw new IllegalArgumentException("Pergunta deve estar associada a um aluno.");
         }
-        if (discipline == null) {
+        if (disciplineId == null) {
             throw new IllegalArgumentException("Pergunta deve estar associada a uma disciplina.");
         }
         if (isPublic == null) {
@@ -39,11 +39,11 @@ public class QuestionEntity {
 
         this.id = id;
         this.question = question;
-        this.student = student;
-        this.discipline = discipline;
+        this.studentId = studentId;
+        this.disciplineId = disciplineId;
         this.isPublic = isPublic;
         this.status = status;
-        this.monitor = monitor;
+        this.monitorId = monitorId;
     }
 
     public Long getId() {
@@ -54,12 +54,12 @@ public class QuestionEntity {
         return question;
     }
 
-    public StudentEntity getStudent() {
-        return student;
+    public Long getStudentId() {
+        return studentId;
     }
 
-    public DisciplineEntity getDiscipline() {
-        return discipline;
+    public Long getDisciplineId() {
+        return disciplineId;
     }
 
     public Boolean getPublic() {
@@ -70,7 +70,7 @@ public class QuestionEntity {
         return status;
     }
 
-    public MonitorEntity getMonitor() {
-        return monitor;
+    public Long getMonitorId() {
+        return monitorId;
     }
 }

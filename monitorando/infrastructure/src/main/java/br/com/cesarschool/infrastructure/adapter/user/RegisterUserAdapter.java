@@ -7,16 +7,17 @@ import br.com.cesarschool.domain.repository.user.RegisterUserRepository;
 import br.com.cesarschool.infrastructure.persistence.entity.UserJpaEntity;
 import br.com.cesarschool.infrastructure.persistence.mapper.UserEntityMapper;
 import br.com.cesarschool.infrastructure.repository.UserJpaRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
 
 
 @Component
-@RequiredArgsConstructor
 public class RegisterUserAdapter implements RegisterUserRepository {
-
     private final UserJpaRepository userRepository;
+
+    public RegisterUserAdapter(UserJpaRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public void register(String name, String surname, String email, String password, String role) {

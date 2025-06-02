@@ -8,17 +8,22 @@ import br.com.cesarschool.infrastructure.persistence.entity.QuestionJpaEntity;
 import br.com.cesarschool.infrastructure.persistence.entity.StudentJpaEntity;
 import br.com.cesarschool.infrastructure.repository.*;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
 public class QuestionToMonitorAdapter implements QuestionToMonitorRepository {
 
     private final StudentJpaRepository studentRepository;
     private final DisciplineJpaRepository disciplineRepository;
     private final MonitorJpaRepository monitorRepository;
     private final QuestionJpaRepository questionRepository;
+
+    public QuestionToMonitorAdapter(StudentJpaRepository studentRepository, DisciplineJpaRepository disciplineRepository, MonitorJpaRepository monitorRepository, QuestionJpaRepository questionRepository) {
+        this.studentRepository = studentRepository;
+        this.disciplineRepository = disciplineRepository;
+        this.monitorRepository = monitorRepository;
+        this.questionRepository = questionRepository;
+    }
 
     @Override
     public void makeQuestionToMonitor(Long studentId, String questionText, Long disciplineId, Long monitorId) {
@@ -36,7 +41,7 @@ public class QuestionToMonitorAdapter implements QuestionToMonitorRepository {
         question.setDiscipline(discipline);
         question.setMonitor(monitor);
         question.setQuestion(questionText);
-        question.setIsPublic(false); // ou true, dependendo da lógica do seu sistema
+        question.setPublic(false); // ou true, dependendo da lógica do seu sistema
         question.setStatus(QuestionStatus.PENDING);
 
         questionRepository.save(question);

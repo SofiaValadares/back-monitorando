@@ -13,11 +13,11 @@ public class QuestionMapper {
         return new QuestionEntity(
             jpa.getId(),
             jpa.getQuestion(),
-            StudentMapper.toDomain(jpa.getStudent()),
-            DisciplineMapper.toDomain(jpa.getDiscipline()),
-            jpa.getIsPublic(),
+            jpa.getStudent().getId(),
+            jpa.getDiscipline().getId(),
+            jpa.getPublic(),
             jpa.getStatus(),
-            jpa.getMonitor() != null ? MonitorMapper.toDomain(jpa.getMonitor()) : null
+            jpa.getMonitor().getId()
         );
     }
 
@@ -27,10 +27,10 @@ public class QuestionMapper {
         return new QuestionJpaEntity(
             domain.getId(),
             domain.getQuestion(),
-            StudentMapper.toJpa(domain.getStudent()),
-            DisciplineMapper.toJpa(domain.getDiscipline()),
+            null,
+            null,
             domain.getPublic(),
-            domain.getMonitor() != null ? MonitorMapper.toJpa(domain.getMonitor()) : null,
+            null,
             domain.getStatus(),
             List.of()
         );

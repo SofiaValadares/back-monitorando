@@ -1,19 +1,9 @@
 package br.com.cesarschool.infrastructure.persistence.entity;
 
-import br.com.cesarschool.domain.entity.QuestionEntity;
-import br.com.cesarschool.domain.entity.UserEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "question_chat")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class QuestionChatJpaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,4 +18,46 @@ public class QuestionChatJpaEntity {
     private UserJpaEntity user;
 
     private String answer;
+
+    public QuestionChatJpaEntity() {
+    }
+
+    public QuestionChatJpaEntity(Long id, QuestionJpaEntity question, UserJpaEntity user, String answer) {
+        this.id = id;
+        this.question = question;
+        this.user = user;
+        this.answer = answer;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public QuestionJpaEntity getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(QuestionJpaEntity question) {
+        this.question = question;
+    }
+
+    public UserJpaEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserJpaEntity user) {
+        this.user = user;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
 }

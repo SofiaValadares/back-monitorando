@@ -5,15 +5,17 @@ import br.com.cesarschool.domain.repository.user.FindStudentRepository;
 import br.com.cesarschool.infrastructure.persistence.entity.StudentJpaEntity;
 import br.com.cesarschool.infrastructure.persistence.mapper.StudentMapper;
 import br.com.cesarschool.infrastructure.repository.StudentJpaRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
 @Component
-@RequiredArgsConstructor
 public class FindStundentAdapter implements FindStudentRepository<StudentEntity> {
-    StudentJpaRepository studentJpaRepository;
+    private final StudentJpaRepository studentJpaRepository;
+
+    public FindStundentAdapter(StudentJpaRepository studentJpaRepository) {
+        this.studentJpaRepository = studentJpaRepository;
+    }
 
     @Override
     public Optional<StudentEntity> findById(Long id) {

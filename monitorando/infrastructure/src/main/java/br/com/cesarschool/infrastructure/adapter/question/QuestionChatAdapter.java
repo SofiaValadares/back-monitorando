@@ -7,15 +7,20 @@ import br.com.cesarschool.infrastructure.persistence.entity.UserJpaEntity;
 import br.com.cesarschool.infrastructure.repository.QuestionChatJpaRepository;
 import br.com.cesarschool.infrastructure.repository.QuestionJpaRepository;
 import br.com.cesarschool.infrastructure.repository.UserJpaRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
 public class QuestionChatAdapter implements QuestionChatRepository {
     private final UserJpaRepository userRepository;
     private final QuestionJpaRepository questionRepository;
     private final QuestionChatJpaRepository questionChatJpaRepository;
+
+    public QuestionChatAdapter(UserJpaRepository userRepository, QuestionJpaRepository questionRepository, QuestionChatJpaRepository questionChatJpaRepository) {
+        this.userRepository = userRepository;
+        this.questionRepository = questionRepository;
+        this.questionChatJpaRepository = questionChatJpaRepository;
+    }
+
     @Override
     public void sendAnswerQuestion(Long questionId, Long userId, String answer) {
         QuestionJpaEntity question = questionRepository.findById(questionId)

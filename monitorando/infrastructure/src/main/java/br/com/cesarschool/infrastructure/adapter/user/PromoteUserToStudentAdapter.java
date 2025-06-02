@@ -7,14 +7,12 @@ import br.com.cesarschool.infrastructure.repository.StudentJpaRepository;
 import br.com.cesarschool.infrastructure.repository.UserJpaRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Component
-@RequiredArgsConstructor
 public class PromoteUserToStudentAdapter implements PromoteUserToStudentRepository {
 
     private final UserJpaRepository userRepository;
@@ -22,6 +20,13 @@ public class PromoteUserToStudentAdapter implements PromoteUserToStudentReposito
 
     @PersistenceContext
     private final EntityManager entityManager;
+
+    public PromoteUserToStudentAdapter(UserJpaRepository userRepository, StudentJpaRepository studentRepository, EntityManager entityManager) {
+        this.userRepository = userRepository;
+        this.studentRepository = studentRepository;
+        this.entityManager = entityManager;
+    }
+
 
     @Override
     @Transactional

@@ -13,11 +13,10 @@ import java.util.List;
 public class AvailableTimeService {
 
     private final AvaliableTimeRepository availableTimeRepository;
-    private final NotificationService notificationService;
+    //private final NotificationService notificationService;
 
-    public AvailableTimeService(AvaliableTimeRepository availableTimeRepository, NotificationService notificationService) {
+    public AvailableTimeService(AvaliableTimeRepository availableTimeRepository) {
         this.availableTimeRepository = availableTimeRepository;
-        this.notificationService = notificationService;
     }
 
     public AvailableTimeEntity defineAvailableTime(AvailableTimeEntity newTime, Long monitorId) {
@@ -68,9 +67,6 @@ public class AvailableTimeService {
         // Aqui você precisa recuperar o MonitorEntity completo
         // Dependendo da arquitetura, você pode ter um FindMonitorPort ou outro meio de acessar isso
 
-        if (monitor != null) {
-            notificationService.notifyStudentsOfUpdatedSchedule(monitor, horariosAtualizados);
-        }
 
         return saved;
     }

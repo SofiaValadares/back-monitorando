@@ -2,15 +2,15 @@ package br.com.cesarschool.domain.entity;
 
 public class QuestionChatEntity {
     private Long id;
-    private QuestionEntity question;
-    private UserEntity user;
+    private Long questionId;
+    private Long userId;
     private String answer;
 
-    public QuestionChatEntity(Long id, QuestionEntity question, UserEntity user, String answer) {
-        if (question == null) {
+    public QuestionChatEntity(Long id, Long questionId, Long userId, String answer) {
+        if (questionId == null) {
             throw new IllegalArgumentException("A pergunta (question) não pode ser nula.");
         }
-        if (user == null) {
+        if (userId == null) {
             throw new IllegalArgumentException("O usuário não pode ser nulo.");
         }
         if (answer == null || answer.isBlank()) {
@@ -18,8 +18,8 @@ public class QuestionChatEntity {
         }
 
         this.id = id;
-        this.question = question;
-        this.user = user;
+        this.questionId = questionId;
+        this.userId = userId;
         this.answer = answer;
     }
 
@@ -27,12 +27,12 @@ public class QuestionChatEntity {
         return id;
     }
 
-    public QuestionEntity getQuestion() {
-        return question;
+    public Long getQuestionId() {
+        return questionId;
     }
 
-    public UserEntity getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
 
     public String getAnswer() {

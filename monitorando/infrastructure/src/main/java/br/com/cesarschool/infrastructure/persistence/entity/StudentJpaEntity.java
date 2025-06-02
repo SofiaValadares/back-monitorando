@@ -1,25 +1,18 @@
 package br.com.cesarschool.infrastructure.persistence.entity;
 
-import br.com.cesarschool.domain.entity.enums.UserRole;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Table(name = "students")
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class StudentJpaEntity{
 
     @Id
     private Long id;
 
     @OneToOne
-    @MapsId // compartilha o mesmo ID do User
+    @MapsId
     @JoinColumn(name = "id")
     private UserJpaEntity user;
 
@@ -30,4 +23,24 @@ public class StudentJpaEntity{
             inverseJoinColumns = @JoinColumn(name = "discipline_id")
     )
     private List<DisciplineJpaEntity> disciplines;
+
+    public StudentJpaEntity() {}
+
+    public StudentJpaEntity(Long id, UserJpaEntity user, List<DisciplineJpaEntity> disciplines) {
+        this.id = id;
+        this.user = user;
+        this.disciplines = disciplines;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public List<DisciplineJpaEntity> getDisciplines() {
+        return disciplines;
+    }
+
+    public UserJpaEntity getUser() {
+        return user;
+    }
 }

@@ -5,16 +5,18 @@ import br.com.cesarschool.domain.repository.user.FindUserRepository;
 import br.com.cesarschool.infrastructure.persistence.entity.UserJpaEntity;
 import br.com.cesarschool.infrastructure.persistence.mapper.UserEntityMapper;
 import br.com.cesarschool.infrastructure.repository.UserJpaRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
 @Component
-@RequiredArgsConstructor
 public class FindUserAdapter implements FindUserRepository<UserEntity> {
 
     private final UserJpaRepository userRepository;
+
+    public FindUserAdapter(UserJpaRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public Optional<UserEntity> findByEmail(String email) {

@@ -6,15 +6,18 @@ import br.com.cesarschool.domain.repository.question.FindQuestionRepository;
 import br.com.cesarschool.infrastructure.persistence.entity.QuestionJpaEntity;
 import br.com.cesarschool.infrastructure.persistence.mapper.QuestionMapper;
 import br.com.cesarschool.infrastructure.repository.QuestionJpaRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
 @Component
-@RequiredArgsConstructor
 public class FindQuestionAdapter implements FindQuestionRepository<QuestionEntity> {
     private final QuestionJpaRepository questionRepository;
+
+    public FindQuestionAdapter(QuestionJpaRepository questionRepository) {
+        this.questionRepository = questionRepository;
+    }
+
     @Override
     public Optional<QuestionEntity> findById(Long id) {
         Optional<QuestionJpaEntity> questionOptional = questionRepository.findById(id);
