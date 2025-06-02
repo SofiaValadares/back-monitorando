@@ -40,4 +40,15 @@ public class LoginUserAdapter implements LoginUserRepository<UserEntity> {
 
         return userJPA.getActive();
     }
+
+    @Override
+    public void logoutUser(Long id) {
+        UserJpaEntity userJPA = userRepository.findById(id).orElse(null);
+
+        if (userJPA == null) {
+            throw new LoginIncorrectException();
+        }
+
+        userRepository.save(userJPA);
+    }
 }

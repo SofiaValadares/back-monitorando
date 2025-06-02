@@ -5,7 +5,6 @@ import br.com.cesarschool.domain.entity.AvailableTimeEntity;
 import br.com.cesarschool.domain.service.AvailableTimeService;
 import br.com.cesarschool.presentation.dto.user.AvailableTimeRequestDTO;
 import br.com.cesarschool.presentation.dto.user.AvailableTimeResponseDTO;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,10 +13,13 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/monitores")
-@RequiredArgsConstructor
 public class AvailableTimeController {
 
     private final AvailableTimeService availableTimeService;
+
+    public AvailableTimeController(AvailableTimeService availableTimeService) {
+        this.availableTimeService = availableTimeService;
+    }
 
 
     // POST /monitores/{id}/horarios

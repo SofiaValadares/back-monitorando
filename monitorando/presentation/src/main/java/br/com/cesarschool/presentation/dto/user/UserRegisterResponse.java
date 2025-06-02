@@ -1,8 +1,6 @@
 package br.com.cesarschool.presentation.dto.user;
 
-import lombok.Getter;
 
-@Getter
 public class UserRegisterResponse {
     private String message;
 
@@ -10,4 +8,11 @@ public class UserRegisterResponse {
         this.message = message;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

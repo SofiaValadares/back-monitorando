@@ -49,5 +49,9 @@ public class UserService {
         return loginUserRepository.hasLoginUser(id);
     }
 
+    public void logout(Long id) {
+        loginUserRepository.logoutUser(id);
+    }
+
 }
 
