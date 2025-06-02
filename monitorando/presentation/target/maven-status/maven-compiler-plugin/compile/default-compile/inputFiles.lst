@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\guima\Desktop\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\controller\AvailableTimeController.java
 C:\Users\guima\Desktop\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\controller\QuestionController.java
 C:\Users\guima\Desktop\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\controller\UserController.java
@@ -13,3 +14,20 @@ C:\Users\guima\Desktop\back-monitorando\monitorando\presentation\src\main\java\b
 C:\Users\guima\Desktop\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\UserSectionResponse.java
 C:\Users\guima\Desktop\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\handler\GlobalExceptionHandler.java
 C:\Users\guima\Desktop\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\MonitorandoApplication.java
+=======
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\controller\AvailableTimeController.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\controller\QuestionController.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\controller\UserController.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\question\QuestionChatRequestDTO.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\question\QuestionRequestDTO.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\AvailableTimeRequestDTO.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\AvailableTimeResponseDTO.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\UserLoginRequest.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\UserLoginResponse.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\UserRegisterRequest.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\UserRegisterResponse.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\UserSectionRequest.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\UserSectionResponse.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\handler\GlobalExceptionHandler.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\MonitorandoApplication.java
+>>>>>>> 61f4c2c6f3dcdcf453ece1eda4fc21d59e0b2896
