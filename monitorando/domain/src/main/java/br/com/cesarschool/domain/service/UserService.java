@@ -45,5 +45,9 @@ public class UserService {
         return loginUserRepository.loginUser(email, password);
     }
 
+    public Boolean getUserAutenticado(Long id) {
+        return loginUserRepository.hasLoginUser(id);
+    }
+
 }
 

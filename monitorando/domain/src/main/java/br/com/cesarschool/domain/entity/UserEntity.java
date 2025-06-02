@@ -11,6 +11,7 @@ public class UserEntity {
     private final String email;
     private final String password;
     private final UserRole role;
+    private Boolean active = false;
 
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[\\w-.]+@[\\w-]+\\.[a-zA-Z]{2,}$");
 
@@ -27,6 +28,22 @@ public class UserEntity {
         this.email = email;
         this.password = password;
         this.role = role;
+    }
+
+    public UserEntity(Long id, String name, String surname, String email, String password, UserRole role, Boolean active) {
+        validateName(name);
+        validateSurname(surname);
+        validateEmail(email);
+        validatePassword(password);
+        validateRole(role);
+
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.active = active;
     }
 
     private void validateName(String name) {
@@ -82,4 +99,8 @@ public class UserEntity {
     public UserRole getRole() {
         return role;
     }
+
+    public Boolean getActive() {return active;}
+
+    public void setActive(Boolean active) {this.active = active;}
 }

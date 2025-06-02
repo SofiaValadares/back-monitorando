@@ -12,7 +12,8 @@ public class UserEntityMapper {
                 userEntity.getSurname(),
                 userEntity.getEmail(),
                 userEntity.getPassword(),
-                userEntity.getRole()
+                userEntity.getRole(),
+                userEntity.getActive()
         );
     }
 
@@ -23,7 +24,8 @@ public class UserEntityMapper {
                 userJpaEntity.getSurname(),
                 userJpaEntity.getEmail(),
                 userJpaEntity.getPassword(),
-                userJpaEntity.getRole()
+                userJpaEntity.getRole(),
+                userJpaEntity.getActive()
         );
     }
 }

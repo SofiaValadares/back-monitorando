@@ -27,6 +27,9 @@ public class UserJpaEntity {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
+    @Column(nullable = false)
+    public Boolean active = false;
+
     public UserJpaEntity() {
     }
 
@@ -37,6 +40,16 @@ public class UserJpaEntity {
         this.email = email;
         this.password = password;
         this.role = role;
+    }
+
+    public UserJpaEntity(Long id, String name, String surname, String email, String password, UserRole role, Boolean active) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.active = active;
     }
 
     public Long getId() {
@@ -85,5 +98,13 @@ public class UserJpaEntity {
 
     public void setRole(UserRole role) {
         this.role = role;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 }

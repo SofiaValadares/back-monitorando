@@ -29,4 +29,15 @@ public class LoginUserAdapter implements LoginUserRepository<UserEntity> {
 
         return user;
     }
+
+    @Override
+    public Boolean hasLoginUser(Long id) {
+        UserJpaEntity userJPA = userRepository.findById(id).orElse(null);
+
+        if (userJPA == null) {
+            return false;
+        }
+
+        return userJPA.getActive();
+    }
 }
