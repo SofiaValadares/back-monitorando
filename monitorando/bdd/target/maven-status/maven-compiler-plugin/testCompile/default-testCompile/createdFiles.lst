@@ -2,3 +2,4 @@ runner\RunCucumberTest.class
 steps\MonitorAvailabilitySteps.class
 steps\EnviarDuvidaSteps.class
 steps\ResponderDuvidaSteps.class
+steps\AppointmentSteps.class
