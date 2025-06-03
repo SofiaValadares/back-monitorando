@@ -1,5 +1,7 @@
 package br.com.cesarschool.domain.entity;
 
+import br.com.cesarschool.domain.global.RandomStringGenerator;
+
 import java.util.List;
 
 public class DisciplineEntity {
@@ -14,7 +16,7 @@ public class DisciplineEntity {
             throw new IllegalArgumentException("O nome da disciplina não pode estar vazio.");
         }
         if (code == null || code.isBlank()) {
-            throw new IllegalArgumentException("O código da disciplina não pode estar vazio.");
+            code = RandomStringGenerator.generateUniqueString(8);
         }
 
         this.id = id;

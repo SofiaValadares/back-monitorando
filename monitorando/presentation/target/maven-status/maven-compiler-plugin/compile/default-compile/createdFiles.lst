@@ -6,6 +6,7 @@ br\com\cesarschool\presentation\dto\user\UserRegisterRequest.class
 br\com\cesarschool\presentation\dto\user\UserRegisterResponse.class
 br\com\cesarschool\presentation\dto\user\UserSectionRequest.class
 br\com\cesarschool\presentation\controller\AvailableTimeController.class
+br\com\cesarschool\presentation\CorsConfig.class
 br\com\cesarschool\presentation\dto\user\UserLoginRequest.class
 br\com\cesarschool\presentation\dto\user\UserLoginResponse.class
 br\com\cesarschool\presentation\controller\QuestionController.class
@@ -13,5 +14,6 @@ br\com\cesarschool\presentation\handler\GlobalExceptionHandler.class
 br\com\cesarschool\presentation\dto\question\QuestionRequestDTO.class
 br\com\cesarschool\presentation\MonitorandoApplication.class
 br\com\cesarschool\presentation\dto\user\AvailableTimeRequestDTO.class
+br\com\cesarschool\presentation\CorsConfig$1.class
 br\com\cesarschool\presentation\dto\user\UserLogoutRequest.class
 br\com\cesarschool\presentation\dto\user\UserSectionResponse.class
