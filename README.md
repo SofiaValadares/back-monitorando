@@ -51,7 +51,7 @@ No desenvolvimento do nosso projeto, utilizamos os seguintes padrões de projeto
   <tr>- Por fim para rodar o projeto, use o comando:
   <dt>
 
-       mmvn spring-boot:run -pl presentation
+       mvn spring-boot:run -pl presentation
       
   </dt>  
 
