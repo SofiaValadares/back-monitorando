@@ -1,12 +1,13 @@
-Feature: Historia4 - Marcar atendimento com algum monitor
+Feature: Historia1 - Relatar uma experiencia com um monitor
 
-    Scenario: Atendimento agendado com monitor disponivel
-        Given um monitor possui horarios disponiveis
-        When um aluno solicita o agendamento de um atendimento
-        Then o sistema agenda o atendimento
-        And notifica o aluno com a confirmacao do agendamento
+Scenario: Relato enviado com sucesso
+Given um aluno foi atendido por um monitor
+When todas as informacoes necessarias sao fornecidas
+Then o relato e enviado com sucesso
+And o sistema notifica o aluno sobre o envio bem sucedido
 
-    Scenario: Tentativa de agendamento com monitor indisponivel
-        Given um monitor nao possui horarios disponiveis
-        When um aluno solicita o agendamento de um atendimento
-        Then o sistema informa que o monitor esta indisponivel para agendamentos
+Scenario: Relato enviado com campos obrigatorios em branco
+Given um aluno foi atendido por um monitor
+When alguma das informacoes obrigatorias nao sao fornecidas
+Then o sistema informa que ha informacoes obrigatorias ausentes
+And o sistema informa que o relato nao foi registrado
