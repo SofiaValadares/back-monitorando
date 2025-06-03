@@ -7,6 +7,8 @@ C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\ja
 C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\AvailableTimeResponseDTO.java
 C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\UserLoginRequest.java
 C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\UserLoginResponse.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\UserLogoutRequest.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\UserLogoutResponse.java
 C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\UserRegisterRequest.java
 C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\UserRegisterResponse.java
 C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\UserSectionRequest.java

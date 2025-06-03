@@ -55,4 +55,10 @@ public class UserController {
         return ResponseEntity.ok(new UserLogoutResponse("Logout com sucesso!"));
     }
 
+    @PostMapping("/promote/monitor")
+    public ResponseEntity<UserLogoutResponse> promoteToMonitor(@RequestParam Long userId, @RequestParam Long disciplineId) {
+        userService.promoteToMonitor(userId, disciplineId);
+        return ResponseEntity.ok(new UserLogoutResponse("Promovido com sucesso!"));
+    }
+
 }

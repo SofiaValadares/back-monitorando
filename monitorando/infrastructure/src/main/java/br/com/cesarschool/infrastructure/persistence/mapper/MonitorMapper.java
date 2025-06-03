@@ -1,7 +1,7 @@
 package br.com.cesarschool.infrastructure.persistence.mapper;
 
-import br.com.cesarschool.domain.entity.DisciplineEntity;
 import br.com.cesarschool.domain.entity.MonitorEntity;
+import br.com.cesarschool.domain.entity.StudentEntity;
 import br.com.cesarschool.infrastructure.persistence.entity.MonitorJpaEntity;
 
 import java.util.List;
@@ -11,14 +11,10 @@ public class MonitorMapper {
     public static MonitorEntity toDomain(MonitorJpaEntity jpaEntity) {
         if (jpaEntity == null) return null;
 
+        StudentEntity student = StudentMapper.toDomain(jpaEntity.getUser());
+
         return new MonitorEntity(
-                jpaEntity.getId(),
-                jpaEntity.getUser().getName(),
-                jpaEntity.getUser().getSurname(),
-                jpaEntity.getUser().getEmail(),
-                jpaEntity.getUser().getPassword(),
-                jpaEntity.getUser().getRole(),
-                List.of(),
+                student,
                 jpaEntity.getDiscipline().getId(),
                 List.of()
         );
@@ -30,7 +26,7 @@ public class MonitorMapper {
 
         return new MonitorJpaEntity(
                 domainEntity.getId(),
-                UserEntityMapper.toJpaEntity(domainEntity),
+                StudentMapper.toJpa(domainEntity),
                 null,
                 List.of()
         );

@@ -14,7 +14,7 @@ public class MonitorJpaEntity {
     @OneToOne
     @MapsId
     @JoinColumn(name = "id")
-    private UserJpaEntity user;
+    private StudentJpaEntity user;
 
     @ManyToOne
     @JoinColumn(name = "discipline_id", nullable = false)
@@ -25,7 +25,7 @@ public class MonitorJpaEntity {
 
     public MonitorJpaEntity() {}
 
-    public MonitorJpaEntity(Long id, UserJpaEntity user, DisciplineJpaEntity discipline, List<AvailableTimeJpaEntity> availableTimes) {
+    public MonitorJpaEntity(Long id, StudentJpaEntity user, DisciplineJpaEntity discipline, List<AvailableTimeJpaEntity> availableTimes) {
         this.id = id;
         this.user = user;
         this.discipline = discipline;
@@ -36,7 +36,7 @@ public class MonitorJpaEntity {
         return id;
     }
 
-    public UserJpaEntity getUser() {
+    public StudentJpaEntity getUser() {
         return user;
     }
 
