@@ -1,7 +1,10 @@
 C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\controller\AvailableTimeController.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\controller\DisciplineController.java
 C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\controller\QuestionController.java
 C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\controller\UserController.java
 C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\CorsConfig.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\disciplina\DisciplineCreateRequestDTO.java
+C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\disciplina\DisciplineCreateResponseDTO.java
 C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\question\QuestionChatRequestDTO.java
 C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\question\QuestionRequestDTO.java
 C:\Users\svc2\IdeaProjects\back-monitorando\monitorando\presentation\src\main\java\br\com\cesarschool\presentation\dto\user\AvailableTimeRequestDTO.java

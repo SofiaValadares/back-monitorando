@@ -5,6 +5,7 @@ import br.com.cesarschool.domain.entity.DisciplineEntity;
 import br.com.cesarschool.domain.service.DisciplineService;
 import br.com.cesarschool.presentation.dto.disciplina.DisciplineCreateRequestDTO;
 import br.com.cesarschool.presentation.dto.disciplina.DisciplineCreateResponseDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DisciplineController {
     private final DisciplineService disciplineService;
 
+    @Autowired
     public DisciplineController(DisciplineService disciplineService) {
         this.disciplineService = disciplineService;
     }
