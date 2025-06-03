@@ -17,7 +17,7 @@ public class UserController {
 
     @PostMapping("/register")
     public UserRegisterResponse register(@RequestBody UserRegisterRequest request) {
-        userService.register(request.getName(), request.getSurname(), request.getEmail(), request.getPassword(), request.getRole());
+        userService.register(request.name(), request.surname(), request.email(), request.password(), request.role());
         return new UserRegisterResponse("Usuário registrado com sucesso!");
     }
 
