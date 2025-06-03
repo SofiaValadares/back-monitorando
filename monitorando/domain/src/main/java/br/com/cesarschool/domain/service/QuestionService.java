@@ -16,11 +16,11 @@ public class QuestionService {
     private final FindQuestionRepository<QuestionEntity> findQuestionRepository;
     private final QuestionToMonitorRepository questionToMonitorRepository;
     private final QuestionChatRepository questionChatRepository;
-    private final FindStudentRepository<StudentEntity> findStudentRepository;
+    private final FindStudentRepository findStudentRepository;
     private final FindMonitorRepository<MonitorEntity> findMonitorRepository;
-    private final FindDisciplineRepository<DisciplineEntity> findDisciplineRepository;
+    private final FindDisciplineRepository findDisciplineRepository;
 
-    public QuestionService(FindQuestionRepository<QuestionEntity> findQuestionRepository, QuestionToMonitorRepository questionToMonitorRepository, QuestionChatRepository questionChatRepository, FindStudentRepository<StudentEntity> findStudentRepository, FindMonitorRepository<MonitorEntity> findMonitorRepository, FindDisciplineRepository<DisciplineEntity> findDisciplineRepository) {
+    public QuestionService(FindQuestionRepository<QuestionEntity> findQuestionRepository, QuestionToMonitorRepository questionToMonitorRepository, QuestionChatRepository questionChatRepository, FindStudentRepository findStudentRepository, FindMonitorRepository<MonitorEntity> findMonitorRepository, FindDisciplineRepository findDisciplineRepository) {
         this.findQuestionRepository = findQuestionRepository;
         this.questionToMonitorRepository = questionToMonitorRepository;
         this.questionChatRepository = questionChatRepository;

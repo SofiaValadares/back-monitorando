@@ -21,9 +21,9 @@ public class UserService {
     private final PromoteUserToStudentRepository promoteUserToStudentRepository;
     private final FindUserRepository<UserEntity> findUserRepository;
     private final LoginUserRepository<UserEntity> loginUserRepository;
-    private final FindDisciplineRepository<DisciplineEntity> findDisciplineRepository;
+    private final FindDisciplineRepository findDisciplineRepository;
 
-    public UserService(RegisterUserRepository registerUserRepository, PromoteUserToStudentRepository promoteUserToStudentRepository, FindUserRepository<UserEntity> findUserRepository, LoginUserRepository<UserEntity> loginUserRepository, FindDisciplineRepository<DisciplineEntity> findDisciplineRepository) {
+    public UserService(RegisterUserRepository registerUserRepository, PromoteUserToStudentRepository promoteUserToStudentRepository, FindUserRepository<UserEntity> findUserRepository, LoginUserRepository<UserEntity> loginUserRepository, FindDisciplineRepository findDisciplineRepository) {
         this.registerUserRepository = registerUserRepository;
         this.promoteUserToStudentRepository = promoteUserToStudentRepository;
         this.findUserRepository = findUserRepository;

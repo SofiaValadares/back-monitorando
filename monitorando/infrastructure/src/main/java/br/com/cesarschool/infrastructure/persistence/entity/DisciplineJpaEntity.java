@@ -57,4 +57,8 @@ public class DisciplineJpaEntity {
     public List<MonitorJpaEntity> getMonitors() {
         return monitors;
     }
+
+    public void addStudent(StudentJpaEntity student) {
+        students.add(student);
+    }
 }

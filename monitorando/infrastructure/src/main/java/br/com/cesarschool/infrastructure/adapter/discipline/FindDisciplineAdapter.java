@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
-public class FindDisciplineAdapter implements FindDisciplineRepository<DisciplineEntity> {
+public class FindDisciplineAdapter implements FindDisciplineRepository {
     private final DisciplineJpaRepository disciplineJpaRepository;
 
     public FindDisciplineAdapter(DisciplineJpaRepository disciplineJpaRepository) {
@@ -26,6 +26,17 @@ public class FindDisciplineAdapter implements FindDisciplineRepository<Disciplin
             return Optional.of(DisciplineMapper.toDomain(discipline));
         }
 
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<DisciplineEntity> findByCode(String code) {
+        Optional<DisciplineJpaEntity> disciplineOptional = disciplineJpaRepository.findByCode(code);
+
+        if (disciplineOptional.isPresent()) {
+            DisciplineJpaEntity discipline = disciplineOptional.get();
+            return Optional.of(DisciplineMapper.toDomain(discipline));
+        }
         return Optional.empty();
     }
 }

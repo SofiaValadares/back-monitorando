@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface DisciplineJpaRepository extends JpaRepository<DisciplineJpaEntity, Long> {
      Optional<DisciplineJpaEntity> findById(Long id);
+     Optional<DisciplineJpaEntity> findByCode(String code);
 }

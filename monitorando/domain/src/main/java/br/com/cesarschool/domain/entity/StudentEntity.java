@@ -21,4 +21,8 @@ public class StudentEntity extends UserEntity {
         return disciplineIds;
     }
 
+    public void addDisciplineId(Long disciplineId) {
+        this.disciplineIds.add(disciplineId);
+    }
+
 }

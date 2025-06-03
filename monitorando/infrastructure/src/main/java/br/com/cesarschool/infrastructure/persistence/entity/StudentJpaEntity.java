@@ -43,4 +43,8 @@ public class StudentJpaEntity{
     public UserJpaEntity getUser() {
         return user;
     }
+
+    public void addDiscipline(DisciplineJpaEntity discipline) {
+        disciplines.add(discipline);
+    }
 }

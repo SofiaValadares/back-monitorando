@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
-public class FindStundentAdapter implements FindStudentRepository<StudentEntity> {
+public class FindStundentAdapter implements FindStudentRepository {
     private final StudentJpaRepository studentJpaRepository;
 
     public FindStundentAdapter(StudentJpaRepository studentJpaRepository) {

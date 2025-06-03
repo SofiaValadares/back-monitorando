@@ -1,7 +1,9 @@
 package br.com.cesarschool.domain.repository.user;
 
+import br.com.cesarschool.domain.entity.StudentEntity;
+
 import java.util.Optional;
 
-public interface FindStudentRepository<T> {
-    Optional<T> findById(Long id);
+public interface FindStudentRepository {
+    Optional<StudentEntity> findById(Long id);
 }
