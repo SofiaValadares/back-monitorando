@@ -1,8 +1,9 @@
 package br.com.cesarschool.application.service;
 
-import br.com.cesarschool.domain.repository.user.AvaliableTimeRepository ;
 import br.com.cesarschool.domain.entity.AvailableTimeEntity;
 import br.com.cesarschool.domain.entity.MonitorEntity;
+import br.com.cesarschool.domain.repository.user.AvaliableTimeRepository;
+import br.com.cesarschool.domain.repository.user.FindMonitorRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
@@ -13,10 +14,14 @@ import java.util.List;
 public class AvailableTimeService {
 
     private final AvaliableTimeRepository availableTimeRepository;
-    //private final NotificationService notificationService;
+    private final FindMonitorRepository<MonitorEntity> findMonitorRepository;
 
-    public AvailableTimeService(AvaliableTimeRepository availableTimeRepository) {
+    public AvailableTimeService(
+            AvaliableTimeRepository availableTimeRepository,
+            FindMonitorRepository<MonitorEntity> findMonitorRepository
+    ) {
         this.availableTimeRepository = availableTimeRepository;
+        this.findMonitorRepository = findMonitorRepository;
     }
 
     public AvailableTimeEntity defineAvailableTime(AvailableTimeEntity newTime, Long monitorId) {
@@ -60,13 +65,15 @@ public class AvailableTimeService {
         // Salva o horário
         AvailableTimeEntity saved = availableTimeRepository.save(newTime, monitorId);
 
-        // Recupera a lista atualizada de horários e o monitor para notificação
-        List<AvailableTimeEntity> horariosAtualizados = availableTimeRepository.findByMonitorId(monitorId);
-        MonitorEntity monitor = existingTimes.isEmpty() ? null : ((MonitorEntity) null); // <-- você precisará obter o monitor
-
-        // Aqui você precisa recuperar o MonitorEntity completo
-        // Dependendo da arquitetura, você pode ter um FindMonitorPort ou outro meio de acessar isso
-
+        // Recupera o monitor e simula notificação
+        findMonitorRepository.findById(monitorId).ifPresent(monitor -> {
+            System.out.println("Notificando alunos da disciplina: " + monitor.getDisciplineMonitor().getName());
+            System.out.println("Horários atualizados:");
+            availableTimeRepository.findByMonitorId(monitorId).forEach(horario -> {
+                System.out.println("- " + horario.getWeekDay() + ": " +
+                        horario.getStartTime() + " até " + horario.getEndTime());
+            });
+        });
 
         return saved;
     }
