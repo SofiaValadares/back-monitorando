@@ -41,13 +41,6 @@ No desenvolvimento do nosso projeto, utilizamos os seguintes padrões de projeto
       
   </dt>
 
-  <tr>- Para desfazer os conteiners do docker rode:
-  <dt>
-
-       docker compose -v down
-      
-  </dt>
-
   <tr>- Para compilar o projeto rode:
   <dt>
 
@@ -58,7 +51,7 @@ No desenvolvimento do nosso projeto, utilizamos os seguintes padrões de projeto
   <tr>- Por fim para rodar o projeto, use o comando:
   <dt>
 
-       mvn spring-boot:run
+       mmvn spring-boot:run -pl presentation
       
   </dt>  
 
