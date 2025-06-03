@@ -2,7 +2,7 @@ package br.com.cesarschool.presentation.controller;
 
 
 import br.com.cesarschool.domain.entity.DisciplineEntity;
-import br.com.cesarschool.domain.service.DisciplineService;
+import br.com.cesarschool.application.service.DisciplineService;
 import br.com.cesarschool.presentation.dto.disciplina.DisciplineCreateRequestDTO;
 import br.com.cesarschool.presentation.dto.disciplina.DisciplineCreateResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;

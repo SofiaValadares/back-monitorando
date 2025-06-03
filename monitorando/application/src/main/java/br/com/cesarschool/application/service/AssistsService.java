@@ -1,4 +1,4 @@
-package br.com.cesarschool.domain.service;
+package br.com.cesarschool.application.service;
 
 import org.springframework.stereotype.Service;
 

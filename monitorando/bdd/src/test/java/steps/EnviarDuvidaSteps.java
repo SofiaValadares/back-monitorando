@@ -1,9 +1,9 @@
 package steps;
 
+import br.com.cesarschool.application.service.QuestionService;
 import br.com.cesarschool.domain.entity.*;
 import br.com.cesarschool.domain.entity.enums.QuestionStatus;
 import br.com.cesarschool.domain.entity.enums.UserRole;
-import br.com.cesarschool.domain.service.QuestionService;
 import io.cucumber.java.Before;
 import io.cucumber.java.pt.*;
 import static org.junit.jupiter.api.Assertions.*;

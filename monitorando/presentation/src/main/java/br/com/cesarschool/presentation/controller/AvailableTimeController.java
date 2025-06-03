@@ -2,7 +2,7 @@ package br.com.cesarschool.presentation.controller;
 
 
 import br.com.cesarschool.domain.entity.AvailableTimeEntity;
-import br.com.cesarschool.domain.service.AvailableTimeService;
+import br.com.cesarschool.application.service.AvailableTimeService;
 import br.com.cesarschool.presentation.dto.user.AvailableTimeRequestDTO;
 import br.com.cesarschool.presentation.dto.user.AvailableTimeResponseDTO;
 import org.springframework.http.ResponseEntity;

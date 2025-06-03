@@ -7,6 +7,7 @@ import br.com.cesarschool.infrastructure.persistence.mapper.DisciplineMapper;
 import br.com.cesarschool.infrastructure.repository.DisciplineJpaRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -38,5 +39,10 @@ public class FindDisciplineAdapter implements FindDisciplineRepository {
             return Optional.of(DisciplineMapper.toDomain(discipline));
         }
         return Optional.empty();
+    }
+
+    @Override
+    public List<DisciplineEntity> findByStudentId(Long id) {
+        return DisciplineMapper.toDomainList(disciplineJpaRepository.findByStudents_Id(id));
     }
 }

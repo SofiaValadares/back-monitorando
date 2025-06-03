@@ -1,6 +1,6 @@
 package br.com.cesarschool.presentation.controller;
 
-import br.com.cesarschool.domain.service.StudentService;
+import br.com.cesarschool.application.service.StudentService;
 import br.com.cesarschool.presentation.dto.user.StudentAddDisciplineRequest;
 import br.com.cesarschool.presentation.dto.user.StudentAddDisciplineResponse;
 import org.springframework.beans.factory.annotation.Autowired;

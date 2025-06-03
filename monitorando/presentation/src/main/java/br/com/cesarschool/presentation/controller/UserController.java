@@ -1,7 +1,7 @@
 package br.com.cesarschool.presentation.controller;
 
 import br.com.cesarschool.domain.entity.UserEntity;
-import br.com.cesarschool.domain.service.UserService;
+import br.com.cesarschool.application.service.UserService;
 import br.com.cesarschool.presentation.dto.user.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

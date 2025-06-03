@@ -1,6 +1,6 @@
 package br.com.cesarschool.presentation.controller;
 
-import br.com.cesarschool.domain.service.QuestionService;
+import br.com.cesarschool.application.service.QuestionService;
 import br.com.cesarschool.presentation.dto.question.QuestionChatRequestDTO;
 import br.com.cesarschool.presentation.dto.question.QuestionRequestDTO;
 import org.springframework.http.ResponseEntity;
