@@ -3,6 +3,7 @@ package br.com.cesarschool.presentation.controller;
 import br.com.cesarschool.application.service.QuestionService;
 import br.com.cesarschool.domain.entity.QuestionEntity;
 import br.com.cesarschool.presentation.dto.question.QuestionChatRequestDTO;
+import br.com.cesarschool.presentation.dto.question.QuestionCountResponseDTO;
 import br.com.cesarschool.presentation.dto.question.QuestionRequestDTO;
 import br.com.cesarschool.presentation.dto.question.QuestionResponseDTO;
 import org.springframework.http.ResponseEntity;
@@ -54,5 +55,13 @@ public class QuestionController {
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/student/count/{id}")
+    public ResponseEntity<QuestionCountResponseDTO> getStudentQuestionCount(@PathVariable Long id) {
+        Integer countTotal = questionService.countStudentQuestions(id);
+        Integer countAnswered = questionService.countStudentAnswersQuestions(id);
+
+        return ResponseEntity.ok(new QuestionCountResponseDTO(countTotal, countTotal - countAnswered, countAnswered));
     }
 }

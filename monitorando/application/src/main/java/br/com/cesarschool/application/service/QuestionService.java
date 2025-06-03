@@ -1,6 +1,7 @@
 package br.com.cesarschool.application.service;
 
 import br.com.cesarschool.domain.entity.*;
+import br.com.cesarschool.domain.entity.enums.QuestionStatus;
 import br.com.cesarschool.domain.repository.discipline.FindDisciplineRepository;
 import br.com.cesarschool.domain.repository.question.FindQuestionRepository;
 import br.com.cesarschool.domain.repository.question.QuestionChatRepository;
@@ -56,6 +57,20 @@ public class QuestionService {
         return findQuestionRepository.findByStudentId(studentId);
     }
 
+    public Integer countStudentQuestions(Long studentId) {
+        StudentEntity student = findStudentRepository.findById(studentId)
+                .orElseThrow(() -> new IllegalArgumentException("Estudante não encontrado com ID: " + studentId));
+
+        return findQuestionRepository.findByStudentId(studentId).size();
+    }
+
+    public Integer countStudentAnswersQuestions(Long studentId) {
+        StudentEntity student = findStudentRepository.findById(studentId)
+                .orElseThrow(() -> new IllegalArgumentException("Estudante não encontrado com ID: " + studentId));
+
+        return findQuestionRepository.findByStatusAndStudentId(QuestionStatus.ANSWERED, studentId).size();
+    }
+
     public void sendAnswerToQuestion(Long questionId, Long userId, String answer) {
         QuestionEntity question = findQuestionRepository.findById(questionId)
                 .orElseThrow(() -> new IllegalArgumentException("Pergunta não encontrada com ID: " + questionId));
@@ -64,7 +79,7 @@ public class QuestionService {
                 .orElseThrow(() -> new IllegalArgumentException("Disciplina não encontrada com ID: " + question.getDisciplineId()));
 
         if (!(discipline.getStudentsIds().contains(userId) || discipline.getMonitorsIds().contains(userId))) {
-            throw new IllegalArgumentException("Usuario " + userId + " não esta lsitado na disciplina");
+            throw new IllegalArgumentException("Usuario " + userId + " não esta listado na disciplina");
         }
 
         if (!question.getPublic()) {

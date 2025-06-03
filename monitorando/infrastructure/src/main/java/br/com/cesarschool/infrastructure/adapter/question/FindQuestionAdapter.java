@@ -2,6 +2,7 @@ package br.com.cesarschool.infrastructure.adapter.question;
 
 
 import br.com.cesarschool.domain.entity.QuestionEntity;
+import br.com.cesarschool.domain.entity.enums.QuestionStatus;
 import br.com.cesarschool.domain.repository.question.FindQuestionRepository;
 import br.com.cesarschool.infrastructure.persistence.entity.QuestionJpaEntity;
 import br.com.cesarschool.infrastructure.persistence.mapper.QuestionMapper;
@@ -35,6 +36,13 @@ public class FindQuestionAdapter implements FindQuestionRepository {
     public List<QuestionEntity> findByStudentId(Long id) {
         return QuestionMapper.toDomainList(
                 questionRepository.findAllByStudent_Id(id)
+        );
+    }
+
+    @Override
+    public List<QuestionEntity> findByStatusAndStudentId(QuestionStatus status, Long studentId) {
+        return QuestionMapper.toDomainList(
+                questionRepository.findAllByStudent_IdAndStatus(studentId, status)
         );
     }
 }
