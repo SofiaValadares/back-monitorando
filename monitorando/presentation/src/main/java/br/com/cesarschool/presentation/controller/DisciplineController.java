@@ -4,7 +4,7 @@ package br.com.cesarschool.presentation.controller;
 import br.com.cesarschool.domain.entity.DisciplineEntity;
 import br.com.cesarschool.application.service.DisciplineService;
 import br.com.cesarschool.presentation.dto.disciplina.DisciplineCreateRequestDTO;
-import br.com.cesarschool.presentation.dto.disciplina.DisciplineCreateResponseDTO;
+import br.com.cesarschool.presentation.dto.disciplina.DisciplineResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,10 +23,10 @@ public class DisciplineController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<DisciplineCreateResponseDTO> create(@RequestBody DisciplineCreateRequestDTO disciplineCreateRequestDTO) {
+    public ResponseEntity<DisciplineResponseDTO> create(@RequestBody DisciplineCreateRequestDTO disciplineCreateRequestDTO) {
         DisciplineEntity discipline = disciplineService.disciplineCreate(disciplineCreateRequestDTO.name());
 
-        DisciplineCreateResponseDTO response = new DisciplineCreateResponseDTO(
+        DisciplineResponseDTO response = new DisciplineResponseDTO(
                 discipline.getId(),
                 discipline.getName(),
                 discipline.getCode()

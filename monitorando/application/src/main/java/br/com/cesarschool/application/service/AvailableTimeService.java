@@ -67,7 +67,7 @@ public class AvailableTimeService {
 
         // Recupera o monitor e simula notificação
         findMonitorRepository.findById(monitorId).ifPresent(monitor -> {
-            System.out.println("Notificando alunos da disciplina: " + monitor.getDisciplineMonitor().getName());
+            System.out.println("Notificando alunos da disciplina: " + monitor.getDisciplineId());
             System.out.println("Horários atualizados:");
             availableTimeRepository.findByMonitorId(monitorId).forEach(horario -> {
                 System.out.println("- " + horario.getWeekDay() + ": " +

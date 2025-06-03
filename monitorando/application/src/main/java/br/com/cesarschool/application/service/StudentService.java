@@ -38,6 +38,12 @@ public class StudentService {
         this.studentAddDisciplineRepository.addDiscipline(idStudent, codeDiscipline);
     }
 
+    public List<DisciplineEntity> getDisciplines(Long idStudent) {
+        List<DisciplineEntity> disciplineEntities = findDisciplineRepository.findByStudentId(idStudent);
+
+        return disciplineEntities;
+    }
+
     public Integer countDisciplines(Long idStudent) {
         List<DisciplineEntity> disciplineEntities = findDisciplineRepository.findByStudentId(idStudent);
 

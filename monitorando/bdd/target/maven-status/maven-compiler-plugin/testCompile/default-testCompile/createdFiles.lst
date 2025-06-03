@@ -1,9 +1,0 @@
-steps\MonitorAvailabilitySteps.class
-steps\EnviarDuvidaSteps.class
-steps\DefinirHorariosMonitoriaSteps.class
-steps\AvaliarAlunosSteps.class
-steps\RelatarExperienciaSteps.class
-runner\RunCucumberTest.class
-steps\DefinirHorariosDisponiveisSteps.class
-steps\ResponderDuvidaSteps.class
-steps\AppointmentSteps.class

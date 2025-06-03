@@ -1,7 +1,0 @@
-br\com\cesarschool\application\Main.class
-br\com\cesarschool\application\service\AvailableTimeService.class
-br\com\cesarschool\application\service\QuestionService.class
-br\com\cesarschool\application\service\StudentService.class
-br\com\cesarschool\application\service\AssistsService.class
-br\com\cesarschool\application\service\DisciplineService.class
-br\com\cesarschool\application\service\UserService.class
