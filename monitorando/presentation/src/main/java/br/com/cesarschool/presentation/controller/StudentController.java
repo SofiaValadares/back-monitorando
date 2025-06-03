@@ -5,10 +5,7 @@ import br.com.cesarschool.presentation.dto.user.StudentAddDisciplineRequest;
 import br.com.cesarschool.presentation.dto.user.StudentAddDisciplineResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/students")
@@ -24,6 +21,12 @@ public class StudentController {
     public ResponseEntity<StudentAddDisciplineResponse> addDiscipline(@RequestBody StudentAddDisciplineRequest request) {
         studentService.addDiscipline(request.idStudent(), request.codeDiscipline());
         return ResponseEntity.ok(new StudentAddDisciplineResponse("Disciplina adicionada com sucesso"));
+    }
+
+    @GetMapping("/count-discipline/{id}")
+    public ResponseEntity<Integer> getCountDiscipline(@PathVariable Long id) {
+        Integer count = studentService.countDisciplines(id);
+        return ResponseEntity.ok(count);
     }
 
 }

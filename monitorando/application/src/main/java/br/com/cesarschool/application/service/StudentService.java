@@ -7,6 +7,8 @@ import br.com.cesarschool.domain.repository.user.FindStudentRepository;
 import br.com.cesarschool.domain.repository.user.StudentAddDisciplineRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StudentService {
     private final FindStudentRepository findStudentRepository;
@@ -34,5 +36,11 @@ public class StudentService {
         }
 
         this.studentAddDisciplineRepository.addDiscipline(idStudent, codeDiscipline);
+    }
+
+    public Integer countDisciplines(Long idStudent) {
+        List<DisciplineEntity> disciplineEntities = findDisciplineRepository.findByStudentId(idStudent);
+
+        return disciplineEntities.size();
     }
 }
