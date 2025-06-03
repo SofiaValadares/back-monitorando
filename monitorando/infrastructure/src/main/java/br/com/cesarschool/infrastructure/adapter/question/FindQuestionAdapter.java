@@ -8,10 +8,11 @@ import br.com.cesarschool.infrastructure.persistence.mapper.QuestionMapper;
 import br.com.cesarschool.infrastructure.repository.QuestionJpaRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
-public class FindQuestionAdapter implements FindQuestionRepository<QuestionEntity> {
+public class FindQuestionAdapter implements FindQuestionRepository {
     private final QuestionJpaRepository questionRepository;
 
     public FindQuestionAdapter(QuestionJpaRepository questionRepository) {
@@ -28,5 +29,12 @@ public class FindQuestionAdapter implements FindQuestionRepository<QuestionEntit
         }
 
         return Optional.empty();
+    }
+
+    @Override
+    public List<QuestionEntity> findByStudentId(Long id) {
+        return QuestionMapper.toDomainList(
+                questionRepository.findAllByStudent_Id(id)
+        );
     }
 }

@@ -9,18 +9,20 @@ import br.com.cesarschool.domain.repository.user.FindMonitorRepository;
 import br.com.cesarschool.domain.repository.user.FindStudentRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 
 public class QuestionService {
 
-    private final FindQuestionRepository<QuestionEntity> findQuestionRepository;
+    private final FindQuestionRepository findQuestionRepository;
     private final QuestionToMonitorRepository questionToMonitorRepository;
     private final QuestionChatRepository questionChatRepository;
     private final FindStudentRepository findStudentRepository;
     private final FindMonitorRepository<MonitorEntity> findMonitorRepository;
     private final FindDisciplineRepository findDisciplineRepository;
 
-    public QuestionService(FindQuestionRepository<QuestionEntity> findQuestionRepository, QuestionToMonitorRepository questionToMonitorRepository, QuestionChatRepository questionChatRepository, FindStudentRepository findStudentRepository, FindMonitorRepository<MonitorEntity> findMonitorRepository, FindDisciplineRepository findDisciplineRepository) {
+    public QuestionService(FindQuestionRepository findQuestionRepository, QuestionToMonitorRepository questionToMonitorRepository, QuestionChatRepository questionChatRepository, FindStudentRepository findStudentRepository, FindMonitorRepository<MonitorEntity> findMonitorRepository, FindDisciplineRepository findDisciplineRepository) {
         this.findQuestionRepository = findQuestionRepository;
         this.questionToMonitorRepository = questionToMonitorRepository;
         this.questionChatRepository = questionChatRepository;
@@ -45,6 +47,13 @@ public class QuestionService {
         }
 
         questionToMonitorRepository.makeQuestionToMonitor(studentId, question, disciplineId, monitorId);
+    }
+
+    public List<QuestionEntity> getAllStudentsQuestions(Long studentId) {
+        StudentEntity student = findStudentRepository.findById(studentId)
+                .orElseThrow(() -> new IllegalArgumentException("Estudante não encontrado com ID: " + studentId));
+
+        return findQuestionRepository.findByStudentId(studentId);
     }
 
     public void sendAnswerToQuestion(Long questionId, Long userId, String answer) {
