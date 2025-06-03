@@ -11,6 +11,33 @@ public class MonitorEntity extends StudentEntity {
     private List<Long> availableTimesIds = List.of();
 
     public MonitorEntity(
+            StudentEntity student,
+            Long disciplineId,
+            List<Long> availableTimesIds
+    ) {
+        super(
+                student.getId(),
+                student.getName(),
+                student.getSurname(),
+                student.getEmail(),
+                student.getPassword(),
+                student.getRole(),
+                student.getDisciplineIds()
+        );
+
+        if (disciplineId == null) {
+            throw new IllegalArgumentException("Monitor deve estar associado a uma disciplina.");
+        }
+
+        this.disciplineId = disciplineId;
+
+        if (availableTimesIds != null) {
+            this.availableTimesIds = availableTimesIds;
+        }
+
+    }
+
+    public MonitorEntity(
             Long id,
             String name,
             String surname,

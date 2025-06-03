@@ -6,11 +6,11 @@ import java.util.regex.Pattern;
 
 public class UserEntity {
     private final Long id;
-    private final String name;
-    private final String surname;
-    private final String email;
-    private final String password;
-    private final UserRole role;
+    private String name;
+    private String surname;
+    private String email;
+    private String password;
+    private UserRole role;
     private Boolean active = false;
 
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[\\w-.]+@[\\w-]+\\.[a-zA-Z]{2,}$");
@@ -99,6 +99,8 @@ public class UserEntity {
     public UserRole getRole() {
         return role;
     }
+
+    public void setRole(UserRole role) { this.role = role; }
 
     public Boolean getActive() {return active;}
 

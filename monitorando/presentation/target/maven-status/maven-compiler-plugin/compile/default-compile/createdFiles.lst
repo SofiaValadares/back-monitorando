@@ -1,4 +1,5 @@
 br\com\cesarschool\presentation\dto\user\AvailableTimeResponseDTO.class
+br\com\cesarschool\presentation\dto\user\UserLogoutResponse.class
 br\com\cesarschool\presentation\controller\UserController.class
 br\com\cesarschool\presentation\dto\question\QuestionChatRequestDTO.class
 br\com\cesarschool\presentation\dto\user\UserRegisterRequest.class
@@ -12,4 +13,5 @@ br\com\cesarschool\presentation\handler\GlobalExceptionHandler.class
 br\com\cesarschool\presentation\dto\question\QuestionRequestDTO.class
 br\com\cesarschool\presentation\MonitorandoApplication.class
 br\com\cesarschool\presentation\dto\user\AvailableTimeRequestDTO.class
+br\com\cesarschool\presentation\dto\user\UserLogoutRequest.class
 br\com\cesarschool\presentation\dto\user\UserSectionResponse.class
