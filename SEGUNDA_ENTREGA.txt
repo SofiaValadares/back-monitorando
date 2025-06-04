@@ -1,0 +1,9 @@
+Histórias que implementamos:
+1-Relatar uma experiencia com um monitor,
+2-Receber notificação de horários dos monitores,
+3-Relatar experiência negativa,
+4-Marcar atendimento com algum monitor,
+5-Responder dúvidas de alunos,
+6-Avaliar alunos,
+7-Definir meus horários disponíveis,
+8-Alteração de horário de monitoria,
