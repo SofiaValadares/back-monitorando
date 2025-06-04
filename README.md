@@ -1,4 +1,5 @@
-Link para os slides da apresentação: [link canva](https://www.canva.com/design/DAGlYph5x20/mHZp_OFfPFtCmBautac0cg/view?utm_content=DAGlYph5x20&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h713ba88d5f) 
+Link para os slides da apresentação: [link canva](https://www.canva.com/design/DAGlYph5x20/mHZp_OFfPFtCmBautac0cg/view?utm_content=DAGlYph5x20&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h713ba88d5f) <br>
+Link para o repositório do frontend: [link front](https://github.com/Malucoimbr/monitorando_front)
 
 # Monitorando 
 Repositório destinado ao projeto Monitorando, da disciplina de Requisitos, projeto de software e validação, do 5° período no CESAR School.
